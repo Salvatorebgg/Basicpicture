@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>临床统计图形与三线表平台</title>
+    <link rel="stylesheet" href="/static/styles.css?v=5.2.2" />
+    <script src="/static/vendor/plotly.min.js?v=local-3.0.1-cns3"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1>临床统计图形与三线表平台</h1>
+          <span class="topbar-sub">Clinical Charts & Three-Line Tables</span>
+        </div>
+        <div class="flow-line" aria-label="workflow">
+          <span class="is-active">选择</span>
+          <span>数据</span>
+          <span>配置</span>
+          <span>生成</span>
+          <span>导出</span>
+        </div>
+      </header>
+
+      <section class="workbench-grid">
+        <!-- Left: Input Panel -->
+        <aside class="panel input-panel">
+          <div class="panel-section">
+            <div class="panel-head">
+              <span class="step">01</span>
+              <div>
+                <h2>图表类型</h2>
+                <p id="selectedChartLabel">请选择</p>
+              </div>
+            </div>
+
+            <div class="chart-cat-tabs" id="chartCatTabs">
+              <button class="cat-tab active" data-cat="basic">基础统计</button>
+              <button class="cat-tab" data-cat="advanced">临床高级</button>
+              <button class="cat-tab" data-cat="display">展示感图</button>
+              <button class="cat-tab" data-cat="spatial">空间分布</button>
+            </div>
+
+            <div class="mini-chart-grid" id="miniChartGrid"></div>
+          </div>
+
+          <div class="panel-section">
+            <div class="panel-head">
+              <span class="step">02</span>
+              <div>
+                <h2>数据</h2>
+                <p>CSV / Excel</p>
+              </div>
+            </div>
+
+            <div class="data-actions">
+              <button id="loadExampleBtn" class="action-btn action-btn-primary">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 1v10M4 7l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 13h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                加载示例
+              </button>
+              <button id="uploadDataBtn" class="action-btn action-btn-ghost">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 11V1M4 5l4-4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 13h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                上传数据
+              </button>
+            </div>
+            <input id="wsFileInput" type="file" accept=".csv,.tsv,.txt,.xlsx,.xls" hidden />
+
+            <div class="field-row" id="sheetRow" hidden>
+              <label for="sheetSelect">工作表</label>
+              <select id="sheetSelect"></select>
+            </div>
+
+            <div class="data-source-meta" id="wsDataMeta">
+              请加载示例数据或上传文件
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <div class="panel-head">
+              <span class="step">03</span>
+              <div>
+                <h2>变量映射</h2>
+                <p>配置图表变量</p>
+              </div>
+            </div>
+            <div id="varControls">
+              <div class="empty-state small">请先选择图表并载入数据</div>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <div class="panel-head">
+              <span class="step">04</span>
+              <div>
+                <h2>外观设置</h2>
+                <p>主题 / 调色盘 / 尺寸</p>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <label for="chartTitleInput">图表标题</label>
+              <input id="chartTitleInput" type="text" placeholder="输入图表标题（可选）" />
+            </div>
+
+            <div class="field-row">
+              <label for="chartThemeSelect">图表主题</label>
+              <select id="chartThemeSelect">
+                <option value="cnsTheme">CNS 出版风格</option>
+                <option value="clinicalTheme">CHARLS 临床风格</option>
+                <option value="journalTheme">经典期刊风格</option>
+                <option value="natureStyleTheme">Nature 风格</option>
+                <option value="lancetTheme">Lancet 风格</option>
+                <option value="nejmTheme">NEJM 风格</option>
+                <option value="scienceTheme">Science 风格</option>
+                <option value="warmTheme">暖色调风格</option>
+                <option value="coolTheme">冷色调风格</option>
+                <option value="pastelTheme">柔和马卡龙</option>
+                <option value="darkMutedTheme">深色低调风格</option>
+                <option value="monoTheme">单色灰阶风格</option>
+              </select>
+            </div>
+
+            <div id="appearanceControls"></div>
+          </div>
+
+          <div class="panel-section panel-section-action">
+            <button id="generateChartBtn" class="generate-btn">生成图表</button>
+          </div>
+
+          <div id="statusStack" class="status-stack">
+            <div class="status-item active">等待操作</div>
+          </div>
+        </aside>
+
+        <!-- Center Panel -->
+        <section class="center-panel">
+          <section class="panel overview-panel">
+            <div class="panel-head inline">
+              <span class="step sm">概览</span>
+              <div>
+                <h2>数据概览</h2>
+                <p id="datasetMeta">未载入数据</p>
+              </div>
+            </div>
+            <div class="summary-strip" id="metricGrid">
+              <div class="summary-card"><span>N</span><strong>--</strong><small>样本</small></div>
+              <div class="summary-card"><span>Vars</span><strong>--</strong><small>变量</small></div>
+              <div class="summary-card"><span>Missing</span><strong>--</strong><small>缺失</small></div>
+              <div class="summary-card"><span>Type</span><strong>--</strong><small>图表</small></div>
+            </div>
+            <div id="previewTable" class="compact-table-wrap">
+              <div class="empty-state small">等待数据载入</div>
+            </div>
+          </section>
+
+          <nav class="tabs" aria-label="result tabs">
+            <button class="tab active" data-tab="chart">图形</button>
+            <button class="tab" data-tab="table">三线表</button>
+          </nav>
+
+          <!-- Chart Tab -->
+          <section class="tab-panel active" id="tab-chart">
+            <article class="analysis-card">
+              <div class="analysis-head">
+                <h3 id="chartPreviewTitle">图形预览</h3>
+                <div class="analysis-tools">
+                  <span id="chartPreviewBadge" class="badge">Plotly</span>
+                  <div id="chartExportBar" class="figure-actions" style="display:none;">
+                    <a href="#" class="export-btn" data-fmt="png">PNG</a>
+                    <a href="#" class="export-btn" data-fmt="svg">SVG</a>
+                    <a href="#" class="export-btn" data-fmt="csv">CSV</a>
+                    <a href="#" class="export-btn" data-fmt="publication">出版级</a>
+                  </div>
+                </div>
+              </div>
+              <div id="chartPreviewContainer">
+                <div class="empty-state">请在左侧选择图表类型、载入数据并点击生成</div>
+              </div>
+            </article>
+          </section>
+
+          <!-- Table Tab -->
+          <section class="tab-panel" id="tab-table">
+            <article class="analysis-card">
+              <div class="analysis-head">
+                <h3>三线表生成</h3>
+                <span>Table 1 / 描述 / 缺失</span>
+              </div>
+
+              <div class="table-type-tabs" id="tableTypeTabs">
+                <button class="cat-tab active" data-tt="baseline">基线资料表</button>
+                <button class="cat-tab" data-tt="descriptive">描述统计</button>
+                <button class="cat-tab" data-tt="missing">缺失统计</button>
+              </div>
+
+              <div class="two-col">
+                <div>
+                  <h4>分组变量</h4>
+                  <select id="tableGroupVar"></select>
+                </div>
+                <div>
+                  <h4>小数位数</h4>
+                  <input id="tableDecimals" type="number" value="2" min="0" max="6" />
+                </div>
+              </div>
+
+              <div class="field-row">
+                <label>纳入变量（可选，留空为全部）</label>
+                <select id="tableVars" multiple size="5"></select>
+              </div>
+
+              <div class="button-row full">
+                <button id="generateTableBtn" class="generate-btn">生成三线表</button>
+              </div>
+
+              <div id="tableResultContainer" class="compact-table-wrap">
+                <div class="empty-state small">尚未生成三线表</div>
+              </div>
+
+              <div id="tableToolbar" class="figure-actions" style="display:none;">
+                <a href="#" class="table-export-btn" data-texp="excel">Excel</a>
+                <a href="#" class="table-export-btn" data-texp="csv">CSV</a>
+                <a href="#" class="table-export-btn" data-texp="html">HTML</a>
+                <a href="#" class="table-export-btn" data-texp="clipboard">复制</a>
+              </div>
+            </article>
+          </section>
+
+          <!-- Bottom: Export & Examples (compact row) -->
+          <div class="bottom-export-row">
+            <div class="export-section">
+              <h4>导出下载</h4>
+              <div id="downloadList" class="download-list empty">
+                生成图表后可导出
+              </div>
+            </div>
+            <div class="export-section">
+              <h4>示例模板</h4>
+              <div id="exampleList" class="download-list">
+                <span class="hint-text">选择图表类型后可下载对应示例</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="/static/js/utils.js?v=5.2.2"></script>
+    <script src="/static/js/chartThemes.js?v=5.2.2"></script>
+    <script src="/static/js/plotConfigs.js?v=5.2.2"></script>
+    <script src="/static/js/upload.js?v=5.2.2"></script>
+    <script src="/static/js/variableSelect.js?v=5.2.2"></script>
+    <script src="/static/js/charts.js?v=5.2.2"></script>
+    <script src="/static/js/tableGenerator.js?v=5.2.2"></script>
+    <script src="/static/js/download.js?v=5.2.2"></script>
+    <script src="/static/js/app.js?v=5.2.2"></script>
+  </body>
+</html>

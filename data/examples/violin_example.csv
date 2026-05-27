@@ -1,0 +1,201 @@
+﻿patient_id,bmi,sbp,glucose,crp,treatment_response,group,sex,disease_type
+P0001,23.4,128,5.16,2.33,SD,Control,Female,Hypertension
+P0002,22.1,134,6.44,1.16,PR,Treatment A,Female,Healthy
+P0003,21.5,115,5.43,2.69,PR,Treatment B,Male,CVD
+P0004,20.0,161,4.64,4.34,SD,Treatment B,Female,Diabetes
+P0005,23.7,119,6.32,1.84,SD,Treatment A,Female,CVD
+P0006,31.2,153,5.52,6.97,PR,Treatment A,Male,COPD
+P0007,32.5,125,6.19,3.26,PD,Treatment A,Male,Hypertension
+P0008,18.2,141,5.06,1.95,PR,Treatment B,Female,CVD
+P0009,23.2,140,4.15,2.02,CR,Control,Male,Diabetes
+P0010,20.6,146,7.68,1.84,SD,Control,Male,Hypertension
+P0011,28.3,115,7.46,0.61,CR,Control,Male,Hypertension
+P0012,25.6,145,6.66,1.53,PR,Control,Female,CVD
+P0013,22.1,158,5.13,1.97,PR,Treatment A,Male,CVD
+P0014,24.8,124,5.24,1.18,PR,Treatment B,Female,CVD
+P0015,22.7,129,7.26,2.16,PR,Treatment A,Male,COPD
+P0016,30.6,120,5.18,1.68,SD,Treatment A,Male,CVD
+P0017,26.6,122,4.84,3.06,PR,Control,Female,CVD
+P0018,27.0,155,7.85,2.8,SD,Treatment A,Male,Healthy
+P0019,15.0,112,5.54,1.88,SD,Control,Male,COPD
+P0020,24.2,113,7.72,0.55,PR,Treatment B,Male,Healthy
+P0021,32.4,154,3.92,6.91,PR,Treatment A,Female,Diabetes
+P0022,29.5,138,6.22,1.47,SD,Treatment A,Male,COPD
+P0023,17.5,162,8.09,1.55,CR,Treatment B,Male,COPD
+P0024,23.3,121,5.64,1.25,PR,Control,Male,CVD
+P0025,19.9,130,5.28,1.12,SD,Treatment A,Male,Hypertension
+P0026,31.0,117,4.2,5.67,SD,Treatment A,Male,CVD
+P0027,25.4,130,6.9,5.0,SD,Control,Female,Healthy
+P0028,21.6,100,4.68,2.35,CR,Control,Male,COPD
+P0029,24.6,139,5.49,1.51,CR,Control,Male,Hypertension
+P0030,15.0,133,4.12,2.71,PR,Control,Female,Diabetes
+P0031,20.4,127,7.47,1.75,SD,Treatment B,Female,CVD
+P0032,24.6,122,6.99,1.42,PR,Control,Male,Healthy
+P0033,27.7,114,5.56,2.16,CR,Control,Male,CVD
+P0034,17.1,140,4.22,1.16,CR,Treatment B,Male,Healthy
+P0035,23.1,109,7.44,2.02,SD,Treatment A,Female,COPD
+P0036,28.3,136,5.16,1.94,SD,Treatment B,Male,Diabetes
+P0037,19.0,161,4.27,2.67,CR,Treatment B,Male,Hypertension
+P0038,25.4,152,3.49,1.0,CR,Control,Male,Healthy
+P0039,24.8,104,4.82,2.91,PR,Treatment A,Male,CVD
+P0040,31.0,119,3.85,0.8,CR,Control,Male,Healthy
+P0041,23.6,135,4.85,1.04,PR,Treatment A,Male,Healthy
+P0042,23.8,127,6.49,1.08,CR,Treatment B,Female,CVD
+P0043,27.7,106,5.15,0.7,SD,Treatment B,Female,Hypertension
+P0044,19.5,134,6.03,3.72,SD,Treatment B,Female,Healthy
+P0045,23.7,128,4.73,0.76,PD,Control,Female,CVD
+P0046,22.8,159,5.68,0.94,PD,Control,Male,Hypertension
+P0047,24.0,124,7.91,4.5,PR,Treatment A,Female,CVD
+P0048,27.7,147,5.18,1.04,CR,Control,Female,Hypertension
+P0049,26.6,108,6.06,1.42,PR,Treatment A,Female,Diabetes
+P0050,21.7,112,3.72,0.73,SD,Treatment B,Female,Diabetes
+P0051,25.0,140,7.42,3.21,CR,Control,Male,CVD
+P0052,30.2,145,5.03,3.25,PR,Treatment B,Male,CVD
+P0053,21.3,113,6.86,2.98,PR,Treatment B,Male,Healthy
+P0054,25.1,128,5.45,2.53,PR,Treatment B,Male,Diabetes
+P0055,23.8,106,6.33,1.75,SD,Control,Male,COPD
+P0056,24.3,125,6.41,1.08,SD,Control,Male,Healthy
+P0057,18.3,141,5.06,0.86,PR,Control,Male,COPD
+P0058,29.9,121,6.91,4.63,PD,Control,Female,Diabetes
+P0059,21.6,124,4.69,3.04,CR,Control,Female,COPD
+P0060,28.4,110,6.53,0.95,CR,Treatment A,Female,Diabetes
+P0061,22.1,118,5.13,1.7,PR,Control,Male,CVD
+P0062,22.1,156,6.02,1.3,SD,Control,Female,COPD
+P0063,29.1,129,5.05,0.67,SD,Treatment B,Female,Diabetes
+P0064,28.3,112,5.66,1.9,CR,Treatment B,Female,Hypertension
+P0065,25.3,123,4.31,1.18,PD,Treatment B,Female,Healthy
+P0066,27.4,102,5.9,0.77,PR,Control,Male,COPD
+P0067,23.4,112,5.65,0.5,PR,Treatment A,Male,Hypertension
+P0068,24.5,150,4.95,0.47,SD,Treatment A,Female,Diabetes
+P0069,22.0,126,5.53,1.22,PD,Control,Female,Diabetes
+P0070,27.9,158,5.76,1.54,SD,Treatment B,Male,Healthy
+P0071,21.9,126,4.86,0.82,PD,Treatment A,Male,Healthy
+P0072,30.1,127,5.45,2.77,CR,Treatment B,Male,COPD
+P0073,23.3,138,4.39,1.56,SD,Control,Male,CVD
+P0074,24.6,85,8.41,2.62,SD,Treatment A,Female,Hypertension
+P0075,27.4,131,6.87,1.42,PR,Control,Female,Diabetes
+P0076,24.6,127,5.93,0.88,PR,Treatment B,Male,Hypertension
+P0077,23.4,152,7.01,1.81,PD,Treatment A,Male,COPD
+P0078,24.4,143,3.22,0.6,CR,Control,Male,Hypertension
+P0079,27.9,110,3.0,2.54,PR,Control,Male,COPD
+P0080,22.0,148,5.12,0.78,PD,Treatment A,Female,Healthy
+P0081,24.0,124,3.95,3.44,PD,Control,Female,Diabetes
+P0082,24.5,114,5.32,1.26,PD,Control,Female,COPD
+P0083,27.8,131,5.85,3.86,PD,Treatment B,Male,Healthy
+P0084,24.1,125,6.7,0.67,CR,Treatment B,Female,CVD
+P0085,31.4,153,4.23,0.96,PD,Treatment A,Female,CVD
+P0086,23.9,133,6.08,2.24,PR,Treatment B,Male,Diabetes
+P0087,23.6,131,5.62,4.21,SD,Treatment A,Female,CVD
+P0088,23.9,142,6.02,6.25,PR,Control,Female,Healthy
+P0089,19.5,145,4.98,1.7,SD,Treatment B,Female,COPD
+P0090,20.6,141,7.26,7.17,SD,Control,Male,Diabetes
+P0091,22.5,151,5.48,1.31,SD,Treatment B,Male,CVD
+P0092,28.8,138,7.73,3.97,CR,Treatment A,Female,COPD
+P0093,24.4,131,4.65,0.78,CR,Control,Male,Hypertension
+P0094,22.7,148,6.49,2.31,PR,Control,Male,COPD
+P0095,29.2,127,5.53,0.25,CR,Treatment B,Female,Diabetes
+P0096,30.4,129,5.21,0.67,SD,Treatment B,Male,Diabetes
+P0097,29.3,156,6.36,2.39,PR,Treatment A,Male,CVD
+P0098,21.3,154,5.24,0.58,SD,Control,Female,CVD
+P0099,22.6,128,3.0,2.32,CR,Treatment B,Female,Healthy
+P0100,31.4,121,3.0,3.4,CR,Treatment B,Female,Diabetes
+P0101,25.4,151,7.13,1.1,SD,Treatment A,Female,Diabetes
+P0102,23.5,141,7.08,0.76,PR,Treatment A,Male,Diabetes
+P0103,27.2,133,7.86,1.13,PR,Treatment B,Male,Healthy
+P0104,28.3,123,5.58,0.76,PR,Treatment A,Female,Healthy
+P0105,22.3,133,4.05,1.52,PR,Control,Male,CVD
+P0106,25.3,128,5.1,1.79,SD,Control,Male,COPD
+P0107,28.0,117,5.61,1.29,CR,Treatment A,Male,Healthy
+P0108,20.1,130,4.39,6.29,PR,Treatment B,Female,Healthy
+P0109,24.5,132,7.58,0.93,SD,Treatment B,Male,COPD
+P0110,20.3,122,8.29,5.02,PR,Treatment A,Female,CVD
+P0111,20.8,142,6.17,0.72,SD,Control,Male,Healthy
+P0112,22.4,149,5.59,1.75,PR,Treatment A,Female,Diabetes
+P0113,26.3,144,4.05,4.25,PD,Control,Male,Diabetes
+P0114,23.3,124,7.46,4.08,PR,Treatment A,Male,COPD
+P0115,22.0,140,5.69,1.18,PR,Treatment A,Female,Hypertension
+P0116,24.7,129,5.25,2.57,PD,Treatment B,Female,CVD
+P0117,20.1,108,6.18,2.31,SD,Treatment B,Male,Healthy
+P0118,26.1,139,4.9,1.07,SD,Treatment B,Male,Hypertension
+P0119,28.8,130,5.78,2.7,PD,Control,Male,Healthy
+P0120,24.2,169,3.87,7.32,CR,Treatment B,Male,CVD
+P0121,23.7,151,6.9,2.4,SD,Control,Female,Healthy
+P0122,25.9,139,5.47,2.59,SD,Treatment A,Male,COPD
+P0123,16.8,132,6.99,2.82,PR,Treatment B,Female,Hypertension
+P0124,26.5,131,5.36,0.51,PR,Treatment B,Male,COPD
+P0125,36.3,112,5.44,2.38,CR,Treatment A,Female,Hypertension
+P0126,24.0,100,4.15,0.73,PD,Control,Male,Diabetes
+P0127,24.0,114,6.51,1.03,CR,Treatment A,Male,Healthy
+P0128,27.3,127,4.55,9.3,PR,Treatment B,Male,Healthy
+P0129,30.8,94,5.02,1.35,SD,Treatment A,Female,Hypertension
+P0130,28.2,119,5.6,0.91,SD,Treatment A,Female,Diabetes
+P0131,16.3,124,5.75,4.15,CR,Treatment A,Female,Hypertension
+P0132,26.6,125,3.55,0.77,SD,Treatment A,Male,Diabetes
+P0133,34.3,117,5.32,1.15,PR,Control,Male,Healthy
+P0134,26.9,123,6.55,4.48,SD,Treatment B,Male,Hypertension
+P0135,20.1,156,5.15,1.71,CR,Control,Male,COPD
+P0136,25.6,139,5.33,0.47,CR,Treatment B,Female,Healthy
+P0137,19.6,119,5.79,2.55,SD,Control,Female,Healthy
+P0138,29.2,127,5.45,1.2,CR,Treatment A,Female,Diabetes
+P0139,20.9,128,4.36,5.65,PR,Treatment A,Female,COPD
+P0140,24.8,116,5.56,1.02,CR,Treatment A,Male,CVD
+P0141,21.2,116,6.79,3.82,SD,Treatment A,Male,Hypertension
+P0142,22.4,144,4.34,6.82,PD,Treatment B,Female,Diabetes
+P0143,30.1,121,5.15,0.83,SD,Control,Male,COPD
+P0144,24.9,110,3.94,1.41,PD,Treatment B,Male,COPD
+P0145,22.4,127,6.73,2.25,PD,Treatment B,Female,CVD
+P0146,20.1,130,5.49,0.83,PR,Treatment B,Female,COPD
+P0147,17.4,96,4.58,2.05,PR,Control,Female,COPD
+P0148,19.7,127,5.71,1.38,PD,Control,Male,Diabetes
+P0149,24.9,142,4.16,1.36,PD,Treatment A,Female,Diabetes
+P0150,28.2,135,4.36,1.71,PD,Control,Male,Healthy
+P0151,22.4,164,3.85,1.75,SD,Treatment B,Male,Healthy
+P0152,30.5,148,4.32,1.88,PR,Treatment B,Male,Hypertension
+P0153,21.8,151,7.23,1.02,PD,Treatment A,Female,COPD
+P0154,23.6,173,4.72,1.06,PD,Treatment B,Female,Hypertension
+P0155,20.4,140,6.16,1.5,SD,Control,Female,Healthy
+P0156,28.3,131,4.6,1.59,PD,Treatment B,Male,CVD
+P0157,32.5,144,6.51,1.16,SD,Control,Female,COPD
+P0158,17.8,119,4.37,2.14,PD,Treatment B,Male,COPD
+P0159,23.2,130,5.65,0.39,CR,Treatment A,Female,COPD
+P0160,29.3,118,5.66,0.92,PD,Treatment A,Male,Diabetes
+P0161,19.0,134,8.39,1.32,CR,Control,Male,Healthy
+P0162,26.7,118,6.36,0.83,PR,Treatment A,Female,CVD
+P0163,29.1,117,4.89,6.07,CR,Treatment B,Male,CVD
+P0164,24.8,135,6.42,1.67,PR,Treatment B,Female,Diabetes
+P0165,26.6,126,8.17,1.9,PR,Treatment A,Male,Hypertension
+P0166,31.2,97,3.64,1.12,PD,Control,Female,CVD
+P0167,31.9,105,4.59,1.63,SD,Treatment A,Male,Diabetes
+P0168,24.3,110,5.32,0.62,PD,Treatment B,Male,COPD
+P0169,22.5,114,5.1,1.44,PR,Control,Male,Diabetes
+P0170,21.0,135,5.2,0.78,CR,Treatment B,Male,Healthy
+P0171,28.2,132,4.03,1.32,SD,Treatment B,Female,COPD
+P0172,19.3,145,7.28,0.21,SD,Treatment B,Male,CVD
+P0173,23.5,140,3.89,0.67,PR,Treatment A,Male,COPD
+P0174,24.9,145,5.36,5.32,SD,Control,Female,COPD
+P0175,22.6,138,6.85,3.2,SD,Control,Male,COPD
+P0176,25.6,131,5.56,4.74,SD,Treatment B,Female,CVD
+P0177,34.2,146,4.42,5.0,PD,Treatment A,Female,Healthy
+P0178,24.0,143,3.98,2.82,SD,Control,Male,Diabetes
+P0179,22.8,134,5.32,1.15,SD,Treatment B,Female,CVD
+P0180,28.4,148,4.69,0.72,PR,Control,Male,Diabetes
+P0181,25.4,90,5.85,4.13,CR,Treatment B,Male,CVD
+P0182,30.0,123,3.92,1.74,PR,Treatment A,Male,Healthy
+P0183,25.1,123,6.58,12.12,SD,Treatment A,Female,COPD
+P0184,23.6,146,5.74,1.23,SD,Control,Female,Diabetes
+P0185,17.7,153,5.83,7.99,PR,Control,Female,Healthy
+P0186,18.3,105,7.33,1.45,SD,Treatment B,Female,COPD
+P0187,17.5,151,5.07,4.8,CR,Treatment A,Male,CVD
+P0188,25.9,109,4.73,6.41,PR,Treatment B,Female,Hypertension
+P0189,19.3,110,4.94,0.73,PD,Treatment B,Female,CVD
+P0190,29.3,124,5.37,1.12,PR,Control,Female,Healthy
+P0191,24.6,123,5.49,0.72,PR,Treatment A,Female,CVD
+P0192,23.6,103,4.6,0.62,PR,Treatment B,Female,Hypertension
+P0193,21.3,138,3.17,2.81,PR,Treatment A,Male,Hypertension
+P0194,26.9,139,4.93,1.41,SD,Treatment A,Female,Healthy
+P0195,21.4,145,6.03,1.72,PD,Treatment A,Female,CVD
+P0196,20.8,121,5.76,2.57,SD,Treatment B,Female,COPD
+P0197,29.0,127,7.04,0.37,SD,Treatment B,Male,Diabetes
+P0198,25.8,128,7.95,4.62,PR,Treatment B,Female,Hypertension
+P0199,23.6,155,6.51,1.25,SD,Treatment A,Male,CVD
+P0200,26.9,85,7.26,2.52,PR,Treatment A,Female,COPD

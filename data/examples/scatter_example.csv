@@ -1,0 +1,201 @@
+﻿patient_id,age,bmi,sbp,dbp,glucose,cholesterol,sex,group
+P0001,62,15.7,108,71,6.64,6.78,Male,Treatment A
+P0002,46,24.7,132,65,7.38,6.21,Male,Treatment A
+P0003,67,22.7,157,83,7.75,4.82,Male,Treatment B
+P0004,69,26.2,102,82,7.18,5.93,Female,Treatment B
+P0005,35,27.2,108,60,5.47,7.23,Male,Treatment A
+P0006,42,25.0,121,77,6.02,7.26,Female,Treatment A
+P0007,60,27.4,120,88,6.52,3.75,Female,Treatment B
+P0008,54,25.4,141,89,5.75,4.08,Female,Treatment B
+P0009,58,26.5,132,88,5.76,6.73,Male,Control
+P0010,48,21.8,100,78,6.59,3.94,Female,Treatment B
+P0011,69,23.8,136,70,5.53,3.65,Female,Control
+P0012,67,25.2,119,67,4.72,4.57,Female,Treatment A
+P0013,59,27.6,148,81,5.1,5.56,Male,Treatment A
+P0014,72,23.0,118,82,6.36,4.99,Male,Treatment A
+P0015,64,26.5,118,91,5.6,4.38,Female,Control
+P0016,48,23.5,137,89,6.01,4.36,Male,Treatment B
+P0017,62,24.1,140,77,6.4,4.32,Male,Control
+P0018,46,27.7,135,66,5.15,4.13,Female,Control
+P0019,69,16.9,101,75,6.51,7.61,Female,Treatment B
+P0020,57,19.6,137,80,6.05,5.43,Female,Treatment B
+P0021,56,18.9,111,76,4.12,6.08,Male,Control
+P0022,50,15.6,132,72,7.33,4.56,Female,Treatment B
+P0023,73,21.9,105,81,5.0,4.9,Male,Treatment B
+P0024,56,27.3,135,73,3.61,4.32,Female,Control
+P0025,53,23.4,115,72,4.35,2.5,Female,Treatment A
+P0026,54,25.3,107,81,4.37,3.58,Male,Treatment A
+P0027,64,28.6,139,74,5.66,3.11,Male,Control
+P0028,62,29.5,132,80,5.27,2.63,Male,Control
+P0029,63,24.2,118,81,5.2,3.79,Female,Control
+P0030,63,29.6,151,67,6.34,6.56,Female,Control
+P0031,84,24.9,121,73,6.01,5.05,Female,Treatment A
+P0032,53,21.3,129,92,5.98,6.52,Female,Treatment A
+P0033,52,22.2,132,66,6.09,5.55,Male,Control
+P0034,48,18.9,118,57,6.34,5.96,Female,Control
+P0035,65,21.1,136,59,3.07,4.11,Male,Control
+P0036,72,23.1,119,78,5.16,5.68,Male,Treatment B
+P0037,57,27.6,121,78,3.0,5.9,Female,Control
+P0038,48,31.0,150,77,5.64,4.47,Female,Treatment B
+P0039,48,19.2,111,90,5.59,5.72,Male,Treatment A
+P0040,66,26.0,89,51,6.85,5.72,Female,Treatment B
+P0041,67,20.5,154,82,7.03,4.5,Female,Treatment A
+P0042,65,26.3,169,94,5.84,3.86,Female,Control
+P0043,50,24.0,122,67,5.0,3.8,Female,Treatment A
+P0044,61,17.5,97,74,6.18,5.2,Male,Control
+P0045,59,28.0,123,70,4.97,5.46,Male,Control
+P0046,61,22.2,123,69,5.6,4.23,Male,Control
+P0047,68,22.5,125,75,6.78,5.13,Female,Control
+P0048,61,20.4,110,92,4.93,5.73,Female,Control
+P0049,66,22.0,137,96,6.57,5.78,Male,Control
+P0050,59,26.1,136,75,6.41,6.81,Male,Treatment B
+P0051,61,23.8,104,97,4.45,6.5,Male,Treatment A
+P0052,66,25.7,139,78,6.77,4.0,Female,Treatment A
+P0053,41,25.9,161,96,6.44,6.95,Female,Treatment B
+P0054,54,29.5,131,77,5.72,4.52,Male,Control
+P0055,52,23.2,123,79,4.69,6.25,Male,Treatment A
+P0056,50,18.9,126,82,4.57,5.17,Female,Treatment B
+P0057,55,28.6,138,110,4.95,4.65,Male,Treatment A
+P0058,76,23.2,100,87,6.25,3.11,Female,Treatment A
+P0059,48,28.7,131,71,4.45,4.91,Male,Control
+P0060,70,26.0,122,88,6.13,3.38,Male,Control
+P0061,38,24.0,158,74,4.11,6.16,Female,Control
+P0062,54,25.8,125,73,5.36,6.77,Male,Control
+P0063,60,31.9,155,87,5.73,4.22,Male,Treatment B
+P0064,65,32.4,110,78,8.53,5.43,Male,Treatment A
+P0065,67,24.8,137,81,3.95,4.3,Male,Treatment A
+P0066,68,25.1,133,78,7.37,4.41,Male,Treatment B
+P0067,54,28.6,114,81,5.78,5.95,Male,Control
+P0068,52,21.3,131,82,6.09,5.06,Male,Control
+P0069,68,25.8,147,59,5.74,7.01,Male,Treatment A
+P0070,56,24.4,123,85,6.13,4.57,Female,Treatment B
+P0071,43,25.7,101,68,5.42,6.2,Female,Treatment A
+P0072,44,21.3,128,64,7.34,5.21,Male,Treatment B
+P0073,47,18.5,114,77,5.05,5.98,Male,Control
+P0074,64,16.6,123,79,6.96,4.61,Female,Treatment B
+P0075,60,20.3,127,71,4.83,5.05,Female,Control
+P0076,66,22.8,101,86,5.53,4.97,Female,Control
+P0077,53,23.4,102,65,4.31,4.18,Male,Treatment A
+P0078,60,31.9,136,74,6.15,5.83,Male,Control
+P0079,66,28.7,120,72,7.33,5.82,Male,Treatment B
+P0080,54,20.8,87,78,5.51,5.75,Male,Treatment B
+P0081,63,25.8,141,81,5.36,6.79,Female,Treatment A
+P0082,50,23.0,132,68,4.26,6.69,Male,Control
+P0083,54,23.4,117,85,5.32,4.69,Male,Control
+P0084,53,25.2,107,79,3.69,5.51,Male,Treatment A
+P0085,44,26.9,141,59,4.5,4.41,Female,Treatment A
+P0086,64,23.2,134,58,5.87,5.13,Male,Treatment B
+P0087,52,28.5,166,78,7.18,4.44,Female,Treatment A
+P0088,58,20.2,135,76,8.97,6.88,Male,Control
+P0089,64,24.5,134,77,4.9,5.5,Female,Control
+P0090,63,34.4,125,78,7.32,4.86,Male,Treatment B
+P0091,66,25.3,141,80,5.89,6.41,Female,Control
+P0092,57,29.9,138,87,5.42,2.71,Female,Treatment B
+P0093,53,24.8,148,67,6.12,2.88,Female,Control
+P0094,57,26.7,120,66,5.67,5.98,Female,Treatment B
+P0095,38,24.3,121,67,5.73,5.17,Female,Treatment B
+P0096,41,23.9,120,81,5.11,5.38,Female,Treatment A
+P0097,42,21.5,141,90,3.92,3.64,Female,Control
+P0098,46,26.1,152,74,3.75,5.07,Male,Treatment B
+P0099,63,21.3,121,53,6.38,7.3,Female,Control
+P0100,47,27.0,121,61,5.27,6.01,Female,Treatment A
+P0101,53,28.6,133,70,4.88,5.29,Female,Treatment B
+P0102,74,25.9,124,72,5.61,4.62,Male,Treatment B
+P0103,54,23.4,143,74,6.55,4.67,Male,Control
+P0104,67,26.2,92,78,5.82,2.76,Female,Treatment B
+P0105,47,23.3,115,75,4.81,5.38,Male,Control
+P0106,56,28.1,115,88,7.07,6.03,Male,Treatment B
+P0107,47,17.5,91,71,7.5,3.37,Male,Treatment A
+P0108,54,23.2,113,69,6.19,4.37,Male,Control
+P0109,68,16.9,113,83,6.77,3.83,Male,Treatment A
+P0110,37,18.8,125,63,7.09,4.04,Male,Control
+P0111,63,29.7,146,82,6.96,5.16,Male,Treatment B
+P0112,61,27.9,124,79,6.34,2.81,Male,Control
+P0113,51,21.8,112,77,6.32,5.78,Male,Control
+P0114,41,18.8,127,94,6.22,5.93,Female,Treatment A
+P0115,59,15.0,145,72,4.28,4.82,Male,Treatment B
+P0116,52,22.4,112,99,6.44,2.5,Female,Treatment A
+P0117,61,33.7,113,76,3.97,4.0,Female,Treatment A
+P0118,58,26.2,137,65,4.65,6.46,Female,Treatment A
+P0119,77,22.4,124,79,7.16,2.5,Male,Treatment B
+P0120,55,26.3,138,67,6.61,4.72,Female,Treatment A
+P0121,46,18.6,128,70,7.38,3.8,Female,Treatment B
+P0122,60,23.4,139,82,5.27,5.99,Female,Treatment B
+P0123,61,24.9,111,84,4.22,4.36,Female,Treatment B
+P0124,74,24.2,128,72,5.31,5.54,Female,Treatment B
+P0125,68,27.5,125,88,5.72,5.72,Female,Treatment B
+P0126,62,25.8,109,90,5.69,7.12,Male,Control
+P0127,76,27.0,103,92,6.96,4.88,Female,Treatment B
+P0128,44,21.9,139,83,5.17,5.51,Male,Treatment B
+P0129,50,27.9,122,92,6.02,3.47,Female,Control
+P0130,47,30.7,112,59,4.41,6.41,Female,Treatment B
+P0131,53,20.8,126,75,6.14,4.26,Male,Control
+P0132,41,21.1,146,69,5.6,4.48,Female,Treatment A
+P0133,66,29.6,92,79,4.7,5.08,Male,Treatment B
+P0134,55,23.8,104,72,5.32,3.38,Female,Control
+P0135,40,29.8,113,76,5.38,5.35,Male,Treatment A
+P0136,46,22.8,151,97,5.28,6.16,Female,Treatment B
+P0137,62,30.0,133,76,7.73,5.42,Male,Treatment A
+P0138,68,25.0,140,82,5.48,3.35,Female,Treatment B
+P0139,82,25.5,110,76,5.31,4.96,Female,Control
+P0140,90,30.4,110,79,3.08,5.92,Female,Treatment B
+P0141,63,23.1,135,78,4.53,3.03,Female,Treatment B
+P0142,46,20.9,129,82,5.28,3.92,Female,Treatment B
+P0143,32,22.8,137,90,4.78,6.06,Female,Control
+P0144,61,26.2,125,94,7.26,5.4,Male,Treatment B
+P0145,48,18.6,132,81,5.4,5.55,Female,Treatment A
+P0146,53,26.9,131,84,7.15,7.15,Male,Treatment A
+P0147,51,22.5,140,66,5.67,5.62,Female,Treatment A
+P0148,56,28.9,141,77,5.64,5.82,Male,Treatment A
+P0149,71,15.4,102,87,5.49,8.08,Female,Treatment A
+P0150,60,21.5,92,87,5.6,4.86,Female,Treatment A
+P0151,56,18.1,144,80,7.66,4.22,Male,Control
+P0152,46,21.4,147,87,3.0,5.57,Female,Treatment B
+P0153,38,25.4,112,83,3.2,5.58,Female,Control
+P0154,52,23.8,98,90,4.95,4.52,Female,Control
+P0155,57,23.5,130,81,5.62,3.96,Female,Treatment A
+P0156,79,23.9,143,74,6.43,7.64,Female,Treatment A
+P0157,60,25.3,157,81,6.17,5.46,Female,Treatment A
+P0158,70,20.7,136,50,5.14,4.29,Male,Treatment B
+P0159,52,27.2,122,82,6.82,6.11,Male,Control
+P0160,44,27.0,114,50,6.84,4.98,Male,Control
+P0161,46,26.0,128,61,5.82,4.82,Female,Treatment A
+P0162,49,26.6,123,83,6.76,5.72,Male,Treatment B
+P0163,84,25.6,112,83,5.93,3.68,Female,Treatment A
+P0164,48,32.2,161,66,4.93,5.49,Female,Treatment A
+P0165,68,24.2,157,71,6.44,7.2,Male,Treatment A
+P0166,47,23.3,146,92,5.73,5.61,Female,Treatment B
+P0167,69,21.6,113,73,5.6,4.69,Female,Treatment A
+P0168,63,20.6,142,100,7.37,4.54,Male,Treatment B
+P0169,56,19.8,138,78,3.0,4.65,Male,Treatment B
+P0170,58,21.1,135,82,3.9,4.82,Male,Control
+P0171,50,24.2,148,94,4.18,4.68,Male,Control
+P0172,63,25.8,138,79,5.16,6.11,Male,Treatment B
+P0173,53,24.7,140,68,5.29,3.19,Female,Control
+P0174,43,21.6,138,77,3.79,6.05,Male,Treatment A
+P0175,43,27.9,133,78,4.42,4.68,Male,Control
+P0176,60,27.3,99,64,4.57,5.51,Female,Treatment A
+P0177,77,23.9,129,75,8.55,3.86,Female,Control
+P0178,60,22.0,119,71,7.76,6.56,Female,Treatment A
+P0179,57,26.6,108,87,5.11,6.47,Female,Treatment B
+P0180,61,25.2,155,78,5.16,6.16,Male,Treatment B
+P0181,74,19.0,156,75,4.22,3.43,Male,Treatment B
+P0182,61,24.2,150,77,3.31,6.01,Female,Control
+P0183,53,25.5,132,80,5.46,5.55,Female,Treatment A
+P0184,71,21.1,150,84,4.4,3.33,Female,Control
+P0185,63,25.2,128,68,5.5,5.07,Male,Treatment B
+P0186,76,19.0,131,68,3.68,5.5,Female,Treatment B
+P0187,60,29.6,111,89,4.69,5.71,Female,Control
+P0188,43,29.2,134,74,5.78,5.29,Male,Treatment A
+P0189,42,23.5,129,64,6.04,5.42,Female,Treatment A
+P0190,78,25.9,107,82,6.1,6.72,Female,Treatment A
+P0191,79,15.3,127,83,4.02,6.45,Male,Treatment A
+P0192,56,20.1,127,63,6.63,2.5,Male,Control
+P0193,53,23.4,157,80,4.64,4.75,Female,Treatment A
+P0194,76,20.4,142,85,6.36,4.92,Male,Treatment A
+P0195,45,27.2,128,82,5.59,3.17,Male,Treatment B
+P0196,47,32.1,132,84,3.95,5.2,Male,Treatment B
+P0197,66,20.0,129,64,5.22,6.47,Male,Treatment B
+P0198,53,21.3,125,81,6.04,3.9,Female,Control
+P0199,58,25.4,111,75,6.34,5.47,Female,Treatment B
+P0200,56,30.6,126,73,5.43,4.09,Male,Treatment A

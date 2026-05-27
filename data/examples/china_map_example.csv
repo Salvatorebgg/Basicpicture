@@ -1,0 +1,35 @@
+﻿province,incidence,prevalence,mortality,risk_level
+Beijing,52.8,24.4,3.95,High
+Tianjin,44.1,20.7,3.35,High
+Hebei,47.6,22.4,3.63,High
+Shanxi,41.3,19.7,3.21,Medium
+Inner Mongol,35.4,17.2,2.81,Medium
+Liaoning,46.2,22.1,3.61,High
+Jilin,38.8,18.9,3.11,Medium
+Heilongjiang,40.5,19.8,3.26,Medium
+Shanghai,55.6,26.5,4.37,Very High
+Jiangsu,58.9,28.1,4.64,Very High
+Zhejiang,54.7,26.4,4.36,Very High
+Anhui,43.2,21.4,3.56,High
+Fujian,42.4,21.2,3.53,Medium
+Jiangxi,39.1,19.8,3.32,Medium
+Shandong,51.8,25.5,4.26,High
+Henan,48.5,24.2,4.05,High
+Hubei,45.9,23.1,3.89,High
+Hunan,44.6,22.7,3.82,High
+Guangdong,61.4,30.2,5.06,Very High
+Guangxi,36.7,19.4,3.31,Medium
+Hainan,31.5,17.2,2.96,Low
+Chongqing,46.8,24.1,4.09,High
+Sichuan,43.7,22.8,3.9,High
+Guizhou,34.2,18.8,3.24,Medium
+Yunnan,32.9,18.3,3.17,Medium
+Xizang,18.6,12.1,2.17,Low
+Shaanxi,40.2,21.7,3.75,Medium
+Gansu,29.8,17.3,3.03,Low
+Qinghai,24.3,14.9,2.66,Low
+Ningxia,30.1,17.6,3.11,Low
+Xinjiang,28.5,17.0,3.02,Low
+Taiwan,49.8,26.5,4.58,High
+Hong Kong,57.4,29.9,5.16,Very High
+Macau,50.6,27.1,4.69,High

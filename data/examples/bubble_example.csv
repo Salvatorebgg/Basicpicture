@@ -1,0 +1,9 @@
+﻿disease,prevalence,sample_size,region,risk_ratio
+Hypertension,28.5,1520,Urban,1.2
+Diabetes,12.3,890,Urban,1.5
+CVD,8.7,670,Rural,2.1
+Stroke,5.2,430,Rural,1.8
+COPD,7.8,580,Rural,0.9
+CKD,10.5,780,Urban,1.3
+Cancer,4.2,320,Urban,0.7
+Depression,15.6,1100,Rural,1.6

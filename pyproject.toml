@@ -1,0 +1,32 @@
+[project]
+name = "clinical-chart-platform"
+version = "1.1.0"
+description = "Clinical chart and three-line table platform with matched example datasets and full-data chart rendering"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Clinical Toolkit"}
+]
+keywords = ["clinical-research", "statistics", "visualization", "three-line-table", "medical-statistics"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[project.urls]
+Homepage = "https://github.com/clinical-toolkit/clinical-chart-platform"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["app", "app.services"]
+
+[tool.setuptools.package-data]
+app = ["static/**/*", "templates/**/*"]

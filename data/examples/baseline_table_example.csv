@@ -1,0 +1,301 @@
+﻿patient_id,age,sex,bmi,sbp,dbp,glucose,cholesterol,crp,group,treatment,province,disease_type,education,smoking,outcome,survival_time,event
+P0001,71,Female,22.9,141,65,5.05,6.19,4.1,Treatment A,Experimental,,COPD,Tertiary,Current,0,0.4,1
+P0002,54,Female,,137,70,8.0,7.09,0.63,Control,Experimental,Hubei,Diabetes,Primary,,0,12.2,1
+P0003,45,Female,25.7,128,95,8.0,5.84,0.88,Treatment B,Experimental,Sichuan,Healthy,Primary,Never,1,0.4,0
+P0004,53,Male,25.8,119,93,3.5,4.36,2.31,Treatment A,Experimental,Guangdong,COPD,Tertiary,Never,1,47.9,0
+P0005,58,Female,25.4,162,84,7.36,3.69,1.26,Control,Standard,Sichuan,Healthy,Tertiary,Never,1,9.7,0
+P0006,50,Female,23.2,107,62,5.26,5.92,2.55,Treatment B,Standard,Jiangsu,Diabetes,Secondary,Current,1,107.4,0
+P0007,46,Female,15.0,103,81,4.92,6.91,1.24,Treatment A,Experimental,Hubei,Hypertension,Secondary,,0,9.5,0
+P0008,63,Male,30.3,127,82,6.23,5.7,5.58,Control,Experimental,,CVD,Secondary,Current,1,108.5,1
+P0009,46,Female,21.9,124,78,4.39,6.46,1.66,Treatment B,Standard,Shanghai,Diabetes,Tertiary,,0,40.8,0
+P0010,40,Female,23.6,146,72,6.2,7.95,11.43,Control,Standard,Hubei,COPD,Tertiary,Current,0,25.7,0
+P0011,45,Female,23.7,138,74,4.47,6.02,2.67,Control,Standard,Guangdong,CVD,Primary,Never,0,21.5,0
+P0012,55,Male,21.5,128,72,5.81,3.89,0.56,Treatment A,Experimental,Shandong,COPD,Tertiary,Never,0,12.9,0
+P0013,46,Female,,136,67,,5.16,,Control,Standard,Shandong,Hypertension,Secondary,Never,0,48.4,0
+P0014,55,Female,24.3,136,92,,6.61,3.97,Treatment B,Experimental,Beijing,Hypertension,Primary,Former,0,16.9,1
+P0015,65,Female,21.8,162,87,5.17,4.83,2.23,Treatment B,Experimental,Zhejiang,Healthy,Primary,Current,0,13.9,0
+P0016,65,Female,25.1,132,75,6.25,6.76,2.77,Treatment A,Experimental,Sichuan,CVD,Primary,Never,0,2.9,0
+P0017,50,Female,24.4,117,82,3.91,5.03,0.64,Control,Standard,Shanghai,Hypertension,,Current,0,27.6,0
+P0018,42,Male,,131,82,,5.47,0.39,Treatment A,Experimental,Hubei,Healthy,Secondary,Never,0,27.1,0
+P0019,51,Male,19.4,86,101,5.08,,1.59,Control,Standard,Beijing,Hypertension,Secondary,Never,1,61.6,1
+P0020,66,Male,21.4,127,87,6.54,5.28,4.97,Treatment B,Experimental,Beijing,Healthy,Primary,Never,0,39.5,1
+P0021,69,Female,27.3,145,86,6.09,5.33,2.26,Treatment B,Experimental,Jiangsu,Diabetes,Tertiary,Never,1,93.7,1
+P0022,62,Male,22.1,138,78,6.24,3.33,6.47,Control,Standard,Shanghai,CVD,Secondary,Current,0,29.3,1
+P0023,72,Female,21.1,133,74,5.57,4.61,4.74,Treatment A,Standard,Sichuan,Diabetes,Tertiary,Never,1,94.4,1
+P0024,79,Female,22.3,138,92,4.65,3.74,1.68,Treatment B,Experimental,Zhejiang,Hypertension,Secondary,Never,1,14.6,0
+P0025,52,Female,24.1,146,85,7.39,4.65,4.25,Treatment A,Standard,Guangdong,CVD,Tertiary,Never,1,8.6,0
+P0026,76,Female,24.1,151,70,4.76,,5.57,Control,Experimental,Hubei,Diabetes,Secondary,Former,1,15.8,1
+P0027,55,Female,23.7,135,83,6.1,6.21,1.55,Control,Standard,Shanghai,CVD,Secondary,Current,1,56.7,0
+P0028,70,Male,20.6,123,86,5.47,6.23,1.39,Treatment B,Standard,,CVD,Tertiary,Current,0,72.2,0
+P0029,67,Female,27.4,91,57,6.28,5.72,1.84,Treatment A,Experimental,Shanghai,COPD,Secondary,Never,0,48.6,1
+P0030,34,Female,29.5,144,69,4.87,3.71,0.24,Treatment A,Experimental,Shanghai,Hypertension,Tertiary,Never,0,39.4,0
+P0031,46,Female,17.2,136,82,6.86,4.99,2.06,Control,Standard,Shanghai,Diabetes,Primary,Never,1,153.5,0
+P0032,43,Male,18.6,130,59,7.25,3.62,2.93,Control,Experimental,Guangdong,Healthy,Secondary,Current,1,148.3,0
+P0033,37,Male,28.3,117,60,6.79,4.94,1.85,Treatment A,Standard,Zhejiang,Healthy,,Never,0,2.9,0
+P0034,69,Female,30.5,143,75,5.79,5.81,2.17,Treatment A,Experimental,Zhejiang,CVD,Tertiary,Current,1,30.8,0
+P0035,83,Female,16.4,124,83,5.08,6.19,,Treatment A,Standard,Shanghai,Diabetes,,Current,0,15.0,0
+P0036,55,Female,27.6,127,83,8.99,5.62,0.33,Treatment B,Standard,Beijing,CVD,Secondary,Former,1,66.4,0
+P0037,68,Female,30.7,127,94,4.41,6.48,6.23,Control,Experimental,Beijing,COPD,Tertiary,Current,0,115.1,0
+P0038,76,Female,21.2,135,79,6.66,,1.23,Treatment A,Experimental,Sichuan,Diabetes,Secondary,Never,0,63.6,0
+P0039,60,Female,30.5,110,74,6.0,4.84,1.01,Control,Standard,Shandong,Healthy,Tertiary,Never,1,52.0,0
+P0040,58,Female,23.8,137,65,5.52,6.06,4.89,Control,Standard,Beijing,Hypertension,Primary,Never,0,62.8,0
+P0041,55,Female,25.7,116,74,5.82,6.1,3.61,Treatment A,Experimental,Beijing,COPD,Primary,Never,1,0.5,0
+P0042,64,Male,21.8,117,85,4.99,4.52,,Control,Experimental,Hubei,CVD,Tertiary,Former,1,213.9,1
+P0043,68,Male,28.3,142,86,6.11,5.52,3.05,Treatment A,Experimental,Sichuan,CVD,Secondary,Never,0,34.1,0
+P0044,64,Female,,112,81,5.98,4.78,0.65,Treatment A,Standard,Sichuan,CVD,Secondary,Current,0,32.4,1
+P0045,63,Male,31.1,142,83,8.81,2.89,1.55,Treatment A,Experimental,Shanghai,Hypertension,Secondary,Current,0,17.9,1
+P0046,57,Female,30.0,130,91,6.88,5.58,,Treatment B,Experimental,Hubei,Diabetes,Tertiary,Never,0,50.8,0
+P0047,39,Male,24.5,102,79,,3.68,0.96,Control,Experimental,Jiangsu,Diabetes,,,1,32.2,0
+P0048,69,Female,36.3,150,92,,5.46,0.74,Treatment A,Standard,Shanghai,COPD,Tertiary,Never,0,33.1,0
+P0049,43,Male,29.6,133,71,7.81,3.41,1.76,Treatment B,Experimental,Beijing,CVD,Secondary,Never,0,9.0,0
+P0050,65,Female,26.6,134,77,,4.31,1.79,Control,Experimental,Jiangsu,CVD,Secondary,Former,0,26.8,1
+P0051,67,Female,20.7,144,73,5.38,4.62,,Treatment A,Standard,Hubei,CVD,Primary,Former,0,4.4,1
+P0052,44,Male,18.7,152,86,3.31,6.42,0.55,Treatment B,Standard,Hubei,CVD,Secondary,Former,0,24.5,1
+P0053,51,Female,19.0,131,68,6.27,4.51,0.21,Treatment A,Standard,Jiangsu,Hypertension,Primary,Never,0,11.1,1
+P0054,83,Female,21.0,138,75,6.62,3.92,,Control,Experimental,Jiangsu,Healthy,Primary,Current,0,96.4,1
+P0055,57,Female,29.7,134,59,4.41,5.5,0.69,Treatment B,Standard,Sichuan,Healthy,Secondary,Former,1,55.8,1
+P0056,43,Female,26.4,123,84,7.32,4.86,1.01,Control,Experimental,Shanghai,Diabetes,Secondary,Current,0,10.1,0
+P0057,68,Female,22.2,103,90,4.74,5.97,0.29,Control,Experimental,Guangdong,COPD,Secondary,Current,0,11.2,0
+P0058,49,Female,24.0,131,87,5.19,3.99,3.74,Treatment A,Standard,Beijing,Diabetes,Secondary,Former,0,5.9,0
+P0059,35,Female,23.5,150,86,5.74,5.33,,Control,Standard,Hubei,Hypertension,Secondary,Never,0,,0
+P0060,64,Female,27.5,137,86,7.51,7.82,2.11,Treatment A,Experimental,Jiangsu,Healthy,Secondary,Current,0,80.9,0
+P0061,47,Female,21.2,111,85,4.57,4.84,2.1,Treatment A,Standard,Hubei,Diabetes,Tertiary,Never,1,14.7,0
+P0062,62,Male,25.8,146,84,5.95,5.31,0.32,Treatment B,Experimental,Zhejiang,Diabetes,Tertiary,,1,47.4,1
+P0063,48,Female,25.6,123,85,6.53,3.27,0.75,Treatment A,Standard,Shandong,CVD,Tertiary,Never,0,5.6,0
+P0064,66,Female,21.3,95,71,6.28,4.16,1.15,Treatment A,Standard,Shandong,CVD,Primary,Never,0,6.3,1
+P0065,60,Male,30.5,144,76,,5.61,0.91,Treatment B,Experimental,Jiangsu,Diabetes,Secondary,Never,0,12.2,0
+P0066,27,Male,23.4,113,79,6.51,4.74,1.33,Control,Standard,Hubei,Healthy,Tertiary,Never,0,,0
+P0067,63,Female,20.7,156,75,4.93,5.78,2.01,Treatment A,Experimental,Sichuan,Diabetes,Tertiary,Current,1,68.5,1
+P0068,55,Female,27.7,146,62,7.63,5.57,3.69,Treatment B,Standard,Sichuan,CVD,Secondary,Former,0,2.2,0
+P0069,75,Male,24.7,124,66,5.47,3.65,0.5,Control,Experimental,Shanghai,COPD,Secondary,Current,1,78.6,1
+P0070,63,Female,26.1,135,80,5.31,,1.64,Control,Standard,Shandong,Healthy,Tertiary,Current,0,10.7,1
+P0071,67,Female,20.0,167,87,7.22,3.73,2.91,Control,Standard,Shanghai,CVD,Tertiary,,0,16.1,0
+P0072,49,Male,27.6,144,78,4.84,4.26,0.79,Treatment B,Experimental,Sichuan,CVD,Secondary,Current,1,7.3,0
+P0073,49,Female,32.8,132,106,5.98,5.35,1.41,Treatment A,Standard,Jiangsu,Healthy,Primary,Former,0,2.9,0
+P0074,58,Male,19.7,174,69,4.73,6.82,2.39,Control,Experimental,Beijing,CVD,Tertiary,Never,1,79.2,0
+P0075,54,Female,25.8,130,82,8.62,4.0,,Treatment B,Experimental,Hubei,Diabetes,Secondary,Current,1,17.5,1
+P0076,74,Male,21.5,137,91,8.37,5.26,2.83,Treatment B,Standard,Beijing,Hypertension,Primary,Current,0,24.6,1
+P0077,56,Female,34.7,113,89,5.47,5.27,1.78,Control,Experimental,Jiangsu,Diabetes,Secondary,Never,0,15.4,0
+P0078,43,Male,29.2,101,85,6.22,,1.28,Treatment B,Experimental,Hubei,Hypertension,Secondary,Current,0,16.5,1
+P0079,48,Female,25.6,123,89,5.61,6.4,,Treatment B,Experimental,Shanghai,Diabetes,Secondary,Never,0,14.3,1
+P0080,70,Female,19.8,129,79,5.18,4.66,2.01,Treatment B,Standard,Guangdong,CVD,Tertiary,Current,1,28.6,0
+P0081,56,Male,20.8,133,95,5.74,6.21,1.79,Control,Experimental,Jiangsu,CVD,Primary,Former,0,21.4,0
+P0082,55,Female,27.3,105,91,5.55,,,Control,Experimental,Shandong,Hypertension,Primary,Never,0,17.5,1
+P0083,71,Female,19.3,139,69,3.78,7.06,2.63,Treatment A,Experimental,Zhejiang,CVD,Secondary,Current,1,3.6,1
+P0084,47,Female,19.4,115,81,5.92,5.65,4.55,Treatment B,Experimental,Beijing,CVD,Primary,Former,1,11.6,0
+P0085,31,Female,24.5,138,63,5.55,5.27,0.97,Treatment A,Standard,Shanghai,Hypertension,Secondary,Never,1,83.8,0
+P0086,48,Female,25.0,143,93,5.97,4.58,0.92,Treatment B,Experimental,Shanghai,Diabetes,Secondary,Current,0,50.9,0
+P0087,61,Female,,122,80,5.51,3.5,,Control,Experimental,Hubei,COPD,Secondary,Current,0,6.5,1
+P0088,55,Female,22.8,113,91,5.17,4.79,0.43,Treatment A,Experimental,Hubei,Hypertension,Tertiary,Never,0,27.5,1
+P0089,39,Male,28.0,153,77,6.65,5.22,8.2,Treatment B,Standard,Zhejiang,Diabetes,Primary,,1,92.2,0
+P0090,70,Male,21.2,142,59,6.24,4.98,1.15,Treatment A,Standard,Hubei,CVD,,Never,1,36.1,1
+P0091,60,Male,26.9,130,104,7.28,5.76,,Treatment B,Standard,Shandong,Hypertension,Secondary,Never,1,81.0,0
+P0092,63,Male,25.3,151,79,6.19,3.5,0.67,Treatment A,Experimental,Hubei,COPD,Secondary,Former,0,,1
+P0093,63,Female,26.8,129,68,5.36,4.9,1.21,Control,Standard,Beijing,COPD,Tertiary,Never,1,5.0,1
+P0094,42,Male,,118,89,6.34,7.29,0.95,Treatment B,Experimental,Beijing,Diabetes,Primary,Never,1,47.3,0
+P0095,62,Female,22.8,112,98,,6.2,5.21,Treatment B,Standard,Sichuan,Diabetes,Tertiary,Current,0,23.3,0
+P0096,69,Male,22.0,126,76,8.12,5.78,,Treatment B,Experimental,Zhejiang,COPD,Primary,Current,0,11.4,0
+P0097,72,Male,18.1,140,77,5.93,5.53,0.48,Treatment A,Standard,Shanghai,Diabetes,Tertiary,Former,0,12.7,1
+P0098,67,Female,16.8,150,80,,,2.56,Treatment A,Standard,Sichuan,Hypertension,Primary,Former,0,45.4,1
+P0099,64,Male,23.8,128,67,4.56,3.17,1.51,Control,Standard,Guangdong,Hypertension,Secondary,Current,0,266.3,0
+P0100,37,Female,24.1,147,71,,5.6,1.38,Treatment A,Experimental,Shandong,Hypertension,Primary,Current,0,18.4,1
+P0101,58,Female,20.4,125,96,6.04,2.5,2.58,Control,Experimental,Jiangsu,Healthy,Secondary,Never,0,58.4,1
+P0102,47,Female,21.2,115,77,6.04,4.74,1.84,Control,Standard,Shanghai,Healthy,Primary,Never,1,33.1,0
+P0103,73,Female,30.3,107,70,6.01,,1.59,Control,Experimental,Shandong,CVD,Primary,Never,1,18.6,0
+P0104,72,Female,27.8,120,73,,4.61,0.54,Treatment A,Experimental,Jiangsu,Healthy,Primary,Never,1,7.0,0
+P0105,47,Male,19.7,108,89,4.85,7.49,0.43,Treatment B,Standard,Guangdong,COPD,Primary,Never,1,172.3,0
+P0106,57,Female,22.8,160,58,3.82,7.11,0.94,Treatment B,Experimental,Shanghai,CVD,Secondary,Former,0,22.9,1
+P0107,61,Male,26.0,135,81,5.94,6.24,0.69,Treatment B,Standard,Jiangsu,COPD,Secondary,Current,1,2.6,1
+P0108,69,Male,22.1,126,103,,4.08,2.04,Treatment A,Standard,Sichuan,CVD,Primary,Current,0,19.2,0
+P0109,38,Female,21.4,156,98,3.95,7.21,0.39,Treatment B,Standard,Hubei,Healthy,Tertiary,Never,1,117.1,0
+P0110,31,Female,23.2,107,84,5.14,5.78,,Treatment B,Standard,Shanghai,Healthy,Secondary,,1,30.1,0
+P0111,58,Female,28.6,126,91,6.12,4.06,1.44,Treatment B,Standard,Zhejiang,Healthy,Primary,Never,1,0.0,0
+P0112,28,Female,29.0,160,91,7.99,5.14,1.6,Treatment A,Standard,Shandong,CVD,Secondary,Never,0,1.8,0
+P0113,60,Female,21.7,126,77,6.78,6.15,2.27,Control,Standard,Sichuan,CVD,Secondary,Never,0,17.0,1
+P0114,65,Female,26.3,167,87,,4.44,1.27,Treatment A,Standard,Beijing,Hypertension,Secondary,Current,0,50.8,1
+P0115,73,Male,24.5,141,96,6.38,5.25,0.97,Treatment B,Experimental,Shandong,COPD,Tertiary,Never,0,,1
+P0116,51,Male,20.7,149,65,6.04,5.45,4.46,Treatment B,Standard,Sichuan,Hypertension,Secondary,Current,0,86.3,0
+P0117,60,Female,23.4,149,84,8.61,3.89,1.28,Control,Experimental,Zhejiang,CVD,Tertiary,Never,0,11.8,0
+P0118,66,Female,19.7,128,82,4.01,4.8,5.13,Control,Standard,Hubei,Hypertension,Secondary,Former,0,63.2,1
+P0119,44,Male,28.9,120,79,5.1,3.97,1.27,Treatment A,Experimental,Sichuan,CVD,Tertiary,Current,1,42.3,0
+P0120,69,Male,30.4,126,78,5.2,6.06,1.63,Treatment B,Standard,Guangdong,COPD,Secondary,Current,0,21.8,0
+P0121,61,Male,22.9,112,80,6.67,4.1,1.48,Treatment B,Standard,Hubei,Diabetes,Secondary,Never,1,36.1,1
+P0122,51,Female,22.0,127,81,4.43,5.42,1.98,Treatment B,Experimental,Guangdong,COPD,Secondary,Current,0,73.5,1
+P0123,60,Male,28.5,128,89,6.52,3.57,1.18,Control,Experimental,Shanghai,Diabetes,Tertiary,Never,0,15.7,1
+P0124,56,Male,,155,83,6.3,3.85,1.78,Treatment B,Experimental,Jiangsu,Diabetes,Primary,Current,0,47.9,0
+P0125,67,Male,,137,76,6.58,3.8,5.61,Control,Standard,Beijing,Hypertension,Primary,Never,1,17.5,0
+P0126,54,Male,23.9,166,70,6.55,4.78,,Treatment B,Standard,Sichuan,Hypertension,Primary,Former,0,50.5,0
+P0127,61,Female,24.3,93,73,7.45,5.3,3.84,Treatment B,Standard,Jiangsu,Diabetes,Primary,Former,1,12.3,0
+P0128,51,Female,21.6,109,81,5.54,5.5,0.56,Treatment A,Standard,Sichuan,Hypertension,Tertiary,Current,0,43.6,0
+P0129,47,Male,26.0,122,71,6.24,3.15,0.64,Treatment A,Standard,Shanghai,Healthy,Secondary,Current,0,31.2,1
+P0130,60,Female,21.8,152,87,4.72,4.91,1.96,Treatment A,Experimental,Jiangsu,COPD,Primary,Never,0,14.1,0
+P0131,47,Female,22.4,126,82,4.44,4.27,3.05,Treatment A,Standard,Zhejiang,Diabetes,Secondary,Current,0,132.4,0
+P0132,68,Female,24.1,105,89,7.72,5.69,1.09,Treatment B,Standard,Shanghai,Healthy,Primary,Never,0,,1
+P0133,65,Male,18.8,124,72,4.63,4.81,0.94,Control,Standard,Zhejiang,Diabetes,Tertiary,Never,1,76.5,1
+P0134,49,Male,16.7,109,70,6.37,5.01,5.03,Control,Standard,Shandong,CVD,Tertiary,Never,0,194.3,0
+P0135,61,Female,28.0,106,89,6.24,4.28,,Treatment B,Standard,Hubei,COPD,Primary,Never,0,92.1,1
+P0136,49,Female,21.7,160,79,7.01,7.0,3.84,Treatment B,Standard,Shanghai,COPD,Secondary,Never,0,102.5,0
+P0137,39,Male,32.6,122,76,3.61,3.69,,Treatment A,Standard,Hubei,Hypertension,Tertiary,Former,1,25.9,0
+P0138,51,Female,32.0,131,85,6.67,4.66,1.09,Control,Experimental,Jiangsu,Diabetes,Secondary,,0,12.9,0
+P0139,57,Male,,127,85,5.53,5.22,3.52,Treatment B,Experimental,Beijing,Diabetes,Tertiary,Former,0,27.1,1
+P0140,64,Male,33.4,124,65,4.88,4.82,1.34,Treatment B,Standard,Shandong,CVD,Secondary,Never,0,11.6,1
+P0141,60,Male,28.1,115,92,5.3,4.26,1.01,Control,Experimental,Jiangsu,Healthy,Primary,Former,1,51.6,1
+P0142,69,Female,22.0,123,74,6.84,3.11,0.79,Treatment A,Experimental,Shandong,CVD,Secondary,Never,0,,0
+P0143,46,Male,15.0,133,95,6.48,4.34,1.1,Treatment A,Standard,Beijing,CVD,,Never,1,24.2,0
+P0144,53,Male,27.1,151,65,5.45,4.04,3.32,Treatment B,Standard,Shanghai,Hypertension,Tertiary,,1,38.2,0
+P0145,78,Male,24.6,143,81,4.23,6.95,0.49,Treatment B,Experimental,Shandong,CVD,Tertiary,Current,0,7.2,1
+P0146,35,Male,26.1,108,76,4.32,7.59,2.73,Treatment A,Standard,Shanghai,CVD,Secondary,Current,0,30.9,1
+P0147,53,Male,23.6,144,58,,5.04,0.94,Treatment B,Experimental,Jiangsu,COPD,Secondary,Never,0,,1
+P0148,45,Female,20.2,136,85,4.07,3.55,1.39,Treatment A,Standard,Jiangsu,Healthy,Tertiary,Current,0,47.4,0
+P0149,56,Female,22.9,118,59,5.46,5.91,1.47,Treatment A,Experimental,Shandong,CVD,Tertiary,Former,0,6.2,0
+P0150,53,Male,27.2,131,75,8.82,4.02,1.38,Treatment B,Experimental,Guangdong,Hypertension,Secondary,Current,0,76.0,0
+P0151,65,Male,23.2,137,89,6.15,4.5,1.31,Treatment A,Standard,Hubei,Healthy,Tertiary,Never,0,50.1,0
+P0152,61,Female,23.1,129,73,6.49,,1.16,Treatment A,Experimental,Sichuan,CVD,Primary,Never,1,,0
+P0153,42,Male,,136,69,4.33,4.55,,Treatment A,Standard,Sichuan,CVD,Tertiary,Never,0,21.5,0
+P0154,51,Male,24.8,114,86,,4.71,4.74,Control,Experimental,Jiangsu,Healthy,Secondary,Current,0,10.5,0
+P0155,58,Female,20.3,160,76,6.55,3.66,1.68,Control,Experimental,Beijing,CVD,Primary,Never,0,0.1,0
+P0156,67,Female,28.0,97,74,5.26,4.33,1.49,Control,Experimental,Guangdong,COPD,Secondary,Never,0,101.9,1
+P0157,87,Male,21.7,137,91,7.01,6.22,0.98,Treatment B,Standard,Jiangsu,Healthy,Secondary,,0,,1
+P0158,66,Male,23.4,134,66,5.77,5.06,1.19,Treatment A,Experimental,Zhejiang,CVD,Secondary,Current,1,17.9,1
+P0159,46,Male,32.7,138,73,9.87,5.24,0.99,Treatment B,Experimental,Shanghai,Healthy,Secondary,Former,0,31.9,0
+P0160,57,Male,23.3,117,87,5.03,,3.04,Treatment A,Standard,Sichuan,Hypertension,,Former,0,29.3,1
+P0161,60,Female,22.8,147,66,,6.14,0.9,Control,Standard,Zhejiang,Healthy,Tertiary,Never,1,15.8,0
+P0162,52,Female,26.7,126,96,4.65,4.35,0.27,Treatment A,Experimental,Hubei,Healthy,Secondary,Current,0,46.9,0
+P0163,64,Male,17.7,109,76,6.96,6.34,1.73,Control,Standard,Jiangsu,Hypertension,Primary,Never,0,95.7,0
+P0164,31,Male,29.3,110,87,6.25,5.27,1.32,Control,Standard,Guangdong,Hypertension,Tertiary,Never,0,9.2,0
+P0165,65,Male,28.3,130,87,4.57,4.48,1.03,Treatment A,Experimental,Beijing,Hypertension,Secondary,Never,0,7.5,1
+P0166,52,Male,26.5,102,76,5.34,3.25,3.42,Control,Experimental,Beijing,Diabetes,Secondary,Never,1,2.0,1
+P0167,57,Female,,157,73,7.37,7.49,0.19,Treatment A,Standard,Jiangsu,Healthy,Tertiary,Former,1,5.8,0
+P0168,76,Male,23.5,145,78,7.22,5.98,5.82,Treatment B,Experimental,Guangdong,Hypertension,,Former,1,9.7,1
+P0169,43,Female,19.7,157,85,4.02,6.05,3.83,Control,Experimental,Sichuan,Hypertension,Tertiary,Never,0,2.0,0
+P0170,61,Female,,156,68,5.16,,1.0,Treatment B,Standard,Sichuan,CVD,Secondary,Never,1,42.2,0
+P0171,68,Female,28.5,122,66,7.91,5.35,1.15,Treatment A,Experimental,Guangdong,Diabetes,Primary,Never,0,40.0,1
+P0172,60,Female,26.0,114,93,5.52,6.59,2.47,Control,Standard,Hubei,COPD,Tertiary,Never,1,,1
+P0173,39,Female,19.9,85,71,,4.57,2.52,Control,Standard,Jiangsu,COPD,Tertiary,Current,1,36.9,1
+P0174,74,Female,30.2,122,82,6.95,5.91,0.99,Control,Experimental,Shandong,Healthy,Primary,Former,0,22.1,0
+P0175,55,Male,23.5,156,76,4.12,4.41,0.45,Control,Standard,Shandong,CVD,Tertiary,Never,1,49.3,0
+P0176,52,Male,31.4,115,76,4.59,4.55,8.94,Control,Standard,Shandong,CVD,Tertiary,Never,0,6.0,0
+P0177,54,Male,25.5,125,92,5.33,5.21,3.54,Treatment B,Standard,Shanghai,Hypertension,Tertiary,Current,0,82.4,0
+P0178,53,Female,26.4,119,77,7.17,3.71,1.87,Treatment B,Standard,Jiangsu,Healthy,Primary,Current,0,28.4,0
+P0179,44,Female,22.8,134,74,6.94,5.46,1.9,Treatment A,Standard,,Diabetes,Primary,Current,0,22.0,0
+P0180,60,Male,29.8,149,75,6.58,4.76,2.71,Treatment B,Experimental,Shandong,CVD,Tertiary,Never,0,34.2,0
+P0181,51,Female,26.8,103,73,5.55,2.91,2.98,Control,Experimental,Sichuan,Healthy,,Former,1,88.0,0
+P0182,66,Female,30.0,106,71,7.08,4.6,0.31,Treatment A,Standard,Guangdong,COPD,Primary,Never,0,26.1,1
+P0183,64,Female,25.2,152,73,5.54,4.72,1.25,Control,Standard,Jiangsu,COPD,Secondary,Current,1,12.2,0
+P0184,78,Male,24.3,140,95,6.41,6.04,1.15,Treatment A,Standard,Jiangsu,Hypertension,,Never,0,69.4,0
+P0185,55,Male,26.8,124,85,6.81,5.41,1.45,Treatment A,Standard,Jiangsu,COPD,Secondary,Former,1,20.3,1
+P0186,48,Female,30.0,155,75,7.76,6.69,3.05,Treatment B,Experimental,Jiangsu,Hypertension,Secondary,Never,1,23.9,1
+P0187,40,Male,28.4,106,88,5.65,5.67,0.39,Treatment B,Standard,Shandong,COPD,Primary,Current,1,74.6,0
+P0188,84,Female,25.0,143,62,5.28,4.49,0.56,Treatment A,Standard,Hubei,CVD,Secondary,Never,0,56.2,0
+P0189,66,Male,17.4,127,92,7.27,5.04,0.96,Control,Experimental,Zhejiang,CVD,,Current,1,13.0,0
+P0190,50,Male,27.6,138,91,7.37,4.72,1.87,Control,Standard,Hubei,COPD,Secondary,Never,0,16.9,1
+P0191,78,Male,19.0,90,100,5.07,5.64,3.21,Control,Experimental,Shanghai,COPD,Tertiary,Current,1,84.7,0
+P0192,74,Female,24.6,124,88,4.39,5.17,6.08,Treatment A,Experimental,Guangdong,Diabetes,Primary,Never,0,5.5,0
+P0193,42,Male,24.1,140,82,7.18,4.41,1.31,Treatment A,Standard,Beijing,Diabetes,Primary,Former,0,23.1,1
+P0194,49,Female,19.1,127,91,3.75,5.11,3.2,Treatment B,Standard,Shandong,CVD,Secondary,Current,0,42.0,1
+P0195,56,Male,,148,72,3.69,5.61,2.91,Control,Standard,Beijing,Hypertension,Secondary,Never,0,27.0,0
+P0196,45,Female,,148,74,5.4,3.99,2.54,Treatment A,Standard,Shandong,Diabetes,Primary,Never,0,24.7,0
+P0197,57,Male,23.3,113,77,5.72,5.45,1.62,Control,Experimental,,Hypertension,Tertiary,,0,81.3,0
+P0198,67,Male,,141,92,4.33,,1.2,Treatment A,Experimental,Shandong,CVD,Primary,Never,0,25.5,0
+P0199,42,Female,33.5,112,69,5.87,,,Treatment A,Experimental,Hubei,Diabetes,Primary,Former,1,47.6,0
+P0200,62,Female,27.8,129,68,,5.68,0.67,Treatment B,Standard,Zhejiang,Diabetes,Tertiary,Never,0,83.9,1
+P0201,72,Female,22.0,138,80,5.02,6.89,2.18,Treatment A,Experimental,Hubei,Healthy,Tertiary,Never,0,3.2,1
+P0202,63,Female,,115,85,8.04,3.87,1.58,Control,Experimental,Shandong,Hypertension,Secondary,Never,1,82.8,1
+P0203,57,Male,26.3,141,71,6.12,6.35,1.18,Treatment B,Standard,Shandong,Hypertension,Primary,Never,0,0.5,1
+P0204,50,Female,29.9,120,85,6.95,6.13,2.81,Treatment A,Experimental,Hubei,Diabetes,Secondary,Never,1,56.4,0
+P0205,68,Male,29.1,119,92,3.85,4.9,1.4,Treatment A,Experimental,Hubei,Hypertension,Primary,Former,0,44.1,0
+P0206,44,Female,15.0,139,90,,4.69,0.79,Treatment A,Experimental,Sichuan,Healthy,Secondary,Never,0,5.4,1
+P0207,61,Female,21.2,115,82,6.15,3.91,1.33,Control,Standard,Shandong,Healthy,Secondary,Current,0,46.4,0
+P0208,58,Female,24.2,114,77,7.83,3.62,3.18,Treatment B,Standard,Zhejiang,Healthy,Secondary,Current,1,51.5,0
+P0209,72,Female,20.6,145,95,4.39,4.27,0.73,Control,Standard,,COPD,Secondary,Never,1,34.7,0
+P0210,51,Female,15.0,130,78,5.77,3.72,,Control,Standard,Hubei,Hypertension,,Current,1,75.3,1
+P0211,52,Female,21.7,105,87,4.12,6.86,,Treatment B,Experimental,Guangdong,CVD,Primary,Former,0,19.7,0
+P0212,43,Male,24.5,142,98,4.74,3.45,,Treatment A,Experimental,Hubei,Hypertension,Primary,Former,1,0.1,0
+P0213,63,Female,22.5,121,86,,5.26,,Treatment B,Standard,Beijing,Diabetes,Tertiary,Never,0,5.8,0
+P0214,53,Female,20.7,106,68,5.01,5.58,0.47,Treatment B,Standard,Jiangsu,CVD,Primary,,1,39.6,1
+P0215,48,Male,24.7,88,66,4.03,5.49,1.8,Treatment B,Standard,Beijing,COPD,Primary,,0,134.5,0
+P0216,49,Female,25.8,142,75,4.01,5.59,0.55,Treatment B,Experimental,Shandong,Diabetes,Primary,Former,1,143.5,0
+P0217,64,Male,,114,85,3.34,6.14,3.89,Treatment B,Experimental,Hubei,Diabetes,Secondary,Never,1,91.2,1
+P0218,45,Female,29.7,108,82,6.17,4.61,1.53,Treatment A,Experimental,Shanghai,Healthy,Secondary,Never,0,11.9,1
+P0219,46,Female,24.7,138,100,6.32,,1.04,Treatment B,Experimental,Shanghai,Diabetes,Secondary,Former,1,30.4,0
+P0220,69,Male,21.2,141,82,6.31,4.78,4.17,Control,Experimental,Sichuan,CVD,Secondary,Never,0,12.8,0
+P0221,56,Male,20.2,115,75,4.51,6.53,0.72,Treatment B,Experimental,Shandong,Diabetes,Secondary,Never,0,17.5,1
+P0222,69,Female,23.7,143,67,,7.41,0.91,Control,Standard,,Healthy,Primary,Current,0,21.0,0
+P0223,54,Male,28.7,161,90,6.45,3.79,0.38,Treatment A,Standard,Shandong,CVD,Tertiary,Never,1,83.4,1
+P0224,58,Female,21.4,150,78,5.61,2.87,4.7,Treatment A,Experimental,Zhejiang,Hypertension,Tertiary,,0,72.7,1
+P0225,60,Male,,147,63,5.41,5.73,7.38,Treatment B,Standard,Zhejiang,Hypertension,Secondary,Never,0,99.4,1
+P0226,75,Male,24.9,133,78,,6.28,,Control,Experimental,Guangdong,Healthy,Secondary,,1,4.8,0
+P0227,74,Male,,121,68,5.83,7.25,0.86,Control,Standard,Guangdong,Healthy,Tertiary,Former,0,21.1,0
+P0228,72,Female,26.0,127,74,7.54,5.91,1.74,Treatment B,Standard,Guangdong,COPD,Primary,Former,1,15.6,0
+P0229,50,Female,21.8,135,78,6.97,6.64,1.09,Treatment A,Experimental,Shanghai,Hypertension,Secondary,Current,0,11.1,0
+P0230,46,Female,27.3,108,69,5.29,6.93,,Treatment B,Experimental,Zhejiang,COPD,Tertiary,Former,0,5.8,0
+P0231,67,Female,,116,73,6.25,6.71,1.5,Treatment B,Standard,Guangdong,COPD,Primary,Current,1,36.2,0
+P0232,75,Female,23.0,105,71,4.28,6.07,2.28,Treatment B,Standard,Beijing,Healthy,Primary,Former,0,8.2,0
+P0233,72,Male,20.1,132,71,6.48,3.69,0.76,Treatment A,Standard,Guangdong,CVD,Secondary,Current,0,30.2,1
+P0234,58,Male,26.5,129,68,4.6,5.09,1.92,Control,Experimental,,CVD,Secondary,Former,0,16.2,0
+P0235,67,Female,24.7,118,73,6.43,5.43,0.68,Treatment B,Standard,Shanghai,COPD,Secondary,Never,1,3.3,0
+P0236,67,Male,18.7,141,69,9.16,4.99,1.19,Control,Standard,Sichuan,Hypertension,Primary,Never,0,19.7,0
+P0237,60,Female,25.5,111,84,4.92,5.06,0.41,Treatment B,Experimental,Beijing,COPD,Secondary,Never,1,12.6,1
+P0238,60,Female,22.1,117,80,9.11,6.82,,Treatment B,Standard,Guangdong,CVD,Primary,Former,1,99.4,0
+P0239,59,Female,18.7,140,90,6.19,4.27,1.04,Treatment A,Standard,Sichuan,Hypertension,Tertiary,Current,0,47.7,1
+P0240,49,Female,23.2,143,97,,5.98,3.51,Control,Experimental,Beijing,Healthy,Primary,Current,0,16.5,0
+P0241,50,Female,29.4,115,85,,5.45,1.57,Treatment A,Standard,Sichuan,Diabetes,Primary,Current,0,29.5,0
+P0242,50,Female,29.1,132,82,8.44,4.16,1.82,Control,Standard,Beijing,Healthy,Secondary,Former,0,115.7,1
+P0243,39,Female,28.1,116,85,6.19,3.92,1.62,Treatment A,Standard,Beijing,Diabetes,Primary,Current,0,33.4,0
+P0244,60,Male,25.5,125,83,,3.23,0.3,Treatment A,Standard,Shanghai,CVD,Secondary,Former,0,93.5,1
+P0245,58,Female,26.8,130,79,5.36,5.63,0.33,Treatment A,Standard,Hubei,CVD,Primary,Never,0,10.0,1
+P0246,67,Male,24.9,137,78,6.12,5.03,,Control,Standard,Beijing,COPD,Secondary,Never,1,74.1,0
+P0247,73,Female,,133,68,5.59,4.19,2.06,Treatment B,Standard,Beijing,Hypertension,Primary,Never,0,105.9,0
+P0248,74,Female,21.1,132,86,6.02,3.04,1.37,Control,Experimental,Shandong,Diabetes,Secondary,Never,0,22.2,1
+P0249,75,Female,22.2,111,78,7.73,5.58,0.83,Treatment B,Standard,Jiangsu,Hypertension,Primary,Never,0,24.3,1
+P0250,49,Male,29.8,134,92,4.25,4.91,1.36,Control,Standard,Jiangsu,Diabetes,Secondary,,0,36.2,1
+P0251,41,Female,28.6,137,87,6.37,4.31,1.27,Treatment A,Experimental,Beijing,CVD,Primary,Never,0,43.9,0
+P0252,69,Male,20.4,139,72,5.51,4.04,3.07,Treatment B,Experimental,Zhejiang,CVD,Tertiary,Never,1,26.2,0
+P0253,75,Female,24.7,116,90,5.0,4.84,2.94,Treatment A,Experimental,Jiangsu,Healthy,Secondary,Current,0,7.5,1
+P0254,77,Male,23.0,143,52,,5.62,,Control,Experimental,Jiangsu,CVD,Primary,Never,0,4.7,1
+P0255,64,Female,23.9,107,97,3.85,4.74,1.58,Treatment A,Standard,Jiangsu,CVD,Primary,Current,1,67.4,0
+P0256,34,Female,22.5,121,65,3.0,,2.06,Treatment A,Experimental,Beijing,Hypertension,Primary,Never,0,8.4,0
+P0257,62,Male,29.8,124,83,5.87,5.04,2.32,Treatment B,Standard,Shandong,Hypertension,Primary,Current,1,2.0,1
+P0258,65,Male,24.4,108,82,5.43,6.25,6.18,Treatment A,Standard,Sichuan,COPD,Secondary,Current,0,22.4,0
+P0259,73,Male,25.3,123,89,3.98,5.14,,Treatment B,Standard,Shanghai,COPD,Secondary,Current,1,20.0,1
+P0260,75,Male,25.4,132,75,3.55,5.18,4.2,Treatment A,Standard,,CVD,Tertiary,Former,1,80.9,0
+P0261,69,Male,20.6,99,57,7.92,4.74,0.65,Control,Experimental,Guangdong,CVD,Tertiary,Former,1,,0
+P0262,51,Male,24.9,122,75,6.16,,0.99,Treatment A,Experimental,Shanghai,CVD,Primary,Never,0,55.3,0
+P0263,46,Male,28.5,100,76,5.62,4.08,0.3,Treatment B,Standard,Shandong,Healthy,,,0,28.1,0
+P0264,64,Male,30.1,161,58,8.23,3.27,,Control,Experimental,Shanghai,Hypertension,Primary,Current,1,21.1,0
+P0265,48,Female,20.1,131,78,6.83,6.4,,Treatment A,Standard,Beijing,CVD,Primary,Never,0,31.1,0
+P0266,76,Male,18.7,130,67,7.72,5.61,0.21,Control,Experimental,Sichuan,Diabetes,Secondary,Never,0,25.5,0
+P0267,38,Male,24.7,132,84,4.18,5.19,1.92,Treatment B,Experimental,Guangdong,Hypertension,Primary,Current,0,6.4,0
+P0268,65,Female,28.7,138,76,4.14,5.43,2.67,Treatment A,Experimental,Shanghai,COPD,Primary,Never,0,8.3,1
+P0269,62,Male,,144,98,6.34,5.47,,Treatment B,Experimental,Beijing,COPD,Primary,Former,0,48.6,0
+P0270,56,Female,27.1,103,75,6.1,4.29,0.63,Treatment B,Experimental,Shanghai,Healthy,Secondary,Never,0,3.6,0
+P0271,47,Female,19.3,149,82,7.1,4.74,3.06,Treatment B,Experimental,Shandong,Hypertension,Primary,,0,17.8,1
+P0272,33,Female,22.3,148,76,,4.58,1.66,Treatment A,Experimental,Sichuan,Hypertension,Tertiary,Never,0,13.3,0
+P0273,52,Female,16.2,127,62,6.44,7.86,2.65,Treatment B,Experimental,Hubei,CVD,Secondary,Never,0,6.8,0
+P0274,52,Female,24.0,126,76,6.79,6.22,1.49,Treatment A,Standard,Jiangsu,Healthy,Secondary,Current,0,43.7,1
+P0275,71,Female,16.3,85,86,6.72,5.28,2.24,Treatment B,Standard,Jiangsu,Healthy,,Current,1,33.4,0
+P0276,49,Female,29.6,108,84,5.11,6.6,4.0,Treatment B,Experimental,Shanghai,COPD,Secondary,Never,0,77.4,0
+P0277,63,Male,30.4,136,75,6.22,6.46,1.4,Control,Standard,Shandong,Healthy,Secondary,Never,0,56.0,1
+P0278,42,Female,25.0,147,63,4.67,3.58,2.07,Treatment B,Standard,Hubei,Healthy,Secondary,Current,1,14.8,1
+P0279,64,Female,,140,84,,4.85,4.48,Treatment B,Standard,Jiangsu,Diabetes,Secondary,Never,0,27.5,1
+P0280,31,Female,25.9,127,82,4.35,5.08,1.48,Treatment B,Standard,Beijing,CVD,Secondary,Never,0,14.2,0
+P0281,83,Male,31.6,159,86,4.69,,,Control,Standard,Hubei,COPD,Primary,Never,0,24.7,1
+P0282,56,Male,26.3,144,75,,4.85,2.83,Treatment A,Standard,Guangdong,Diabetes,Secondary,Current,0,3.1,0
+P0283,24,Female,29.0,122,61,5.01,4.99,5.2,Control,Standard,Shanghai,Healthy,Secondary,Never,0,77.7,0
+P0284,49,Male,22.7,163,83,4.69,4.59,4.62,Treatment B,Standard,Sichuan,COPD,Secondary,Never,0,70.7,0
+P0285,47,Female,21.2,110,78,,6.25,2.92,Treatment B,Standard,Hubei,CVD,Tertiary,Current,1,8.5,1
+P0286,50,Male,24.2,104,92,7.95,3.51,0.25,Treatment A,Standard,Jiangsu,CVD,Secondary,Current,0,16.1,0
+P0287,54,Male,17.2,121,78,5.0,4.63,0.99,Control,Standard,Beijing,COPD,Tertiary,Former,0,16.4,1
+P0288,50,Male,33.1,116,78,6.0,3.07,,Treatment A,Experimental,Jiangsu,Diabetes,Secondary,Former,0,4.3,1
+P0289,48,Female,25.0,122,82,3.49,3.97,1.71,Treatment A,Standard,Shandong,Diabetes,Secondary,Current,0,,0
+P0290,44,Female,27.8,141,72,7.23,5.45,6.36,Treatment B,Experimental,Sichuan,CVD,Secondary,Former,0,35.9,0
+P0291,68,Female,22.7,127,72,5.8,5.47,0.69,Control,Standard,Guangdong,Hypertension,Primary,Current,1,2.2,1
+P0292,72,Female,18.6,128,77,5.07,4.76,9.91,Treatment A,Experimental,Sichuan,CVD,Primary,Never,1,63.6,0
+P0293,55,Female,29.9,129,69,5.08,6.34,1.21,Treatment A,Experimental,Shanghai,CVD,Secondary,Never,1,85.4,1
+P0294,58,Female,20.2,91,76,6.64,6.59,0.89,Treatment B,Standard,Hubei,CVD,,Current,0,85.9,0
+P0295,44,Male,,104,97,3.0,,3.24,Control,Standard,Hubei,CVD,Primary,Former,0,49.0,0
+P0296,59,Female,26.2,122,88,4.61,5.38,3.45,Treatment B,Standard,Jiangsu,Healthy,Tertiary,Never,0,14.4,0
+P0297,61,Female,24.8,115,81,5.46,4.6,,Treatment B,Experimental,Shanghai,Diabetes,Secondary,,0,6.6,0
+P0298,55,Male,21.5,124,94,5.44,5.79,,Treatment A,Experimental,Zhejiang,CVD,Primary,Current,0,20.6,1
+P0299,63,Female,23.9,150,70,8.61,3.79,2.46,Control,Standard,Beijing,COPD,Primary,,0,40.5,0
+P0300,62,Male,20.9,127,103,5.19,7.08,0.72,Control,Experimental,Hubei,Diabetes,Tertiary,Current,0,1.2,0

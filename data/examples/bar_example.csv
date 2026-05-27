@@ -1,0 +1,151 @@
+﻿patient_id,treatment,response,value,sex,group
+P0001,Drug A,None,10.3,Male,Treatment A
+P0002,Drug B,None,21.5,Female,Control
+P0003,Drug A,None,29.7,Male,Control
+P0004,Placebo,Complete,25.9,Female,Control
+P0005,Drug B,None,28.1,Male,Treatment B
+P0006,Placebo,Partial,62.5,Male,Control
+P0007,Drug C,None,36.2,Male,Treatment B
+P0008,Drug C,Complete,59.2,Female,Treatment B
+P0009,Drug C,Complete,81.2,Male,Treatment A
+P0010,Drug A,None,58.2,Male,Control
+P0011,Drug C,None,65.6,Female,Treatment B
+P0012,Drug C,Partial,39.2,Female,Treatment B
+P0013,Placebo,Partial,22.8,Male,Control
+P0014,Drug C,Partial,35.6,Female,Treatment B
+P0015,Placebo,None,87.1,Male,Treatment B
+P0016,Placebo,Partial,59.7,Male,Control
+P0017,Drug C,Partial,32.2,Female,Control
+P0018,Drug B,Partial,46.1,Male,Treatment B
+P0019,Drug A,Partial,76.8,Male,Control
+P0020,Drug B,Partial,63.5,Female,Treatment A
+P0021,Placebo,Partial,54.9,Male,Control
+P0022,Drug A,None,80.8,Female,Treatment B
+P0023,Drug B,None,63.8,Female,Control
+P0024,Drug C,None,61.4,Female,Control
+P0025,Drug A,Partial,25.2,Female,Control
+P0026,Placebo,Partial,18.5,Female,Control
+P0027,Drug C,Partial,87.2,Female,Treatment A
+P0028,Drug A,None,57.9,Male,Control
+P0029,Drug A,Partial,43.3,Male,Treatment B
+P0030,Drug C,Partial,57.1,Female,Treatment A
+P0031,Placebo,Partial,14.9,Female,Control
+P0032,Placebo,Partial,75.8,Male,Treatment B
+P0033,Placebo,Partial,27.3,Female,Treatment A
+P0034,Drug A,Complete,74.4,Male,Treatment B
+P0035,Drug C,Partial,52.8,Female,Control
+P0036,Drug A,Partial,32.1,Male,Treatment B
+P0037,Drug A,Complete,12.4,Male,Treatment A
+P0038,Drug C,None,75.3,Male,Treatment B
+P0039,Drug B,Partial,24.1,Male,Treatment A
+P0040,Drug C,Complete,14.1,Male,Treatment B
+P0041,Placebo,None,70.5,Male,Treatment A
+P0042,Drug A,Partial,38.0,Male,Control
+P0043,Drug C,None,41.1,Male,Control
+P0044,Placebo,Partial,29.8,Male,Treatment B
+P0045,Drug B,None,78.7,Male,Treatment B
+P0046,Drug C,Partial,33.8,Male,Treatment A
+P0047,Drug B,Partial,26.8,Male,Treatment B
+P0048,Placebo,Complete,34.7,Male,Control
+P0049,Drug A,Partial,26.3,Male,Control
+P0050,Placebo,Partial,35.4,Male,Treatment A
+P0051,Placebo,Partial,16.6,Female,Treatment A
+P0052,Placebo,Partial,22.7,Female,Treatment B
+P0053,Drug B,None,43.4,Female,Treatment B
+P0054,Drug C,Partial,80.4,Female,Control
+P0055,Drug B,Complete,14.6,Female,Treatment B
+P0056,Drug B,None,27.0,Male,Treatment A
+P0057,Placebo,Partial,82.7,Female,Treatment B
+P0058,Drug C,None,81.2,Female,Control
+P0059,Drug C,None,64.4,Female,Control
+P0060,Drug A,None,29.2,Female,Control
+P0061,Placebo,None,43.6,Male,Treatment B
+P0062,Drug C,Partial,26.9,Female,Control
+P0063,Placebo,Complete,20.3,Female,Treatment B
+P0064,Drug A,Partial,40.4,Male,Treatment B
+P0065,Drug C,None,56.1,Female,Control
+P0066,Drug C,Partial,38.8,Male,Treatment B
+P0067,Drug C,None,58.9,Female,Control
+P0068,Drug A,Complete,33.7,Female,Control
+P0069,Drug B,Partial,37.7,Male,Treatment A
+P0070,Drug B,Partial,73.3,Female,Control
+P0071,Drug C,Partial,80.3,Male,Control
+P0072,Drug A,Complete,35.8,Female,Control
+P0073,Drug B,Complete,55.7,Female,Treatment A
+P0074,Drug C,None,32.3,Female,Control
+P0075,Drug A,Partial,14.3,Female,Control
+P0076,Placebo,Complete,69.0,Male,Treatment A
+P0077,Drug C,Complete,23.7,Male,Treatment A
+P0078,Drug A,Partial,44.1,Male,Treatment B
+P0079,Drug A,Complete,49.0,Male,Control
+P0080,Placebo,Partial,24.8,Male,Treatment A
+P0081,Drug B,None,17.6,Male,Treatment B
+P0082,Placebo,Complete,37.8,Male,Treatment A
+P0083,Drug B,Partial,86.2,Male,Control
+P0084,Drug B,Complete,59.2,Female,Treatment A
+P0085,Drug B,Partial,40.5,Male,Treatment A
+P0086,Drug C,None,13.1,Female,Control
+P0087,Drug A,Partial,58.0,Male,Treatment A
+P0088,Drug B,None,17.4,Male,Control
+P0089,Drug B,Complete,53.4,Female,Treatment A
+P0090,Drug A,Partial,70.2,Male,Treatment B
+P0091,Drug B,Partial,43.9,Male,Treatment A
+P0092,Drug C,Partial,34.0,Female,Treatment B
+P0093,Drug C,None,13.8,Male,Control
+P0094,Drug A,Complete,12.0,Male,Treatment B
+P0095,Placebo,None,44.4,Female,Treatment B
+P0096,Placebo,None,80.7,Male,Treatment B
+P0097,Drug C,Partial,29.5,Female,Treatment B
+P0098,Placebo,Partial,55.9,Male,Treatment A
+P0099,Drug B,Partial,64.7,Female,Treatment A
+P0100,Placebo,Complete,14.9,Female,Treatment B
+P0101,Drug C,None,22.2,Female,Treatment B
+P0102,Drug C,Partial,36.5,Female,Treatment A
+P0103,Drug A,None,63.6,Male,Control
+P0104,Drug C,Partial,45.1,Female,Control
+P0105,Placebo,Partial,68.7,Male,Control
+P0106,Placebo,Partial,79.4,Female,Control
+P0107,Drug B,Partial,70.7,Female,Control
+P0108,Drug A,None,89.4,Male,Control
+P0109,Drug C,Complete,70.3,Female,Treatment B
+P0110,Drug A,None,78.2,Male,Control
+P0111,Drug A,None,76.6,Female,Treatment A
+P0112,Drug C,None,68.4,Female,Treatment A
+P0113,Placebo,Partial,74.1,Male,Control
+P0114,Drug B,None,84.8,Female,Treatment B
+P0115,Drug B,Partial,48.0,Female,Treatment B
+P0116,Drug B,None,61.1,Male,Treatment B
+P0117,Drug B,Complete,51.2,Female,Treatment B
+P0118,Drug A,Partial,78.1,Male,Treatment A
+P0119,Drug C,Partial,44.5,Female,Treatment B
+P0120,Drug C,Partial,75.6,Male,Control
+P0121,Drug B,Partial,73.9,Female,Treatment B
+P0122,Drug B,None,87.0,Female,Treatment B
+P0123,Placebo,Complete,29.9,Male,Control
+P0124,Drug A,Partial,66.8,Male,Treatment A
+P0125,Drug A,Complete,70.6,Female,Treatment A
+P0126,Drug A,None,84.9,Female,Control
+P0127,Placebo,None,82.6,Male,Treatment B
+P0128,Drug B,Partial,55.9,Male,Control
+P0129,Drug A,Partial,56.3,Male,Control
+P0130,Placebo,None,23.4,Female,Control
+P0131,Drug A,None,88.0,Male,Treatment B
+P0132,Drug B,Partial,30.4,Female,Control
+P0133,Drug A,Partial,68.0,Female,Treatment A
+P0134,Drug C,None,73.7,Female,Treatment B
+P0135,Drug C,Complete,45.3,Male,Control
+P0136,Placebo,None,26.9,Male,Treatment B
+P0137,Drug B,Partial,25.1,Female,Control
+P0138,Drug B,None,78.5,Female,Treatment B
+P0139,Placebo,Complete,50.9,Male,Control
+P0140,Placebo,Complete,17.2,Male,Control
+P0141,Drug A,None,67.4,Male,Treatment B
+P0142,Drug C,None,30.0,Male,Treatment B
+P0143,Placebo,None,80.1,Male,Treatment B
+P0144,Drug C,None,34.8,Female,Treatment B
+P0145,Drug C,Partial,26.0,Male,Treatment A
+P0146,Drug A,Complete,16.8,Female,Control
+P0147,Drug A,Complete,50.9,Male,Control
+P0148,Drug A,Partial,46.1,Male,Treatment A
+P0149,Drug A,Complete,70.1,Female,Treatment A
+P0150,Placebo,None,47.2,Male,Treatment A
