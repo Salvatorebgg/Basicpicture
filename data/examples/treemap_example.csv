@@ -1,0 +1,27 @@
+category,parent,value
+Cardiovascular,,647
+Metabolic,,613
+Oncology,,575
+Respiratory,,398
+Infectious,,326
+Hypertension,Cardiovascular,238
+Coronary heart disease,Cardiovascular,176
+Heart failure,Cardiovascular,126
+Arrhythmia,Cardiovascular,107
+Diabetes,Metabolic,224
+Obesity,Metabolic,158
+Dyslipidemia,Metabolic,132
+Fatty liver,Metabolic,99
+Lung cancer,Oncology,146
+Breast cancer,Oncology,132
+Colorectal cancer,Oncology,118
+Gastric cancer,Oncology,96
+Liver cancer,Oncology,83
+COPD,Respiratory,156
+Asthma,Respiratory,104
+Interstitial lung disease,Respiratory,72
+Sleep apnea,Respiratory,66
+Pneumonia,Infectious,118
+Influenza,Infectious,84
+Tuberculosis,Infectious,69
+Sepsis,Infectious,55

@@ -1,0 +1,38 @@
+source,target,value
+Screening clinic,Eligible cohort,360
+Screening clinic,Screen failure,140
+Hospital registry,Eligible cohort,126
+Hospital registry,Observation only,94
+Community cohort,Eligible cohort,88
+Community cohort,Observation only,72
+Eligible cohort,Surgery,148
+Eligible cohort,Drug A,136
+Eligible cohort,Drug B,124
+Eligible cohort,Combination therapy,118
+Screen failure,Palliative care,78
+Screen failure,Observation only,62
+Observation only,Stable disease,72
+Observation only,Lost to follow-up,58
+Surgery,Complete response,94
+Surgery,Partial response,38
+Surgery,Progression,16
+Drug A,Complete response,55
+Drug A,Partial response,52
+Drug A,Progression,29
+Drug B,Complete response,44
+Drug B,Partial response,54
+Drug B,Progression,26
+Combination therapy,Complete response,78
+Combination therapy,Partial response,29
+Combination therapy,Progression,11
+Palliative care,Progression,52
+Palliative care,Stable disease,26
+Complete response,12-month follow-up,252
+Partial response,12-month follow-up,133
+Partial response,Salvage therapy,40
+Stable disease,12-month follow-up,78
+Stable disease,Salvage therapy,20
+Progression,Salvage therapy,88
+Progression,Lost to follow-up,46
+Salvage therapy,12-month follow-up,94
+Salvage therapy,Lost to follow-up,54

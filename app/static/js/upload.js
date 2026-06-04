@@ -56,6 +56,7 @@ async function handleFile(file, options = {}) {
     if (typeof buildChartVarControls === 'function') buildChartVarControls();
     if (typeof renderAppearanceControls === 'function') renderAppearanceControls();
     if (typeof updateFlowLine === 'function') updateFlowLine(2);
+    if (typeof activateWorkspaceTab === 'function') activateWorkspaceTab('overview');
   } catch (err) {
     clearTimeout(timeoutId);
     const msg = err.name === 'AbortError' ? '上传超时，请尝试较小的文件' : '上传失败: ' + err.message;
@@ -140,6 +141,7 @@ async function loadExampleDataset(name, options = {}) {
     if (typeof buildChartVarControls === 'function') buildChartVarControls();
     if (typeof renderAppearanceControls === 'function') renderAppearanceControls();
     if (typeof updateFlowLine === 'function') updateFlowLine(2);
+    if (typeof activateWorkspaceTab === 'function') activateWorkspaceTab('overview');
     // Note: renderDataPanel() is NOT called here — callers must invoke it after
     // the button has been restored, otherwise cloneNode captures the "处理中..." state
 

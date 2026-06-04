@@ -44,13 +44,44 @@ def make_bar_example() -> pd.DataFrame:
 
 
 def make_line_example() -> pd.DataFrame:
-    n = 60
+    line_rng = np.random.default_rng(SEED + 11)
+    groups = ["Control", "Standard care", "Intensive therapy", "Combination therapy"]
+    weeks = np.array([0, 1, 2, 3, 4, 6, 8, 10, 12, 16, 20, 24, 28, 32, 36, 40, 48, 52])
+    group_shift = {
+        "Control": 1.8,
+        "Standard care": -0.8,
+        "Intensive therapy": -2.2,
+        "Combination therapy": -3.0,
+    }
+    group_wave = {
+        "Control": 1.1,
+        "Standard care": 1.8,
+        "Intensive therapy": 2.3,
+        "Combination therapy": 2.7,
+    }
     records = []
-    for i in range(1, n + 1):
-        base = rng.choice(["Control", "Treatment"], 1)[0]
-        tp = rng.normal(0, 0.3, 5).cumsum() + (rng.normal(130, 10) if base == "Control" else rng.normal(135, 10))
-        for t_idx, val in enumerate(tp):
-            records.append({"patient_id": f"P{str(i).zfill(4)}", "time": t_idx, "week": t_idx * 4, "sbp": round(val, 1), "group": base})
+    patient_idx = 1
+    for group in groups:
+        for _ in range(22):
+            baseline = line_rng.normal(137, 9) + (2.5 if group == "Control" else 0)
+            slope = group_shift[group] * np.log1p(weeks) / np.log1p(52)
+            phase = line_rng.uniform(0, np.pi * 2)
+            wave = group_wave[group] * np.sin(weeks / 3.2 + phase)
+            local_walk = line_rng.normal(0, 1.05, len(weeks)).cumsum() * 0.42
+            visit_noise = line_rng.normal(0, 2.3, len(weeks))
+            pulse = np.zeros(len(weeks))
+            pulse_idx = line_rng.choice(np.arange(2, len(weeks) - 2), size=3, replace=False)
+            pulse[pulse_idx] = line_rng.normal(0, 5.2, len(pulse_idx))
+            values = baseline + slope + wave + local_walk + visit_noise + pulse
+            for t_idx, (week, val) in enumerate(zip(weeks, values)):
+                records.append({
+                    "patient_id": f"P{str(patient_idx).zfill(4)}",
+                    "time": t_idx,
+                    "week": int(week),
+                    "sbp": round(float(np.clip(val, 96, 178)), 1),
+                    "group": group,
+                })
+            patient_idx += 1
     return pd.DataFrame(records)
 
 
@@ -88,11 +119,24 @@ def make_forest_example() -> pd.DataFrame:
 
 
 def make_volcano_example() -> pd.DataFrame:
-    n = 200
+    n = 600
+    genes = [f"GENE{i}" for i in range(1, n + 1)]
+    log2fc = rng.normal(0, 0.45, n)
+    up_idx = rng.choice(np.arange(n), size=55, replace=False)
+    remaining = np.setdiff1d(np.arange(n), up_idx)
+    down_idx = rng.choice(remaining, size=55, replace=False)
+    log2fc[up_idx] = rng.normal(1.65, 0.38, len(up_idx))
+    log2fc[down_idx] = rng.normal(-1.55, 0.36, len(down_idx))
+    signal = np.abs(log2fc)
+    neg_log10_p = 0.45 + 1.55 * signal + rng.normal(0, 0.45, n)
+    neg_log10_p += np.where(np.isin(np.arange(n), np.r_[up_idx, down_idx]), rng.uniform(0.8, 2.4, n), 0)
+    neg_log10_p = np.clip(neg_log10_p, 0.02, 8.5)
+    pvalue = np.clip(np.power(10, -neg_log10_p), 1e-8, 0.99)
     return pd.DataFrame({
-        "gene": [f"GENE{i}" for i in range(1, n + 1)],
-        "log2fc": np.round(rng.normal(0, 0.6, n), 3),
-        "pvalue": np.round(rng.uniform(0.0001, 0.99, n), 4),
+        "gene": genes,
+        "log2fc": np.round(log2fc, 3),
+        "pvalue": np.round(pvalue, 8),
+        "neg_log10_p": np.round(neg_log10_p, 3),
     })
 
 
@@ -270,33 +314,142 @@ def make_world_map_example() -> pd.DataFrame:
     })
 
 
+def make_usa_map_example() -> pd.DataFrame:
+    records = [
+        ("California", "CA", 92.4), ("Texas", "TX", 88.1), ("Florida", "FL", 84.7),
+        ("New York", "NY", 79.6), ("Pennsylvania", "PA", 72.5), ("Illinois", "IL", 70.8),
+        ("Ohio", "OH", 69.4), ("Georgia", "GA", 82.3), ("North Carolina", "NC", 76.1),
+        ("Michigan", "MI", 68.8), ("New Jersey", "NJ", 74.2), ("Virginia", "VA", 66.9),
+        ("Washington", "WA", 61.4), ("Arizona", "AZ", 78.5), ("Massachusetts", "MA", 59.8),
+        ("Tennessee", "TN", 86.6), ("Indiana", "IN", 71.2), ("Missouri", "MO", 73.5),
+        ("Maryland", "MD", 64.7), ("Wisconsin", "WI", 58.9), ("Colorado", "CO", 55.2),
+        ("Minnesota", "MN", 53.6), ("South Carolina", "SC", 83.2), ("Alabama", "AL", 87.5),
+        ("Louisiana", "LA", 90.1), ("Kentucky", "KY", 80.4), ("Oregon", "OR", 57.7),
+        ("Oklahoma", "OK", 85.3), ("Connecticut", "CT", 56.8), ("Utah", "UT", 49.4),
+    ]
+    incidence = np.array([r[2] for r in records])
+    return pd.DataFrame({
+        "state": [r[0] for r in records],
+        "state_abbr": [r[1] for r in records],
+        "incidence": np.round(incidence, 1),
+        "prevalence": np.round(incidence * 0.42 + rng.normal(3.0, 1.1, len(records)), 1),
+        "mortality": np.round(incidence * 0.052 + rng.normal(0.6, 0.18, len(records)), 2),
+        "region": rng.choice(["West", "South", "Midwest", "Northeast"], len(records)),
+    })
+
+
+def make_europe_map_example() -> pd.DataFrame:
+    records = [
+        ("United Kingdom", 67.8), ("France", 63.5), ("Germany", 71.5), ("Italy", 61.2),
+        ("Spain", 64.9), ("Portugal", 58.1), ("Netherlands", 62.7), ("Belgium", 66.4),
+        ("Switzerland", 52.8), ("Austria", 56.5), ("Sweden", 48.2), ("Norway", 44.9),
+        ("Denmark", 50.3), ("Finland", 47.1), ("Poland", 69.6), ("Czechia", 65.7),
+        ("Greece", 72.4), ("Ireland", 55.6), ("Romania", 78.2), ("Hungary", 74.9),
+        ("Ukraine", 80.6), ("Turkey", 73.3),
+    ]
+    incidence = np.array([r[1] for r in records])
+    return pd.DataFrame({
+        "country": [r[0] for r in records],
+        "incidence": np.round(incidence, 1),
+        "prevalence": np.round(incidence * 0.39 + rng.normal(4.5, 1.0, len(records)), 1),
+        "mortality": np.round(incidence * 0.049 + rng.normal(0.7, 0.15, len(records)), 2),
+        "health_system": rng.choice(["Tax-funded", "Insurance", "Mixed"], len(records)),
+    })
+
+
+def make_uk_map_example() -> pd.DataFrame:
+    records = [
+        ("England", 68.3), ("Scotland", 61.6), ("Wales", 65.1), ("Northern Ireland", 63.8),
+        ("London", 58.9), ("Midlands", 70.2), ("North West", 72.6), ("South East", 56.8),
+        ("South West", 54.5),
+    ]
+    incidence = np.array([r[1] for r in records])
+    return pd.DataFrame({
+        "region": [r[0] for r in records],
+        "incidence": np.round(incidence, 1),
+        "prevalence": np.round(incidence * 0.44 + rng.normal(2.4, 0.8, len(records)), 1),
+        "mortality": np.round(incidence * 0.045 + rng.normal(0.5, 0.10, len(records)), 2),
+        "care_network": rng.choice(["North", "Central", "South", "Devolved"], len(records)),
+    })
+
+
 def make_survival_example() -> pd.DataFrame:
     n = 300
+    group = rng.choice(["Control", "Treatment"], n, p=[0.48, 0.52])
+    stage = rng.choice(["I", "II", "III", "IV"], n, p=[0.2, 0.3, 0.35, 0.15])
+    stage_hazard = pd.Series(stage).map({"I": 0.65, "II": 0.9, "III": 1.25, "IV": 1.75}).to_numpy()
+    treatment_factor = np.where(group == "Treatment", 0.62, 1.0)
+    event_time = rng.exponential(38 / (stage_hazard * treatment_factor), n)
+    censor_time = rng.uniform(18, 72, n)
+    observed_time = np.minimum(event_time, censor_time).clip(1, 72)
+    event = (event_time <= censor_time).astype(int)
     return pd.DataFrame({
         "patient_id": [f"P{str(i).zfill(4)}" for i in range(1, n + 1)],
-        "time": np.round(rng.exponential(36, n)).clip(1, 60).astype(int),
-        "event": rng.choice([0, 1], n, p=[0.55, 0.45]),
-        "group": rng.choice(["Control", "Treatment"], n),
+        "time": np.round(observed_time, 1),
+        "event": event,
+        "group": group,
         "age": np.round(rng.normal(60, 11, n)).clip(30, 85).astype(int),
         "sex": rng.choice(["Male", "Female"], n),
-        "stage": rng.choice(["I", "II", "III", "IV"], n, p=[0.2, 0.3, 0.35, 0.15]),
+        "stage": stage,
     })
 
 
 def make_roc_example() -> pd.DataFrame:
-    n = 200
+    n = 320
+    age = rng.normal(61, 10, n).clip(35, 86)
+    bmi = rng.normal(26.5, 4.2, n).clip(17, 42)
+    inflammation = rng.normal(0, 1, n)
+    lipid = rng.normal(0, 1, n)
+    renal = rng.normal(0, 1, n)
+    latent = -0.85 + 0.035 * (age - 60) + 0.08 * (bmi - 25) + 0.85 * inflammation + 0.45 * lipid + 0.35 * renal
+    true_prob = 1 / (1 + np.exp(-latent))
+    outcome = rng.binomial(1, true_prob, n)
+    logit = np.log(np.clip(true_prob, 0.005, 0.995) / np.clip(1 - true_prob, 0.005, 0.995))
+    risk_score = 1 / (1 + np.exp(-(logit + rng.normal(0, 0.45, n))))
+    biomarker_a = 1 / (1 + np.exp(-(0.90 * logit + rng.normal(0, 0.75, n))))
+    biomarker_b = 1 / (1 + np.exp(-(0.70 * logit + rng.normal(0, 0.95, n))))
+    biomarker_c = 1 / (1 + np.exp(-(0.45 * logit + rng.normal(0, 1.20, n))))
     return pd.DataFrame({
         "patient_id": [f"P{str(i).zfill(4)}" for i in range(1, n + 1)],
-        "outcome": rng.choice([0, 1], n, p=[0.6, 0.4]),
-        "biomarker_a": np.round(rng.normal(2.5, 1.0, n), 3),
-        "biomarker_b": np.round(rng.normal(1.8, 0.7, n), 3),
-        "biomarker_c": np.round(rng.normal(3.2, 1.5, n), 3),
-        "risk_score": np.round(rng.uniform(0, 1, n), 3),
+        "outcome": outcome,
+        "age": np.round(age, 1),
+        "bmi": np.round(bmi, 1),
+        "biomarker_a": np.round(biomarker_a, 3),
+        "biomarker_b": np.round(biomarker_b, 3),
+        "biomarker_c": np.round(biomarker_c, 3),
+        "risk_score": np.round(risk_score, 3),
+        "true_risk": np.round(true_prob, 3),
     })
 
 
 def make_dca_example() -> pd.DataFrame:
     return make_roc_example()
+
+
+def make_risk_calibration_example() -> pd.DataFrame:
+    return make_roc_example()
+
+
+def make_nomogram_example() -> pd.DataFrame:
+    n = 260
+    age = rng.normal(62, 10, n).clip(32, 88)
+    tumor_size = rng.gamma(2.2, 1.3, n).clip(0.4, 9.5)
+    stage_score = rng.choice([1, 2, 3, 4], n, p=[0.22, 0.34, 0.30, 0.14])
+    biomarker = rng.normal(3.2, 1.1, n).clip(0.4, 7.8)
+    inflammation = rng.normal(0, 1, n)
+    linear = -4.2 + 0.035 * age + 0.28 * tumor_size + 0.58 * stage_score + 0.42 * biomarker + 0.45 * inflammation
+    predicted_risk = 1 / (1 + np.exp(-linear))
+    outcome = rng.binomial(1, predicted_risk, n)
+    return pd.DataFrame({
+        "patient_id": [f"P{str(i).zfill(4)}" for i in range(1, n + 1)],
+        "age": np.round(age, 1),
+        "tumor_size": np.round(tumor_size, 2),
+        "stage_score": stage_score,
+        "biomarker": np.round(biomarker, 2),
+        "inflammation_index": np.round(inflammation, 2),
+        "predicted_risk": np.round(predicted_risk, 3),
+        "outcome": outcome,
+    })
 
 
 def make_baseline_table_example() -> pd.DataFrame:
@@ -528,6 +681,201 @@ def make_publication_heatmap_example() -> pd.DataFrame:
     return pd.DataFrame(records)
 
 
+def make_paired_change_example() -> pd.DataFrame:
+    n = 96
+    groups = rng.choice(["Control", "Treatment A", "Treatment B"], n, p=[0.34, 0.36, 0.30])
+    baseline = rng.normal(7.6, 0.9, n)
+    effect = np.select(
+        [groups == "Control", groups == "Treatment A", groups == "Treatment B"],
+        [rng.normal(-0.25, 0.35, n), rng.normal(-0.85, 0.38, n), rng.normal(-1.15, 0.42, n)],
+        default=rng.normal(-0.5, 0.4, n),
+    )
+    week12 = baseline + effect
+    return pd.DataFrame({
+        "patient_id": [f"P{str(i).zfill(3)}" for i in range(1, n + 1)],
+        "group": groups,
+        "baseline": np.round(baseline.clip(5.0, 10.5), 2),
+        "week12": np.round(week12.clip(4.2, 10.5), 2),
+        "change": np.round(week12 - baseline, 2),
+    })
+
+
+def make_waterfall_example() -> pd.DataFrame:
+    n = 74
+    therapy = rng.choice(["IO combo", "Targeted", "Chemotherapy"], n, p=[0.36, 0.34, 0.30])
+    response = rng.normal(-18, 24, n)
+    response += np.select(
+        [therapy == "IO combo", therapy == "Targeted", therapy == "Chemotherapy"],
+        [-8, -4, 6],
+        default=0,
+    )
+    response = np.round(response.clip(-78, 52), 1)
+    category = np.where(response <= -30, "Partial response", np.where(response >= 20, "Progressive disease", "Stable disease"))
+    return pd.DataFrame({
+        "patient_id": [f"T{str(i).zfill(3)}" for i in range(1, n + 1)],
+        "best_change_pct": response,
+        "response": category,
+        "therapy": therapy,
+    })
+
+
+def make_method_comparison_example() -> pd.DataFrame:
+    n = 160
+    true_val = rng.normal(8.5, 2.2, n).clip(2, 18)
+    method_a = true_val + rng.normal(0, 0.55, n)
+    method_b = true_val + rng.normal(0.28, 0.75, n)
+    group = rng.choice(["Ward", "ICU", "Outpatient"], n, p=[0.42, 0.22, 0.36])
+    return pd.DataFrame({
+        "sample_id": [f"S{str(i).zfill(3)}" for i in range(1, n + 1)],
+        "method_a": np.round(method_a, 2),
+        "method_b": np.round(method_b, 2),
+        "group": group,
+    })
+
+
+def make_calibration_example() -> pd.DataFrame:
+    n = 650
+    risk_score = rng.beta(2.2, 5.2, n)
+    logits = -2.2 + 5.2 * risk_score + rng.normal(0, 0.22, n)
+    event_prob = 1 / (1 + np.exp(-logits))
+    outcome = rng.binomial(1, event_prob, n)
+    model = rng.choice(["Model A", "Model B"], n, p=[0.5, 0.5])
+    predicted = np.where(model == "Model A", risk_score, np.clip(risk_score * 0.88 + 0.04, 0.01, 0.95))
+    return pd.DataFrame({
+        "patient_id": [f"C{str(i).zfill(4)}" for i in range(1, n + 1)],
+        "predicted_risk": np.round(predicted, 4),
+        "outcome": outcome,
+        "model": model,
+    })
+
+
+def make_swimmer_example() -> pd.DataFrame:
+    n = 48
+    therapy = rng.choice(["Arm A", "Arm B", "Arm C"], n, p=[0.38, 0.34, 0.28])
+    duration = rng.gamma(4.2, 3.4, n).clip(3, 34)
+    start = rng.uniform(0, 4, n)
+    event_time = start + duration * rng.uniform(0.45, 0.95, n)
+    response = rng.choice(["CR", "PR", "SD", "PD"], n, p=[0.16, 0.38, 0.32, 0.14])
+    event = np.where(response == "PD", "Progression", rng.choice(["Ongoing", "Censored"], n, p=[0.72, 0.28]))
+    return pd.DataFrame({
+        "patient_id": [f"P{str(i).zfill(2)}" for i in range(1, n + 1)],
+        "therapy": therapy,
+        "start_month": np.round(start, 1),
+        "duration_month": np.round(duration, 1),
+        "event_month": np.round(event_time, 1),
+        "response": response,
+        "event": event,
+    })
+
+
+def make_population_pyramid_example() -> pd.DataFrame:
+    age_groups = ["18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80+"]
+    male = np.array([42, 55, 72, 88, 96, 74, 38])
+    female = np.array([48, 62, 76, 92, 104, 86, 52])
+    return pd.DataFrame({
+        "age_group": age_groups,
+        "male": male,
+        "female": female,
+        "total": male + female,
+    })
+
+
+def make_radar_example() -> pd.DataFrame:
+    """Generate radar chart example with multiple clinical dimensions for 3 groups."""
+    groups = ["Control", "Treatment A", "Treatment B"]
+    dimensions = ["SBP", "DBP", "Glucose", "BMI", "Cholesterol", "CRP", "Heart Rate", "eGFR"]
+    records = []
+    for g in groups:
+        base_map = {
+            "Control": [138, 86, 6.8, 27.5, 5.8, 8.2, 78, 72],
+            "Treatment A": [128, 79, 5.9, 25.8, 5.1, 4.5, 72, 85],
+            "Treatment B": [131, 81, 6.2, 26.3, 5.4, 5.8, 74, 80],
+        }
+        bases = base_map[g]
+        for _ in range(60):
+            row = {"group": g}
+            for j, dim in enumerate(dimensions):
+                row[dim] = round(bases[j] + rng.normal(0, bases[j] * 0.08), 2)
+            records.append(row)
+    return pd.DataFrame(records)
+
+
+def make_sankey_example() -> pd.DataFrame:
+    """Generate sankey diagram example showing patient treatment pathway flows."""
+    sources = [
+        "Screened", "Screened", "Screened",
+        "Eligible", "Eligible", "Eligible", "Eligible",
+        "Randomized A", "Randomized A", "Randomized B", "Randomized B", "Randomized B",
+        "Completed A", "Completed A", "Completed A", "Completed B", "Completed B", "Completed B",
+        "Discontinued", "Discontinued", "Discontinued",
+        "Follow-up", "Follow-up",
+        "Adverse Event", "Adverse Event",
+        "Lost", "Lost",
+        "Withdrawal", "Withdrawal",
+    ]
+    targets = [
+        "Eligible", "Excluded", "Pending Review",
+        "Randomized A", "Randomized B", "Declined", "Lost to Follow-up",
+        "Completed A", "Discontinued A", "Completed B", "Discontinued B", "Crossover",
+        "Follow-up", "Adverse Event", "Withdrawal",
+        "Follow-up", "Adverse Event", "Withdrawal",
+        "Lost", "Withdrawal", "Protocol Deviation",
+        "Remission", "Relapse",
+        "Mild", "Severe",
+        "Unreachable", "Declined Further",
+        "Personal Reason", "Moved Away",
+    ]
+    values = [
+        420, 180, 45,
+        210, 210, 35, 20,
+        185, 25, 178, 22, 10,
+        140, 28, 17,
+        132, 30, 16,
+        18, 12, 5,
+        98, 42,
+        38, 20,
+        22, 16,
+        18, 11,
+    ]
+    return pd.DataFrame({"source": sources, "target": targets, "value": values})
+
+
+def make_treemap_example() -> pd.DataFrame:
+    """Generate treemap example with hierarchical clinical categories."""
+    categories = [
+        "Cardiovascular", "Metabolic", "Infectious", "Respiratory", "Oncology",
+        "Hypertension", "CHD", "Heart Failure",
+        "Diabetes", "Obesity", "Dyslipidemia",
+        "Pneumonia", "Influenza",
+        "COPD", "Asthma",
+        "Lung Cancer", "Breast Cancer",
+    ]
+    parents = [
+        "", "", "", "", "",
+        "Cardiovascular", "Cardiovascular", "Cardiovascular",
+        "Metabolic", "Metabolic", "Metabolic",
+        "Infectious", "Infectious",
+        "Respiratory", "Respiratory",
+        "Oncology", "Oncology",
+    ]
+    values = [
+        647, 613, 160, 230, 275,
+        320, 185, 142,
+        260, 198, 155,
+        88, 72,
+        134, 96,
+        110, 165,
+    ]
+    return pd.DataFrame({"category": categories, "parent": parents, "value": values})
+
+
+def make_funnel_example() -> pd.DataFrame:
+    """Generate funnel chart example showing clinical trial enrollment cascade."""
+    stages = ["Identified", "Contacted", "Screened", "Eligible", "Consented", "Randomized", "Completed", "Per-Protocol"]
+    counts = [1200, 980, 720, 520, 420, 360, 310, 285]
+    return pd.DataFrame({"stage": stages, "count": counts})
+
+
 EXAMPLE_MAKERS = {
     "scatter_example": make_scatter_example,
     "bar_example": make_bar_example,
@@ -546,8 +894,23 @@ EXAMPLE_MAKERS = {
     "beanplot_example": make_beanplot_example,
     "china_map_example": make_china_map_example,
     "world_map_example": make_world_map_example,
+    "usa_map_example": make_usa_map_example,
+    "europe_map_example": make_europe_map_example,
+    "uk_map_example": make_uk_map_example,
     "survival_example": make_survival_example,
     "roc_example": make_roc_example,
     "dca_example": make_dca_example,
+    "risk_calibration_example": make_risk_calibration_example,
+    "nomogram_example": make_nomogram_example,
+    "paired_change_example": make_paired_change_example,
+    "waterfall_example": make_waterfall_example,
+    "method_comparison_example": make_method_comparison_example,
+    "calibration_example": make_calibration_example,
+    "swimmer_example": make_swimmer_example,
+    "population_pyramid_example": make_population_pyramid_example,
     "baseline_table_example": make_baseline_table_example,
+    "radar_example": make_radar_example,
+    "sankey_example": make_sankey_example,
+    "treemap_example": make_treemap_example,
+    "funnel_example": make_funnel_example,
 }

@@ -91,17 +91,37 @@ function switchTab(tabName) {
 }
 
 /* ── Loading & State ──────────────────────────────────── */
-function setLoading(btn, loading) {
+function rememberButtonDefaultText(btn) {
+  if (!btn) return '';
+  if (!btn._defaultText) {
+    btn._defaultText = (btn.textContent || '').trim() || '\u751f\u6210\u56fe\u8868';
+  }
+  return btn._defaultText;
+}
+
+function setLoading(btn, loading, loadingText) {
+  if (!btn) return;
+  const defaultText = rememberButtonDefaultText(btn);
   if (loading) {
-    btn._origText = btn.textContent;
-    btn.textContent = '处理中...';
+    btn.dataset.loading = 'true';
+    btn.textContent = loadingText || '\u5904\u7406\u4e2d...';
     btn.disabled = true;
-    btn.style.opacity = '0.6';
+    btn.style.opacity = '0.72';
   } else {
-    btn.textContent = btn._origText || btn.textContent;
+    btn.dataset.loading = 'false';
+    btn.textContent = defaultText;
     btn.disabled = false;
     btn.style.opacity = '1';
   }
+}
+
+function setButtonComplete(btn, text) {
+  if (!btn) return;
+  rememberButtonDefaultText(btn);
+  btn.dataset.loading = 'false';
+  btn.textContent = text || '\u5904\u7406\u5b8c\u6210';
+  btn.disabled = false;
+  btn.style.opacity = '1';
 }
 
 function resetDatasetState() {

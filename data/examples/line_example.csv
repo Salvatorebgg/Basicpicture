@@ -1,301 +1,1585 @@
-﻿patient_id,time,week,sbp,group
-P0001,0,0,116.4,Control
-P0001,1,4,116.6,Control
-P0001,2,8,116.7,Control
-P0001,3,12,116.9,Control
-P0001,4,16,116.3,Control
-P0002,0,0,124.3,Control
-P0002,1,4,123.9,Control
-P0002,2,8,124.1,Control
-P0002,3,12,123.9,Control
-P0002,4,16,123.9,Control
-P0003,0,0,134.3,Control
-P0003,1,4,134.2,Control
-P0003,2,8,133.9,Control
-P0003,3,12,133.9,Control
-P0003,4,16,133.6,Control
-P0004,0,0,122.6,Treatment
-P0004,1,4,123.0,Treatment
-P0004,2,8,123.2,Treatment
-P0004,3,12,123.2,Treatment
-P0004,4,16,122.6,Treatment
-P0005,0,0,129.3,Control
-P0005,1,4,129.0,Control
-P0005,2,8,129.0,Control
-P0005,3,12,128.7,Control
-P0005,4,16,128.3,Control
-P0006,0,0,132.9,Treatment
-P0006,1,4,132.7,Treatment
-P0006,2,8,132.5,Treatment
-P0006,3,12,132.6,Treatment
-P0006,4,16,132.6,Treatment
-P0007,0,0,130.8,Control
-P0007,1,4,130.7,Control
-P0007,2,8,130.8,Control
-P0007,3,12,131.0,Control
-P0007,4,16,131.0,Control
-P0008,0,0,137.6,Treatment
-P0008,1,4,137.3,Treatment
-P0008,2,8,137.5,Treatment
-P0008,3,12,137.7,Treatment
-P0008,4,16,137.8,Treatment
-P0009,0,0,137.5,Treatment
-P0009,1,4,137.8,Treatment
-P0009,2,8,138.0,Treatment
-P0009,3,12,138.0,Treatment
-P0009,4,16,138.4,Treatment
-P0010,0,0,163.6,Treatment
-P0010,1,4,163.7,Treatment
-P0010,2,8,163.8,Treatment
-P0010,3,12,163.6,Treatment
-P0010,4,16,163.8,Treatment
-P0011,0,0,130.3,Treatment
-P0011,1,4,130.1,Treatment
-P0011,2,8,130.0,Treatment
-P0011,3,12,130.5,Treatment
-P0011,4,16,130.3,Treatment
-P0012,0,0,130.9,Treatment
-P0012,1,4,130.6,Treatment
-P0012,2,8,130.1,Treatment
-P0012,3,12,130.3,Treatment
-P0012,4,16,131.1,Treatment
-P0013,0,0,133.5,Treatment
-P0013,1,4,133.3,Treatment
-P0013,2,8,133.7,Treatment
-P0013,3,12,133.6,Treatment
-P0013,4,16,133.4,Treatment
-P0014,0,0,134.2,Control
-P0014,1,4,134.1,Control
-P0014,2,8,134.0,Control
-P0014,3,12,133.9,Control
-P0014,4,16,133.5,Control
-P0015,0,0,146.6,Treatment
-P0015,1,4,146.8,Treatment
-P0015,2,8,146.9,Treatment
-P0015,3,12,147.1,Treatment
-P0015,4,16,147.0,Treatment
-P0016,0,0,116.8,Control
-P0016,1,4,117.0,Control
-P0016,2,8,117.3,Control
-P0016,3,12,117.5,Control
-P0016,4,16,117.3,Control
-P0017,0,0,134.5,Treatment
-P0017,1,4,134.8,Treatment
-P0017,2,8,134.5,Treatment
-P0017,3,12,134.2,Treatment
-P0017,4,16,134.4,Treatment
-P0018,0,0,147.7,Control
-P0018,1,4,147.8,Control
-P0018,2,8,147.2,Control
-P0018,3,12,147.0,Control
-P0018,4,16,147.4,Control
-P0019,0,0,150.4,Treatment
-P0019,1,4,150.4,Treatment
-P0019,2,8,150.9,Treatment
-P0019,3,12,150.8,Treatment
-P0019,4,16,150.6,Treatment
-P0020,0,0,124.3,Treatment
-P0020,1,4,124.5,Treatment
-P0020,2,8,124.1,Treatment
-P0020,3,12,124.1,Treatment
-P0020,4,16,123.6,Treatment
-P0021,0,0,144.8,Treatment
-P0021,1,4,144.7,Treatment
-P0021,2,8,144.5,Treatment
-P0021,3,12,144.4,Treatment
-P0021,4,16,144.5,Treatment
-P0022,0,0,136.9,Treatment
-P0022,1,4,136.6,Treatment
-P0022,2,8,136.7,Treatment
-P0022,3,12,136.7,Treatment
-P0022,4,16,136.8,Treatment
-P0023,0,0,136.7,Treatment
-P0023,1,4,136.6,Treatment
-P0023,2,8,136.9,Treatment
-P0023,3,12,136.7,Treatment
-P0023,4,16,136.7,Treatment
-P0024,0,0,133.4,Treatment
-P0024,1,4,133.3,Treatment
-P0024,2,8,133.6,Treatment
-P0024,3,12,133.9,Treatment
-P0024,4,16,133.9,Treatment
-P0025,0,0,120.2,Control
-P0025,1,4,120.5,Control
-P0025,2,8,120.6,Control
-P0025,3,12,120.6,Control
-P0025,4,16,120.3,Control
-P0026,0,0,136.4,Control
-P0026,1,4,136.4,Control
-P0026,2,8,136.1,Control
-P0026,3,12,136.6,Control
-P0026,4,16,136.7,Control
-P0027,0,0,148.4,Control
-P0027,1,4,148.4,Control
-P0027,2,8,147.9,Control
-P0027,3,12,147.9,Control
-P0027,4,16,148.0,Control
-P0028,0,0,121.9,Control
-P0028,1,4,121.2,Control
-P0028,2,8,121.2,Control
-P0028,3,12,122.0,Control
-P0028,4,16,122.3,Control
-P0029,0,0,123.3,Treatment
-P0029,1,4,122.9,Treatment
-P0029,2,8,122.8,Treatment
-P0029,3,12,122.8,Treatment
-P0029,4,16,122.2,Treatment
-P0030,0,0,118.2,Control
-P0030,1,4,118.0,Control
-P0030,2,8,118.2,Control
-P0030,3,12,117.8,Control
-P0030,4,16,118.0,Control
-P0031,0,0,135.1,Control
-P0031,1,4,134.8,Control
-P0031,2,8,134.9,Control
-P0031,3,12,135.4,Control
-P0031,4,16,135.5,Control
-P0032,0,0,134.0,Control
-P0032,1,4,133.7,Control
-P0032,2,8,133.6,Control
-P0032,3,12,133.2,Control
-P0032,4,16,132.8,Control
-P0033,0,0,133.3,Control
-P0033,1,4,132.9,Control
-P0033,2,8,133.0,Control
-P0033,3,12,132.9,Control
-P0033,4,16,133.3,Control
-P0034,0,0,127.7,Control
-P0034,1,4,127.5,Control
-P0034,2,8,127.5,Control
-P0034,3,12,127.2,Control
-P0034,4,16,127.1,Control
-P0035,0,0,118.7,Treatment
-P0035,1,4,118.2,Treatment
-P0035,2,8,117.5,Treatment
-P0035,3,12,117.2,Treatment
-P0035,4,16,117.4,Treatment
-P0036,0,0,136.2,Control
-P0036,1,4,136.8,Control
-P0036,2,8,136.6,Control
-P0036,3,12,136.7,Control
-P0036,4,16,136.9,Control
-P0037,0,0,119.5,Control
-P0037,1,4,119.0,Control
-P0037,2,8,119.8,Control
-P0037,3,12,119.3,Control
-P0037,4,16,119.0,Control
-P0038,0,0,107.2,Control
-P0038,1,4,107.6,Control
-P0038,2,8,108.3,Control
-P0038,3,12,108.2,Control
-P0038,4,16,107.8,Control
-P0039,0,0,131.7,Treatment
-P0039,1,4,131.5,Treatment
-P0039,2,8,131.6,Treatment
-P0039,3,12,131.7,Treatment
-P0039,4,16,131.8,Treatment
-P0040,0,0,115.5,Control
-P0040,1,4,115.7,Control
-P0040,2,8,115.7,Control
-P0040,3,12,115.9,Control
-P0040,4,16,116.2,Control
-P0041,0,0,138.7,Treatment
-P0041,1,4,138.4,Treatment
-P0041,2,8,138.6,Treatment
-P0041,3,12,138.8,Treatment
-P0041,4,16,139.1,Treatment
-P0042,0,0,131.2,Control
-P0042,1,4,131.6,Control
-P0042,2,8,131.7,Control
-P0042,3,12,131.7,Control
-P0042,4,16,132.2,Control
-P0043,0,0,110.0,Control
-P0043,1,4,110.3,Control
-P0043,2,8,110.6,Control
-P0043,3,12,110.6,Control
-P0043,4,16,111.0,Control
-P0044,0,0,130.9,Treatment
-P0044,1,4,130.9,Treatment
-P0044,2,8,130.7,Treatment
-P0044,3,12,131.4,Treatment
-P0044,4,16,131.4,Treatment
-P0045,0,0,122.0,Control
-P0045,1,4,121.4,Control
-P0045,2,8,121.2,Control
-P0045,3,12,121.5,Control
-P0045,4,16,121.3,Control
-P0046,0,0,122.4,Control
-P0046,1,4,122.8,Control
-P0046,2,8,122.9,Control
-P0046,3,12,122.8,Control
-P0046,4,16,122.7,Control
-P0047,0,0,132.0,Control
-P0047,1,4,131.8,Control
-P0047,2,8,131.5,Control
-P0047,3,12,131.1,Control
-P0047,4,16,131.1,Control
-P0048,0,0,143.0,Treatment
-P0048,1,4,142.8,Treatment
-P0048,2,8,142.8,Treatment
-P0048,3,12,142.9,Treatment
-P0048,4,16,142.9,Treatment
-P0049,0,0,128.9,Treatment
-P0049,1,4,128.8,Treatment
-P0049,2,8,128.7,Treatment
-P0049,3,12,128.3,Treatment
-P0049,4,16,128.0,Treatment
-P0050,0,0,119.3,Control
-P0050,1,4,119.5,Control
-P0050,2,8,119.8,Control
-P0050,3,12,119.5,Control
-P0050,4,16,119.6,Control
-P0051,0,0,123.3,Control
-P0051,1,4,123.5,Control
-P0051,2,8,123.3,Control
-P0051,3,12,123.6,Control
-P0051,4,16,123.5,Control
-P0052,0,0,148.9,Treatment
-P0052,1,4,149.0,Treatment
-P0052,2,8,149.3,Treatment
-P0052,3,12,149.3,Treatment
-P0052,4,16,150.0,Treatment
-P0053,0,0,137.5,Treatment
-P0053,1,4,137.6,Treatment
-P0053,2,8,137.4,Treatment
-P0053,3,12,137.7,Treatment
-P0053,4,16,137.8,Treatment
-P0054,0,0,144.9,Treatment
-P0054,1,4,145.4,Treatment
-P0054,2,8,145.4,Treatment
-P0054,3,12,145.4,Treatment
-P0054,4,16,145.9,Treatment
-P0055,0,0,126.1,Treatment
-P0055,1,4,126.2,Treatment
-P0055,2,8,126.3,Treatment
-P0055,3,12,125.9,Treatment
-P0055,4,16,125.4,Treatment
-P0056,0,0,122.5,Treatment
-P0056,1,4,122.3,Treatment
-P0056,2,8,122.5,Treatment
-P0056,3,12,122.4,Treatment
-P0056,4,16,122.5,Treatment
-P0057,0,0,135.0,Treatment
-P0057,1,4,135.2,Treatment
-P0057,2,8,135.0,Treatment
-P0057,3,12,135.0,Treatment
-P0057,4,16,135.7,Treatment
-P0058,0,0,115.4,Control
-P0058,1,4,115.3,Control
-P0058,2,8,115.3,Control
-P0058,3,12,115.3,Control
-P0058,4,16,115.3,Control
-P0059,0,0,143.8,Treatment
-P0059,1,4,143.8,Treatment
-P0059,2,8,143.6,Treatment
-P0059,3,12,143.6,Treatment
-P0059,4,16,143.6,Treatment
-P0060,0,0,143.6,Treatment
-P0060,1,4,143.7,Treatment
-P0060,2,8,143.6,Treatment
-P0060,3,12,143.8,Treatment
-P0060,4,16,143.9,Treatment
+patient_id,time,week,sbp,group
+P0001,0,0,143.8,Control
+P0001,1,1,141.3,Control
+P0001,2,2,139.1,Control
+P0001,3,3,142.2,Control
+P0001,4,4,141.3,Control
+P0001,5,6,148.9,Control
+P0001,6,8,143.7,Control
+P0001,7,10,143.9,Control
+P0001,8,12,153.0,Control
+P0001,9,16,141.1,Control
+P0001,10,20,136.3,Control
+P0001,11,24,145.1,Control
+P0001,12,28,141.3,Control
+P0001,13,32,141.5,Control
+P0001,14,36,146.9,Control
+P0001,15,40,150.8,Control
+P0001,16,48,140.9,Control
+P0001,17,52,143.9,Control
+P0002,0,0,112.2,Control
+P0002,1,1,122.0,Control
+P0002,2,2,123.1,Control
+P0002,3,3,119.4,Control
+P0002,4,4,122.0,Control
+P0002,5,6,119.9,Control
+P0002,6,8,124.5,Control
+P0002,7,10,119.9,Control
+P0002,8,12,112.8,Control
+P0002,9,16,123.3,Control
+P0002,10,20,121.9,Control
+P0002,11,24,121.8,Control
+P0002,12,28,123.0,Control
+P0002,13,32,123.0,Control
+P0002,14,36,124.6,Control
+P0002,15,40,122.6,Control
+P0002,16,48,126.3,Control
+P0002,17,52,120.7,Control
+P0003,0,0,140.5,Control
+P0003,1,1,135.3,Control
+P0003,2,2,140.0,Control
+P0003,3,3,138.3,Control
+P0003,4,4,143.1,Control
+P0003,5,6,137.6,Control
+P0003,6,8,132.5,Control
+P0003,7,10,135.3,Control
+P0003,8,12,141.9,Control
+P0003,9,16,139.9,Control
+P0003,10,20,139.5,Control
+P0003,11,24,139.5,Control
+P0003,12,28,138.2,Control
+P0003,13,32,138.0,Control
+P0003,14,36,142.3,Control
+P0003,15,40,139.6,Control
+P0003,16,48,137.9,Control
+P0003,17,52,146.5,Control
+P0004,0,0,144.5,Control
+P0004,1,1,146.2,Control
+P0004,2,2,147.2,Control
+P0004,3,3,150.9,Control
+P0004,4,4,146.6,Control
+P0004,5,6,142.7,Control
+P0004,6,8,150.7,Control
+P0004,7,10,151.2,Control
+P0004,8,12,139.0,Control
+P0004,9,16,150.0,Control
+P0004,10,20,148.0,Control
+P0004,11,24,143.6,Control
+P0004,12,28,145.1,Control
+P0004,13,32,146.6,Control
+P0004,14,36,145.6,Control
+P0004,15,40,147.1,Control
+P0004,16,48,147.2,Control
+P0004,17,52,147.1,Control
+P0005,0,0,136.6,Control
+P0005,1,1,135.1,Control
+P0005,2,2,133.6,Control
+P0005,3,3,135.9,Control
+P0005,4,4,132.3,Control
+P0005,5,6,132.5,Control
+P0005,6,8,139.4,Control
+P0005,7,10,130.9,Control
+P0005,8,12,133.4,Control
+P0005,9,16,137.5,Control
+P0005,10,20,130.3,Control
+P0005,11,24,137.3,Control
+P0005,12,28,131.0,Control
+P0005,13,32,135.4,Control
+P0005,14,36,126.9,Control
+P0005,15,40,137.5,Control
+P0005,16,48,134.7,Control
+P0005,17,52,131.7,Control
+P0006,0,0,138.5,Control
+P0006,1,1,138.5,Control
+P0006,2,2,135.9,Control
+P0006,3,3,142.7,Control
+P0006,4,4,137.6,Control
+P0006,5,6,132.6,Control
+P0006,6,8,139.6,Control
+P0006,7,10,138.8,Control
+P0006,8,12,143.9,Control
+P0006,9,16,144.7,Control
+P0006,10,20,134.8,Control
+P0006,11,24,139.7,Control
+P0006,12,28,140.1,Control
+P0006,13,32,145.6,Control
+P0006,14,36,137.7,Control
+P0006,15,40,139.1,Control
+P0006,16,48,136.6,Control
+P0006,17,52,143.2,Control
+P0007,0,0,148.9,Control
+P0007,1,1,144.5,Control
+P0007,2,2,142.7,Control
+P0007,3,3,150.7,Control
+P0007,4,4,150.2,Control
+P0007,5,6,149.0,Control
+P0007,6,8,147.3,Control
+P0007,7,10,145.8,Control
+P0007,8,12,150.5,Control
+P0007,9,16,146.3,Control
+P0007,10,20,161.3,Control
+P0007,11,24,147.2,Control
+P0007,12,28,147.5,Control
+P0007,13,32,148.2,Control
+P0007,14,36,144.2,Control
+P0007,15,40,150.8,Control
+P0007,16,48,151.1,Control
+P0007,17,52,151.5,Control
+P0008,0,0,130.4,Control
+P0008,1,1,132.2,Control
+P0008,2,2,132.2,Control
+P0008,3,3,129.9,Control
+P0008,4,4,131.1,Control
+P0008,5,6,130.0,Control
+P0008,6,8,139.5,Control
+P0008,7,10,126.8,Control
+P0008,8,12,129.9,Control
+P0008,9,16,129.1,Control
+P0008,10,20,124.1,Control
+P0008,11,24,131.2,Control
+P0008,12,28,134.7,Control
+P0008,13,32,126.1,Control
+P0008,14,36,129.4,Control
+P0008,15,40,128.7,Control
+P0008,16,48,134.7,Control
+P0008,17,52,136.6,Control
+P0009,0,0,139.6,Control
+P0009,1,1,139.8,Control
+P0009,2,2,138.7,Control
+P0009,3,3,141.2,Control
+P0009,4,4,140.2,Control
+P0009,5,6,140.8,Control
+P0009,6,8,147.7,Control
+P0009,7,10,131.2,Control
+P0009,8,12,139.0,Control
+P0009,9,16,138.6,Control
+P0009,10,20,138.9,Control
+P0009,11,24,141.7,Control
+P0009,12,28,138.8,Control
+P0009,13,32,141.7,Control
+P0009,14,36,136.0,Control
+P0009,15,40,138.8,Control
+P0009,16,48,141.2,Control
+P0009,17,52,146.7,Control
+P0010,0,0,142.7,Control
+P0010,1,1,143.2,Control
+P0010,2,2,145.4,Control
+P0010,3,3,145.5,Control
+P0010,4,4,143.9,Control
+P0010,5,6,160.2,Control
+P0010,6,8,147.8,Control
+P0010,7,10,153.6,Control
+P0010,8,12,142.8,Control
+P0010,9,16,144.1,Control
+P0010,10,20,140.4,Control
+P0010,11,24,145.2,Control
+P0010,12,28,143.9,Control
+P0010,13,32,147.3,Control
+P0010,14,36,144.7,Control
+P0010,15,40,143.9,Control
+P0010,16,48,147.3,Control
+P0010,17,52,143.9,Control
+P0011,0,0,147.3,Control
+P0011,1,1,146.2,Control
+P0011,2,2,149.6,Control
+P0011,3,3,148.4,Control
+P0011,4,4,146.6,Control
+P0011,5,6,146.7,Control
+P0011,6,8,144.4,Control
+P0011,7,10,148.1,Control
+P0011,8,12,151.9,Control
+P0011,9,16,146.9,Control
+P0011,10,20,146.1,Control
+P0011,11,24,151.7,Control
+P0011,12,28,144.5,Control
+P0011,13,32,157.1,Control
+P0011,14,36,150.9,Control
+P0011,15,40,148.2,Control
+P0011,16,48,147.8,Control
+P0011,17,52,151.0,Control
+P0012,0,0,147.0,Control
+P0012,1,1,148.5,Control
+P0012,2,2,147.8,Control
+P0012,3,3,144.9,Control
+P0012,4,4,155.2,Control
+P0012,5,6,150.2,Control
+P0012,6,8,149.5,Control
+P0012,7,10,148.0,Control
+P0012,8,12,145.3,Control
+P0012,9,16,141.8,Control
+P0012,10,20,143.9,Control
+P0012,11,24,150.9,Control
+P0012,12,28,151.4,Control
+P0012,13,32,145.7,Control
+P0012,14,36,147.1,Control
+P0012,15,40,140.0,Control
+P0012,16,48,148.3,Control
+P0012,17,52,147.8,Control
+P0013,0,0,144.0,Control
+P0013,1,1,145.2,Control
+P0013,2,2,142.8,Control
+P0013,3,3,140.2,Control
+P0013,4,4,144.7,Control
+P0013,5,6,140.5,Control
+P0013,6,8,138.7,Control
+P0013,7,10,154.2,Control
+P0013,8,12,143.1,Control
+P0013,9,16,139.1,Control
+P0013,10,20,139.8,Control
+P0013,11,24,143.1,Control
+P0013,12,28,147.2,Control
+P0013,13,32,141.5,Control
+P0013,14,36,133.7,Control
+P0013,15,40,138.4,Control
+P0013,16,48,144.5,Control
+P0013,17,52,142.5,Control
+P0014,0,0,142.0,Control
+P0014,1,1,144.0,Control
+P0014,2,2,139.6,Control
+P0014,3,3,141.1,Control
+P0014,4,4,136.8,Control
+P0014,5,6,143.8,Control
+P0014,6,8,141.2,Control
+P0014,7,10,140.4,Control
+P0014,8,12,144.1,Control
+P0014,9,16,148.3,Control
+P0014,10,20,144.9,Control
+P0014,11,24,142.0,Control
+P0014,12,28,142.1,Control
+P0014,13,32,142.6,Control
+P0014,14,36,138.3,Control
+P0014,15,40,144.2,Control
+P0014,16,48,142.5,Control
+P0014,17,52,142.7,Control
+P0015,0,0,145.8,Control
+P0015,1,1,145.9,Control
+P0015,2,2,144.0,Control
+P0015,3,3,146.2,Control
+P0015,4,4,140.3,Control
+P0015,5,6,147.4,Control
+P0015,6,8,147.9,Control
+P0015,7,10,148.9,Control
+P0015,8,12,146.0,Control
+P0015,9,16,142.1,Control
+P0015,10,20,145.3,Control
+P0015,11,24,147.4,Control
+P0015,12,28,141.5,Control
+P0015,13,32,147.9,Control
+P0015,14,36,152.9,Control
+P0015,15,40,144.8,Control
+P0015,16,48,146.0,Control
+P0015,17,52,149.8,Control
+P0016,0,0,143.1,Control
+P0016,1,1,143.7,Control
+P0016,2,2,138.1,Control
+P0016,3,3,127.6,Control
+P0016,4,4,139.8,Control
+P0016,5,6,146.9,Control
+P0016,6,8,141.9,Control
+P0016,7,10,136.2,Control
+P0016,8,12,138.1,Control
+P0016,9,16,141.2,Control
+P0016,10,20,139.5,Control
+P0016,11,24,139.3,Control
+P0016,12,28,138.7,Control
+P0016,13,32,139.4,Control
+P0016,14,36,138.6,Control
+P0016,15,40,137.3,Control
+P0016,16,48,137.4,Control
+P0016,17,52,139.0,Control
+P0017,0,0,130.5,Control
+P0017,1,1,125.0,Control
+P0017,2,2,124.4,Control
+P0017,3,3,126.5,Control
+P0017,4,4,124.8,Control
+P0017,5,6,122.6,Control
+P0017,6,8,123.9,Control
+P0017,7,10,123.1,Control
+P0017,8,12,123.5,Control
+P0017,9,16,126.4,Control
+P0017,10,20,127.5,Control
+P0017,11,24,122.4,Control
+P0017,12,28,129.2,Control
+P0017,13,32,127.1,Control
+P0017,14,36,129.3,Control
+P0017,15,40,128.7,Control
+P0017,16,48,123.4,Control
+P0017,17,52,124.1,Control
+P0018,0,0,125.7,Control
+P0018,1,1,126.3,Control
+P0018,2,2,132.1,Control
+P0018,3,3,130.4,Control
+P0018,4,4,130.5,Control
+P0018,5,6,131.6,Control
+P0018,6,8,126.0,Control
+P0018,7,10,130.0,Control
+P0018,8,12,126.3,Control
+P0018,9,16,126.3,Control
+P0018,10,20,122.5,Control
+P0018,11,24,126.3,Control
+P0018,12,28,131.0,Control
+P0018,13,32,121.1,Control
+P0018,14,36,129.4,Control
+P0018,15,40,124.4,Control
+P0018,16,48,125.3,Control
+P0018,17,52,129.1,Control
+P0019,0,0,135.8,Control
+P0019,1,1,131.3,Control
+P0019,2,2,140.2,Control
+P0019,3,3,133.0,Control
+P0019,4,4,132.9,Control
+P0019,5,6,134.0,Control
+P0019,6,8,134.2,Control
+P0019,7,10,134.1,Control
+P0019,8,12,138.1,Control
+P0019,9,16,137.9,Control
+P0019,10,20,131.5,Control
+P0019,11,24,129.4,Control
+P0019,12,28,134.8,Control
+P0019,13,32,133.3,Control
+P0019,14,36,133.0,Control
+P0019,15,40,135.5,Control
+P0019,16,48,136.2,Control
+P0019,17,52,133.0,Control
+P0020,0,0,141.1,Control
+P0020,1,1,137.8,Control
+P0020,2,2,141.9,Control
+P0020,3,3,136.5,Control
+P0020,4,4,137.8,Control
+P0020,5,6,140.3,Control
+P0020,6,8,136.0,Control
+P0020,7,10,141.0,Control
+P0020,8,12,138.4,Control
+P0020,9,16,136.8,Control
+P0020,10,20,135.0,Control
+P0020,11,24,140.2,Control
+P0020,12,28,140.7,Control
+P0020,13,32,142.0,Control
+P0020,14,36,144.0,Control
+P0020,15,40,143.0,Control
+P0020,16,48,142.3,Control
+P0020,17,52,141.9,Control
+P0021,0,0,139.4,Control
+P0021,1,1,138.6,Control
+P0021,2,2,133.3,Control
+P0021,3,3,136.5,Control
+P0021,4,4,130.9,Control
+P0021,5,6,139.3,Control
+P0021,6,8,137.9,Control
+P0021,7,10,139.3,Control
+P0021,8,12,140.1,Control
+P0021,9,16,139.8,Control
+P0021,10,20,141.8,Control
+P0021,11,24,141.6,Control
+P0021,12,28,139.5,Control
+P0021,13,32,137.3,Control
+P0021,14,36,142.3,Control
+P0021,15,40,143.0,Control
+P0021,16,48,141.3,Control
+P0021,17,52,140.3,Control
+P0022,0,0,148.1,Control
+P0022,1,1,151.6,Control
+P0022,2,2,149.3,Control
+P0022,3,3,145.7,Control
+P0022,4,4,144.9,Control
+P0022,5,6,147.9,Control
+P0022,6,8,148.1,Control
+P0022,7,10,148.5,Control
+P0022,8,12,145.2,Control
+P0022,9,16,149.6,Control
+P0022,10,20,146.0,Control
+P0022,11,24,155.6,Control
+P0022,12,28,146.3,Control
+P0022,13,32,151.4,Control
+P0022,14,36,148.0,Control
+P0022,15,40,145.8,Control
+P0022,16,48,151.3,Control
+P0022,17,52,148.8,Control
+P0023,0,0,143.1,Standard care
+P0023,1,1,139.5,Standard care
+P0023,2,2,141.1,Standard care
+P0023,3,3,142.1,Standard care
+P0023,4,4,140.9,Standard care
+P0023,5,6,141.3,Standard care
+P0023,6,8,144.7,Standard care
+P0023,7,10,143.7,Standard care
+P0023,8,12,144.9,Standard care
+P0023,9,16,144.6,Standard care
+P0023,10,20,143.7,Standard care
+P0023,11,24,142.2,Standard care
+P0023,12,28,138.6,Standard care
+P0023,13,32,143.1,Standard care
+P0023,14,36,146.7,Standard care
+P0023,15,40,139.9,Standard care
+P0023,16,48,141.5,Standard care
+P0023,17,52,143.7,Standard care
+P0024,0,0,128.3,Standard care
+P0024,1,1,129.4,Standard care
+P0024,2,2,127.3,Standard care
+P0024,3,3,132.9,Standard care
+P0024,4,4,132.8,Standard care
+P0024,5,6,132.1,Standard care
+P0024,6,8,130.3,Standard care
+P0024,7,10,130.0,Standard care
+P0024,8,12,131.6,Standard care
+P0024,9,16,129.3,Standard care
+P0024,10,20,131.9,Standard care
+P0024,11,24,130.8,Standard care
+P0024,12,28,130.3,Standard care
+P0024,13,32,127.7,Standard care
+P0024,14,36,129.0,Standard care
+P0024,15,40,128.4,Standard care
+P0024,16,48,123.7,Standard care
+P0024,17,52,127.7,Standard care
+P0025,0,0,140.3,Standard care
+P0025,1,1,144.7,Standard care
+P0025,2,2,146.4,Standard care
+P0025,3,3,145.4,Standard care
+P0025,4,4,137.3,Standard care
+P0025,5,6,144.2,Standard care
+P0025,6,8,148.0,Standard care
+P0025,7,10,142.1,Standard care
+P0025,8,12,147.2,Standard care
+P0025,9,16,148.2,Standard care
+P0025,10,20,145.5,Standard care
+P0025,11,24,143.5,Standard care
+P0025,12,28,147.3,Standard care
+P0025,13,32,146.4,Standard care
+P0025,14,36,147.0,Standard care
+P0025,15,40,142.6,Standard care
+P0025,16,48,145.9,Standard care
+P0025,17,52,150.9,Standard care
+P0026,0,0,117.9,Standard care
+P0026,1,1,114.7,Standard care
+P0026,2,2,121.7,Standard care
+P0026,3,3,117.2,Standard care
+P0026,4,4,107.1,Standard care
+P0026,5,6,117.2,Standard care
+P0026,6,8,114.3,Standard care
+P0026,7,10,114.0,Standard care
+P0026,8,12,115.0,Standard care
+P0026,9,16,119.6,Standard care
+P0026,10,20,114.6,Standard care
+P0026,11,24,116.5,Standard care
+P0026,12,28,115.7,Standard care
+P0026,13,32,113.3,Standard care
+P0026,14,36,120.7,Standard care
+P0026,15,40,113.9,Standard care
+P0026,16,48,110.1,Standard care
+P0026,17,52,116.7,Standard care
+P0027,0,0,133.4,Standard care
+P0027,1,1,131.7,Standard care
+P0027,2,2,127.2,Standard care
+P0027,3,3,134.6,Standard care
+P0027,4,4,129.8,Standard care
+P0027,5,6,130.3,Standard care
+P0027,6,8,131.5,Standard care
+P0027,7,10,131.8,Standard care
+P0027,8,12,131.8,Standard care
+P0027,9,16,133.6,Standard care
+P0027,10,20,130.0,Standard care
+P0027,11,24,124.7,Standard care
+P0027,12,28,133.8,Standard care
+P0027,13,32,135.2,Standard care
+P0027,14,36,132.0,Standard care
+P0027,15,40,128.3,Standard care
+P0027,16,48,131.6,Standard care
+P0027,17,52,135.1,Standard care
+P0028,0,0,140.3,Standard care
+P0028,1,1,146.3,Standard care
+P0028,2,2,140.7,Standard care
+P0028,3,3,141.4,Standard care
+P0028,4,4,142.3,Standard care
+P0028,5,6,142.0,Standard care
+P0028,6,8,140.8,Standard care
+P0028,7,10,140.1,Standard care
+P0028,8,12,147.7,Standard care
+P0028,9,16,140.5,Standard care
+P0028,10,20,140.6,Standard care
+P0028,11,24,131.6,Standard care
+P0028,12,28,142.0,Standard care
+P0028,13,32,146.1,Standard care
+P0028,14,36,146.8,Standard care
+P0028,15,40,143.2,Standard care
+P0028,16,48,146.3,Standard care
+P0028,17,52,142.2,Standard care
+P0029,0,0,143.2,Standard care
+P0029,1,1,141.0,Standard care
+P0029,2,2,141.7,Standard care
+P0029,3,3,141.2,Standard care
+P0029,4,4,142.6,Standard care
+P0029,5,6,146.2,Standard care
+P0029,6,8,145.4,Standard care
+P0029,7,10,146.8,Standard care
+P0029,8,12,144.3,Standard care
+P0029,9,16,147.8,Standard care
+P0029,10,20,148.4,Standard care
+P0029,11,24,144.5,Standard care
+P0029,12,28,147.9,Standard care
+P0029,13,32,143.5,Standard care
+P0029,14,36,147.6,Standard care
+P0029,15,40,145.1,Standard care
+P0029,16,48,144.7,Standard care
+P0029,17,52,149.6,Standard care
+P0030,0,0,117.5,Standard care
+P0030,1,1,123.1,Standard care
+P0030,2,2,125.0,Standard care
+P0030,3,3,125.8,Standard care
+P0030,4,4,120.8,Standard care
+P0030,5,6,112.5,Standard care
+P0030,6,8,115.7,Standard care
+P0030,7,10,121.2,Standard care
+P0030,8,12,117.0,Standard care
+P0030,9,16,121.0,Standard care
+P0030,10,20,121.8,Standard care
+P0030,11,24,118.6,Standard care
+P0030,12,28,120.3,Standard care
+P0030,13,32,121.7,Standard care
+P0030,14,36,123.4,Standard care
+P0030,15,40,126.5,Standard care
+P0030,16,48,120.9,Standard care
+P0030,17,52,119.5,Standard care
+P0031,0,0,120.0,Standard care
+P0031,1,1,129.8,Standard care
+P0031,2,2,124.1,Standard care
+P0031,3,3,127.9,Standard care
+P0031,4,4,124.4,Standard care
+P0031,5,6,125.7,Standard care
+P0031,6,8,123.1,Standard care
+P0031,7,10,123.3,Standard care
+P0031,8,12,125.9,Standard care
+P0031,9,16,117.4,Standard care
+P0031,10,20,126.7,Standard care
+P0031,11,24,125.3,Standard care
+P0031,12,28,125.7,Standard care
+P0031,13,32,121.7,Standard care
+P0031,14,36,121.5,Standard care
+P0031,15,40,122.9,Standard care
+P0031,16,48,126.3,Standard care
+P0031,17,52,117.7,Standard care
+P0032,0,0,143.0,Standard care
+P0032,1,1,141.2,Standard care
+P0032,2,2,145.5,Standard care
+P0032,3,3,146.3,Standard care
+P0032,4,4,157.9,Standard care
+P0032,5,6,145.2,Standard care
+P0032,6,8,142.2,Standard care
+P0032,7,10,146.9,Standard care
+P0032,8,12,146.5,Standard care
+P0032,9,16,147.0,Standard care
+P0032,10,20,143.5,Standard care
+P0032,11,24,145.8,Standard care
+P0032,12,28,146.6,Standard care
+P0032,13,32,139.3,Standard care
+P0032,14,36,144.4,Standard care
+P0032,15,40,150.8,Standard care
+P0032,16,48,144.6,Standard care
+P0032,17,52,143.7,Standard care
+P0033,0,0,149.6,Standard care
+P0033,1,1,151.3,Standard care
+P0033,2,2,141.4,Standard care
+P0033,3,3,148.2,Standard care
+P0033,4,4,149.0,Standard care
+P0033,5,6,151.5,Standard care
+P0033,6,8,147.3,Standard care
+P0033,7,10,144.3,Standard care
+P0033,8,12,147.5,Standard care
+P0033,9,16,157.6,Standard care
+P0033,10,20,154.1,Standard care
+P0033,11,24,152.3,Standard care
+P0033,12,28,146.5,Standard care
+P0033,13,32,150.2,Standard care
+P0033,14,36,144.7,Standard care
+P0033,15,40,152.0,Standard care
+P0033,16,48,150.4,Standard care
+P0033,17,52,151.2,Standard care
+P0034,0,0,130.1,Standard care
+P0034,1,1,133.3,Standard care
+P0034,2,2,125.8,Standard care
+P0034,3,3,130.8,Standard care
+P0034,4,4,130.9,Standard care
+P0034,5,6,123.2,Standard care
+P0034,6,8,127.2,Standard care
+P0034,7,10,129.4,Standard care
+P0034,8,12,127.9,Standard care
+P0034,9,16,131.8,Standard care
+P0034,10,20,132.0,Standard care
+P0034,11,24,128.8,Standard care
+P0034,12,28,130.6,Standard care
+P0034,13,32,132.5,Standard care
+P0034,14,36,131.5,Standard care
+P0034,15,40,127.5,Standard care
+P0034,16,48,131.1,Standard care
+P0034,17,52,131.5,Standard care
+P0035,0,0,142.2,Standard care
+P0035,1,1,144.0,Standard care
+P0035,2,2,145.0,Standard care
+P0035,3,3,149.0,Standard care
+P0035,4,4,136.3,Standard care
+P0035,5,6,143.5,Standard care
+P0035,6,8,143.4,Standard care
+P0035,7,10,143.5,Standard care
+P0035,8,12,140.8,Standard care
+P0035,9,16,141.0,Standard care
+P0035,10,20,144.3,Standard care
+P0035,11,24,145.0,Standard care
+P0035,12,28,138.6,Standard care
+P0035,13,32,139.1,Standard care
+P0035,14,36,138.9,Standard care
+P0035,15,40,142.6,Standard care
+P0035,16,48,141.0,Standard care
+P0035,17,52,144.5,Standard care
+P0036,0,0,136.3,Standard care
+P0036,1,1,135.2,Standard care
+P0036,2,2,140.7,Standard care
+P0036,3,3,137.1,Standard care
+P0036,4,4,137.1,Standard care
+P0036,5,6,133.9,Standard care
+P0036,6,8,136.1,Standard care
+P0036,7,10,135.2,Standard care
+P0036,8,12,139.1,Standard care
+P0036,9,16,150.8,Standard care
+P0036,10,20,136.2,Standard care
+P0036,11,24,134.2,Standard care
+P0036,12,28,140.0,Standard care
+P0036,13,32,138.0,Standard care
+P0036,14,36,139.6,Standard care
+P0036,15,40,139.7,Standard care
+P0036,16,48,139.4,Standard care
+P0036,17,52,137.6,Standard care
+P0037,0,0,137.6,Standard care
+P0037,1,1,139.4,Standard care
+P0037,2,2,140.7,Standard care
+P0037,3,3,145.4,Standard care
+P0037,4,4,144.4,Standard care
+P0037,5,6,142.8,Standard care
+P0037,6,8,148.1,Standard care
+P0037,7,10,136.8,Standard care
+P0037,8,12,140.2,Standard care
+P0037,9,16,144.5,Standard care
+P0037,10,20,144.4,Standard care
+P0037,11,24,144.1,Standard care
+P0037,12,28,141.5,Standard care
+P0037,13,32,142.8,Standard care
+P0037,14,36,144.5,Standard care
+P0037,15,40,145.5,Standard care
+P0037,16,48,142.1,Standard care
+P0037,17,52,137.8,Standard care
+P0038,0,0,139.8,Standard care
+P0038,1,1,139.0,Standard care
+P0038,2,2,135.2,Standard care
+P0038,3,3,137.2,Standard care
+P0038,4,4,142.1,Standard care
+P0038,5,6,142.1,Standard care
+P0038,6,8,137.2,Standard care
+P0038,7,10,142.9,Standard care
+P0038,8,12,142.0,Standard care
+P0038,9,16,139.8,Standard care
+P0038,10,20,136.8,Standard care
+P0038,11,24,142.6,Standard care
+P0038,12,28,143.3,Standard care
+P0038,13,32,144.6,Standard care
+P0038,14,36,138.5,Standard care
+P0038,15,40,138.5,Standard care
+P0038,16,48,144.5,Standard care
+P0038,17,52,137.6,Standard care
+P0039,0,0,142.5,Standard care
+P0039,1,1,144.2,Standard care
+P0039,2,2,145.2,Standard care
+P0039,3,3,141.7,Standard care
+P0039,4,4,147.6,Standard care
+P0039,5,6,146.6,Standard care
+P0039,6,8,152.0,Standard care
+P0039,7,10,143.7,Standard care
+P0039,8,12,138.3,Standard care
+P0039,9,16,141.5,Standard care
+P0039,10,20,144.3,Standard care
+P0039,11,24,145.9,Standard care
+P0039,12,28,144.2,Standard care
+P0039,13,32,138.5,Standard care
+P0039,14,36,143.0,Standard care
+P0039,15,40,148.4,Standard care
+P0039,16,48,145.3,Standard care
+P0039,17,52,141.5,Standard care
+P0040,0,0,129.9,Standard care
+P0040,1,1,130.3,Standard care
+P0040,2,2,128.9,Standard care
+P0040,3,3,132.5,Standard care
+P0040,4,4,129.7,Standard care
+P0040,5,6,129.6,Standard care
+P0040,6,8,125.3,Standard care
+P0040,7,10,131.5,Standard care
+P0040,8,12,133.7,Standard care
+P0040,9,16,123.5,Standard care
+P0040,10,20,126.9,Standard care
+P0040,11,24,125.7,Standard care
+P0040,12,28,135.5,Standard care
+P0040,13,32,128.2,Standard care
+P0040,14,36,126.7,Standard care
+P0040,15,40,134.7,Standard care
+P0040,16,48,122.5,Standard care
+P0040,17,52,121.6,Standard care
+P0041,0,0,123.4,Standard care
+P0041,1,1,119.4,Standard care
+P0041,2,2,117.2,Standard care
+P0041,3,3,125.6,Standard care
+P0041,4,4,116.9,Standard care
+P0041,5,6,118.2,Standard care
+P0041,6,8,125.1,Standard care
+P0041,7,10,113.2,Standard care
+P0041,8,12,111.5,Standard care
+P0041,9,16,118.6,Standard care
+P0041,10,20,121.2,Standard care
+P0041,11,24,116.3,Standard care
+P0041,12,28,113.0,Standard care
+P0041,13,32,115.5,Standard care
+P0041,14,36,115.5,Standard care
+P0041,15,40,118.9,Standard care
+P0041,16,48,117.2,Standard care
+P0041,17,52,112.1,Standard care
+P0042,0,0,141.2,Standard care
+P0042,1,1,143.0,Standard care
+P0042,2,2,145.0,Standard care
+P0042,3,3,146.8,Standard care
+P0042,4,4,143.4,Standard care
+P0042,5,6,140.1,Standard care
+P0042,6,8,143.9,Standard care
+P0042,7,10,147.2,Standard care
+P0042,8,12,144.4,Standard care
+P0042,9,16,143.6,Standard care
+P0042,10,20,138.5,Standard care
+P0042,11,24,140.7,Standard care
+P0042,12,28,143.8,Standard care
+P0042,13,32,139.1,Standard care
+P0042,14,36,140.1,Standard care
+P0042,15,40,138.5,Standard care
+P0042,16,48,138.9,Standard care
+P0042,17,52,143.3,Standard care
+P0043,0,0,150.0,Standard care
+P0043,1,1,149.6,Standard care
+P0043,2,2,146.2,Standard care
+P0043,3,3,145.8,Standard care
+P0043,4,4,143.9,Standard care
+P0043,5,6,147.6,Standard care
+P0043,6,8,146.8,Standard care
+P0043,7,10,147.4,Standard care
+P0043,8,12,146.3,Standard care
+P0043,9,16,151.6,Standard care
+P0043,10,20,149.4,Standard care
+P0043,11,24,152.0,Standard care
+P0043,12,28,146.6,Standard care
+P0043,13,32,146.5,Standard care
+P0043,14,36,147.3,Standard care
+P0043,15,40,151.4,Standard care
+P0043,16,48,145.8,Standard care
+P0043,17,52,147.5,Standard care
+P0044,0,0,146.2,Standard care
+P0044,1,1,146.3,Standard care
+P0044,2,2,144.8,Standard care
+P0044,3,3,145.0,Standard care
+P0044,4,4,144.2,Standard care
+P0044,5,6,143.3,Standard care
+P0044,6,8,141.6,Standard care
+P0044,7,10,146.2,Standard care
+P0044,8,12,147.7,Standard care
+P0044,9,16,149.8,Standard care
+P0044,10,20,143.4,Standard care
+P0044,11,24,140.7,Standard care
+P0044,12,28,144.9,Standard care
+P0044,13,32,146.4,Standard care
+P0044,14,36,148.4,Standard care
+P0044,15,40,147.9,Standard care
+P0044,16,48,147.6,Standard care
+P0044,17,52,150.2,Standard care
+P0045,0,0,133.7,Intensive therapy
+P0045,1,1,131.5,Intensive therapy
+P0045,2,2,134.2,Intensive therapy
+P0045,3,3,128.5,Intensive therapy
+P0045,4,4,129.4,Intensive therapy
+P0045,5,6,128.9,Intensive therapy
+P0045,6,8,126.3,Intensive therapy
+P0045,7,10,123.9,Intensive therapy
+P0045,8,12,117.7,Intensive therapy
+P0045,9,16,125.4,Intensive therapy
+P0045,10,20,126.3,Intensive therapy
+P0045,11,24,128.1,Intensive therapy
+P0045,12,28,119.7,Intensive therapy
+P0045,13,32,123.7,Intensive therapy
+P0045,14,36,114.8,Intensive therapy
+P0045,15,40,126.7,Intensive therapy
+P0045,16,48,121.1,Intensive therapy
+P0045,17,52,124.1,Intensive therapy
+P0046,0,0,149.5,Intensive therapy
+P0046,1,1,142.4,Intensive therapy
+P0046,2,2,147.7,Intensive therapy
+P0046,3,3,143.6,Intensive therapy
+P0046,4,4,154.1,Intensive therapy
+P0046,5,6,144.5,Intensive therapy
+P0046,6,8,141.9,Intensive therapy
+P0046,7,10,140.3,Intensive therapy
+P0046,8,12,138.5,Intensive therapy
+P0046,9,16,141.5,Intensive therapy
+P0046,10,20,145.1,Intensive therapy
+P0046,11,24,140.3,Intensive therapy
+P0046,12,28,144.2,Intensive therapy
+P0046,13,32,143.1,Intensive therapy
+P0046,14,36,143.1,Intensive therapy
+P0046,15,40,141.9,Intensive therapy
+P0046,16,48,140.2,Intensive therapy
+P0046,17,52,138.9,Intensive therapy
+P0047,0,0,126.3,Intensive therapy
+P0047,1,1,125.8,Intensive therapy
+P0047,2,2,127.7,Intensive therapy
+P0047,3,3,124.3,Intensive therapy
+P0047,4,4,123.3,Intensive therapy
+P0047,5,6,128.1,Intensive therapy
+P0047,6,8,128.9,Intensive therapy
+P0047,7,10,129.0,Intensive therapy
+P0047,8,12,129.1,Intensive therapy
+P0047,9,16,124.8,Intensive therapy
+P0047,10,20,121.9,Intensive therapy
+P0047,11,24,124.9,Intensive therapy
+P0047,12,28,127.2,Intensive therapy
+P0047,13,32,120.4,Intensive therapy
+P0047,14,36,118.7,Intensive therapy
+P0047,15,40,119.6,Intensive therapy
+P0047,16,48,120.2,Intensive therapy
+P0047,17,52,120.6,Intensive therapy
+P0048,0,0,134.0,Intensive therapy
+P0048,1,1,135.9,Intensive therapy
+P0048,2,2,139.0,Intensive therapy
+P0048,3,3,133.4,Intensive therapy
+P0048,4,4,131.0,Intensive therapy
+P0048,5,6,135.6,Intensive therapy
+P0048,6,8,139.7,Intensive therapy
+P0048,7,10,135.2,Intensive therapy
+P0048,8,12,135.6,Intensive therapy
+P0048,9,16,127.8,Intensive therapy
+P0048,10,20,125.7,Intensive therapy
+P0048,11,24,128.4,Intensive therapy
+P0048,12,28,129.6,Intensive therapy
+P0048,13,32,132.1,Intensive therapy
+P0048,14,36,125.6,Intensive therapy
+P0048,15,40,130.7,Intensive therapy
+P0048,16,48,132.2,Intensive therapy
+P0048,17,52,132.2,Intensive therapy
+P0049,0,0,137.4,Intensive therapy
+P0049,1,1,140.3,Intensive therapy
+P0049,2,2,141.2,Intensive therapy
+P0049,3,3,141.9,Intensive therapy
+P0049,4,4,132.9,Intensive therapy
+P0049,5,6,131.7,Intensive therapy
+P0049,6,8,142.8,Intensive therapy
+P0049,7,10,144.7,Intensive therapy
+P0049,8,12,151.8,Intensive therapy
+P0049,9,16,137.0,Intensive therapy
+P0049,10,20,131.5,Intensive therapy
+P0049,11,24,140.6,Intensive therapy
+P0049,12,28,139.5,Intensive therapy
+P0049,13,32,140.6,Intensive therapy
+P0049,14,36,138.4,Intensive therapy
+P0049,15,40,136.2,Intensive therapy
+P0049,16,48,147.6,Intensive therapy
+P0049,17,52,141.9,Intensive therapy
+P0050,0,0,131.6,Intensive therapy
+P0050,1,1,128.0,Intensive therapy
+P0050,2,2,130.0,Intensive therapy
+P0050,3,3,130.3,Intensive therapy
+P0050,4,4,130.1,Intensive therapy
+P0050,5,6,132.6,Intensive therapy
+P0050,6,8,137.4,Intensive therapy
+P0050,7,10,136.9,Intensive therapy
+P0050,8,12,136.2,Intensive therapy
+P0050,9,16,132.6,Intensive therapy
+P0050,10,20,133.6,Intensive therapy
+P0050,11,24,127.6,Intensive therapy
+P0050,12,28,135.4,Intensive therapy
+P0050,13,32,138.5,Intensive therapy
+P0050,14,36,135.5,Intensive therapy
+P0050,15,40,130.7,Intensive therapy
+P0050,16,48,134.0,Intensive therapy
+P0050,17,52,138.5,Intensive therapy
+P0051,0,0,147.8,Intensive therapy
+P0051,1,1,150.2,Intensive therapy
+P0051,2,2,152.6,Intensive therapy
+P0051,3,3,150.2,Intensive therapy
+P0051,4,4,155.6,Intensive therapy
+P0051,5,6,144.2,Intensive therapy
+P0051,6,8,142.9,Intensive therapy
+P0051,7,10,147.9,Intensive therapy
+P0051,8,12,143.7,Intensive therapy
+P0051,9,16,144.5,Intensive therapy
+P0051,10,20,151.7,Intensive therapy
+P0051,11,24,148.3,Intensive therapy
+P0051,12,28,146.8,Intensive therapy
+P0051,13,32,144.3,Intensive therapy
+P0051,14,36,139.0,Intensive therapy
+P0051,15,40,146.3,Intensive therapy
+P0051,16,48,145.8,Intensive therapy
+P0051,17,52,137.1,Intensive therapy
+P0052,0,0,158.1,Intensive therapy
+P0052,1,1,147.9,Intensive therapy
+P0052,2,2,148.4,Intensive therapy
+P0052,3,3,150.4,Intensive therapy
+P0052,4,4,155.3,Intensive therapy
+P0052,5,6,154.3,Intensive therapy
+P0052,6,8,152.1,Intensive therapy
+P0052,7,10,158.3,Intensive therapy
+P0052,8,12,157.5,Intensive therapy
+P0052,9,16,153.8,Intensive therapy
+P0052,10,20,152.5,Intensive therapy
+P0052,11,24,153.5,Intensive therapy
+P0052,12,28,155.8,Intensive therapy
+P0052,13,32,154.6,Intensive therapy
+P0052,14,36,155.2,Intensive therapy
+P0052,15,40,155.1,Intensive therapy
+P0052,16,48,157.1,Intensive therapy
+P0052,17,52,157.9,Intensive therapy
+P0053,0,0,127.2,Intensive therapy
+P0053,1,1,131.6,Intensive therapy
+P0053,2,2,128.2,Intensive therapy
+P0053,3,3,127.6,Intensive therapy
+P0053,4,4,137.6,Intensive therapy
+P0053,5,6,129.5,Intensive therapy
+P0053,6,8,133.2,Intensive therapy
+P0053,7,10,132.0,Intensive therapy
+P0053,8,12,130.7,Intensive therapy
+P0053,9,16,125.4,Intensive therapy
+P0053,10,20,126.3,Intensive therapy
+P0053,11,24,123.3,Intensive therapy
+P0053,12,28,129.3,Intensive therapy
+P0053,13,32,128.1,Intensive therapy
+P0053,14,36,124.1,Intensive therapy
+P0053,15,40,125.9,Intensive therapy
+P0053,16,48,127.0,Intensive therapy
+P0053,17,52,131.3,Intensive therapy
+P0054,0,0,127.5,Intensive therapy
+P0054,1,1,126.7,Intensive therapy
+P0054,2,2,126.7,Intensive therapy
+P0054,3,3,126.5,Intensive therapy
+P0054,4,4,111.9,Intensive therapy
+P0054,5,6,131.5,Intensive therapy
+P0054,6,8,131.4,Intensive therapy
+P0054,7,10,127.8,Intensive therapy
+P0054,8,12,123.3,Intensive therapy
+P0054,9,16,128.2,Intensive therapy
+P0054,10,20,128.1,Intensive therapy
+P0054,11,24,123.7,Intensive therapy
+P0054,12,28,127.6,Intensive therapy
+P0054,13,32,123.2,Intensive therapy
+P0054,14,36,128.5,Intensive therapy
+P0054,15,40,124.5,Intensive therapy
+P0054,16,48,128.4,Intensive therapy
+P0054,17,52,130.7,Intensive therapy
+P0055,0,0,144.6,Intensive therapy
+P0055,1,1,143.9,Intensive therapy
+P0055,2,2,141.7,Intensive therapy
+P0055,3,3,143.7,Intensive therapy
+P0055,4,4,140.0,Intensive therapy
+P0055,5,6,149.0,Intensive therapy
+P0055,6,8,141.2,Intensive therapy
+P0055,7,10,140.7,Intensive therapy
+P0055,8,12,129.1,Intensive therapy
+P0055,9,16,124.3,Intensive therapy
+P0055,10,20,139.2,Intensive therapy
+P0055,11,24,140.7,Intensive therapy
+P0055,12,28,142.9,Intensive therapy
+P0055,13,32,140.8,Intensive therapy
+P0055,14,36,137.5,Intensive therapy
+P0055,15,40,139.4,Intensive therapy
+P0055,16,48,144.5,Intensive therapy
+P0055,17,52,142.5,Intensive therapy
+P0056,0,0,128.4,Intensive therapy
+P0056,1,1,125.2,Intensive therapy
+P0056,2,2,123.8,Intensive therapy
+P0056,3,3,127.8,Intensive therapy
+P0056,4,4,124.7,Intensive therapy
+P0056,5,6,124.3,Intensive therapy
+P0056,6,8,120.8,Intensive therapy
+P0056,7,10,122.2,Intensive therapy
+P0056,8,12,120.7,Intensive therapy
+P0056,9,16,121.4,Intensive therapy
+P0056,10,20,125.2,Intensive therapy
+P0056,11,24,116.6,Intensive therapy
+P0056,12,28,118.7,Intensive therapy
+P0056,13,32,122.6,Intensive therapy
+P0056,14,36,121.8,Intensive therapy
+P0056,15,40,128.4,Intensive therapy
+P0056,16,48,116.2,Intensive therapy
+P0056,17,52,120.7,Intensive therapy
+P0057,0,0,134.3,Intensive therapy
+P0057,1,1,135.2,Intensive therapy
+P0057,2,2,136.9,Intensive therapy
+P0057,3,3,144.6,Intensive therapy
+P0057,4,4,138.3,Intensive therapy
+P0057,5,6,140.0,Intensive therapy
+P0057,6,8,134.4,Intensive therapy
+P0057,7,10,132.8,Intensive therapy
+P0057,8,12,136.0,Intensive therapy
+P0057,9,16,136.3,Intensive therapy
+P0057,10,20,144.5,Intensive therapy
+P0057,11,24,138.2,Intensive therapy
+P0057,12,28,140.0,Intensive therapy
+P0057,13,32,136.9,Intensive therapy
+P0057,14,36,135.9,Intensive therapy
+P0057,15,40,135.3,Intensive therapy
+P0057,16,48,135.8,Intensive therapy
+P0057,17,52,133.6,Intensive therapy
+P0058,0,0,144.1,Intensive therapy
+P0058,1,1,149.5,Intensive therapy
+P0058,2,2,145.8,Intensive therapy
+P0058,3,3,145.6,Intensive therapy
+P0058,4,4,135.4,Intensive therapy
+P0058,5,6,142.3,Intensive therapy
+P0058,6,8,138.0,Intensive therapy
+P0058,7,10,144.0,Intensive therapy
+P0058,8,12,142.2,Intensive therapy
+P0058,9,16,139.8,Intensive therapy
+P0058,10,20,143.8,Intensive therapy
+P0058,11,24,147.3,Intensive therapy
+P0058,12,28,140.8,Intensive therapy
+P0058,13,32,139.2,Intensive therapy
+P0058,14,36,140.9,Intensive therapy
+P0058,15,40,144.7,Intensive therapy
+P0058,16,48,139.4,Intensive therapy
+P0058,17,52,137.1,Intensive therapy
+P0059,0,0,133.4,Intensive therapy
+P0059,1,1,136.1,Intensive therapy
+P0059,2,2,140.9,Intensive therapy
+P0059,3,3,134.3,Intensive therapy
+P0059,4,4,141.6,Intensive therapy
+P0059,5,6,140.8,Intensive therapy
+P0059,6,8,142.9,Intensive therapy
+P0059,7,10,135.2,Intensive therapy
+P0059,8,12,140.1,Intensive therapy
+P0059,9,16,131.5,Intensive therapy
+P0059,10,20,138.4,Intensive therapy
+P0059,11,24,142.0,Intensive therapy
+P0059,12,28,142.4,Intensive therapy
+P0059,13,32,136.9,Intensive therapy
+P0059,14,36,135.0,Intensive therapy
+P0059,15,40,135.8,Intensive therapy
+P0059,16,48,139.4,Intensive therapy
+P0059,17,52,138.1,Intensive therapy
+P0060,0,0,152.0,Intensive therapy
+P0060,1,1,144.2,Intensive therapy
+P0060,2,2,144.8,Intensive therapy
+P0060,3,3,145.2,Intensive therapy
+P0060,4,4,145.9,Intensive therapy
+P0060,5,6,142.4,Intensive therapy
+P0060,6,8,142.0,Intensive therapy
+P0060,7,10,137.3,Intensive therapy
+P0060,8,12,142.7,Intensive therapy
+P0060,9,16,144.3,Intensive therapy
+P0060,10,20,143.9,Intensive therapy
+P0060,11,24,149.5,Intensive therapy
+P0060,12,28,145.3,Intensive therapy
+P0060,13,32,139.8,Intensive therapy
+P0060,14,36,145.7,Intensive therapy
+P0060,15,40,148.3,Intensive therapy
+P0060,16,48,139.1,Intensive therapy
+P0060,17,52,137.2,Intensive therapy
+P0061,0,0,154.5,Intensive therapy
+P0061,1,1,147.0,Intensive therapy
+P0061,2,2,147.4,Intensive therapy
+P0061,3,3,146.3,Intensive therapy
+P0061,4,4,149.9,Intensive therapy
+P0061,5,6,147.5,Intensive therapy
+P0061,6,8,148.2,Intensive therapy
+P0061,7,10,147.4,Intensive therapy
+P0061,8,12,142.7,Intensive therapy
+P0061,9,16,146.4,Intensive therapy
+P0061,10,20,147.0,Intensive therapy
+P0061,11,24,146.9,Intensive therapy
+P0061,12,28,141.1,Intensive therapy
+P0061,13,32,141.9,Intensive therapy
+P0061,14,36,144.8,Intensive therapy
+P0061,15,40,143.3,Intensive therapy
+P0061,16,48,143.2,Intensive therapy
+P0061,17,52,142.1,Intensive therapy
+P0062,0,0,116.7,Intensive therapy
+P0062,1,1,117.0,Intensive therapy
+P0062,2,2,117.8,Intensive therapy
+P0062,3,3,119.2,Intensive therapy
+P0062,4,4,112.5,Intensive therapy
+P0062,5,6,107.5,Intensive therapy
+P0062,6,8,108.7,Intensive therapy
+P0062,7,10,113.5,Intensive therapy
+P0062,8,12,113.9,Intensive therapy
+P0062,9,16,113.3,Intensive therapy
+P0062,10,20,115.9,Intensive therapy
+P0062,11,24,113.0,Intensive therapy
+P0062,12,28,112.0,Intensive therapy
+P0062,13,32,113.1,Intensive therapy
+P0062,14,36,115.9,Intensive therapy
+P0062,15,40,115.1,Intensive therapy
+P0062,16,48,112.2,Intensive therapy
+P0062,17,52,109.4,Intensive therapy
+P0063,0,0,134.5,Intensive therapy
+P0063,1,1,131.4,Intensive therapy
+P0063,2,2,132.2,Intensive therapy
+P0063,3,3,131.8,Intensive therapy
+P0063,4,4,130.8,Intensive therapy
+P0063,5,6,131.6,Intensive therapy
+P0063,6,8,127.3,Intensive therapy
+P0063,7,10,124.3,Intensive therapy
+P0063,8,12,125.2,Intensive therapy
+P0063,9,16,129.4,Intensive therapy
+P0063,10,20,128.9,Intensive therapy
+P0063,11,24,125.2,Intensive therapy
+P0063,12,28,128.5,Intensive therapy
+P0063,13,32,122.5,Intensive therapy
+P0063,14,36,123.3,Intensive therapy
+P0063,15,40,130.8,Intensive therapy
+P0063,16,48,124.7,Intensive therapy
+P0063,17,52,123.2,Intensive therapy
+P0064,0,0,145.5,Intensive therapy
+P0064,1,1,145.4,Intensive therapy
+P0064,2,2,148.2,Intensive therapy
+P0064,3,3,143.7,Intensive therapy
+P0064,4,4,150.6,Intensive therapy
+P0064,5,6,145.1,Intensive therapy
+P0064,6,8,151.9,Intensive therapy
+P0064,7,10,149.7,Intensive therapy
+P0064,8,12,149.8,Intensive therapy
+P0064,9,16,151.2,Intensive therapy
+P0064,10,20,151.8,Intensive therapy
+P0064,11,24,140.2,Intensive therapy
+P0064,12,28,149.6,Intensive therapy
+P0064,13,32,150.8,Intensive therapy
+P0064,14,36,146.1,Intensive therapy
+P0064,15,40,145.3,Intensive therapy
+P0064,16,48,149.4,Intensive therapy
+P0064,17,52,146.8,Intensive therapy
+P0065,0,0,146.0,Intensive therapy
+P0065,1,1,144.5,Intensive therapy
+P0065,2,2,149.8,Intensive therapy
+P0065,3,3,152.3,Intensive therapy
+P0065,4,4,152.7,Intensive therapy
+P0065,5,6,151.3,Intensive therapy
+P0065,6,8,151.2,Intensive therapy
+P0065,7,10,156.3,Intensive therapy
+P0065,8,12,157.1,Intensive therapy
+P0065,9,16,149.8,Intensive therapy
+P0065,10,20,149.2,Intensive therapy
+P0065,11,24,152.0,Intensive therapy
+P0065,12,28,154.5,Intensive therapy
+P0065,13,32,146.6,Intensive therapy
+P0065,14,36,147.0,Intensive therapy
+P0065,15,40,145.1,Intensive therapy
+P0065,16,48,151.7,Intensive therapy
+P0065,17,52,152.8,Intensive therapy
+P0066,0,0,152.9,Intensive therapy
+P0066,1,1,147.4,Intensive therapy
+P0066,2,2,149.6,Intensive therapy
+P0066,3,3,145.5,Intensive therapy
+P0066,4,4,155.6,Intensive therapy
+P0066,5,6,147.9,Intensive therapy
+P0066,6,8,143.4,Intensive therapy
+P0066,7,10,136.9,Intensive therapy
+P0066,8,12,146.3,Intensive therapy
+P0066,9,16,144.1,Intensive therapy
+P0066,10,20,143.7,Intensive therapy
+P0066,11,24,145.8,Intensive therapy
+P0066,12,28,142.1,Intensive therapy
+P0066,13,32,144.8,Intensive therapy
+P0066,14,36,149.3,Intensive therapy
+P0066,15,40,144.8,Intensive therapy
+P0066,16,48,141.9,Intensive therapy
+P0066,17,52,144.0,Intensive therapy
+P0067,0,0,143.8,Combination therapy
+P0067,1,1,142.1,Combination therapy
+P0067,2,2,141.6,Combination therapy
+P0067,3,3,127.4,Combination therapy
+P0067,4,4,141.6,Combination therapy
+P0067,5,6,139.0,Combination therapy
+P0067,6,8,138.0,Combination therapy
+P0067,7,10,131.0,Combination therapy
+P0067,8,12,130.4,Combination therapy
+P0067,9,16,135.5,Combination therapy
+P0067,10,20,136.6,Combination therapy
+P0067,11,24,140.0,Combination therapy
+P0067,12,28,135.1,Combination therapy
+P0067,13,32,132.7,Combination therapy
+P0067,14,36,136.5,Combination therapy
+P0067,15,40,137.2,Combination therapy
+P0067,16,48,134.9,Combination therapy
+P0067,17,52,130.6,Combination therapy
+P0068,0,0,127.6,Combination therapy
+P0068,1,1,122.8,Combination therapy
+P0068,2,2,122.0,Combination therapy
+P0068,3,3,122.5,Combination therapy
+P0068,4,4,125.4,Combination therapy
+P0068,5,6,124.8,Combination therapy
+P0068,6,8,125.0,Combination therapy
+P0068,7,10,128.6,Combination therapy
+P0068,8,12,132.1,Combination therapy
+P0068,9,16,130.3,Combination therapy
+P0068,10,20,127.3,Combination therapy
+P0068,11,24,117.8,Combination therapy
+P0068,12,28,125.5,Combination therapy
+P0068,13,32,126.6,Combination therapy
+P0068,14,36,130.3,Combination therapy
+P0068,15,40,118.5,Combination therapy
+P0068,16,48,125.7,Combination therapy
+P0068,17,52,130.2,Combination therapy
+P0069,0,0,124.5,Combination therapy
+P0069,1,1,115.8,Combination therapy
+P0069,2,2,125.0,Combination therapy
+P0069,3,3,118.2,Combination therapy
+P0069,4,4,114.5,Combination therapy
+P0069,5,6,122.0,Combination therapy
+P0069,6,8,121.7,Combination therapy
+P0069,7,10,122.2,Combination therapy
+P0069,8,12,133.4,Combination therapy
+P0069,9,16,118.6,Combination therapy
+P0069,10,20,119.6,Combination therapy
+P0069,11,24,116.7,Combination therapy
+P0069,12,28,119.9,Combination therapy
+P0069,13,32,112.7,Combination therapy
+P0069,14,36,120.5,Combination therapy
+P0069,15,40,110.2,Combination therapy
+P0069,16,48,120.4,Combination therapy
+P0069,17,52,119.9,Combination therapy
+P0070,0,0,142.0,Combination therapy
+P0070,1,1,149.1,Combination therapy
+P0070,2,2,141.7,Combination therapy
+P0070,3,3,143.0,Combination therapy
+P0070,4,4,140.5,Combination therapy
+P0070,5,6,139.1,Combination therapy
+P0070,6,8,138.8,Combination therapy
+P0070,7,10,135.6,Combination therapy
+P0070,8,12,131.9,Combination therapy
+P0070,9,16,139.8,Combination therapy
+P0070,10,20,141.2,Combination therapy
+P0070,11,24,138.0,Combination therapy
+P0070,12,28,135.2,Combination therapy
+P0070,13,32,134.6,Combination therapy
+P0070,14,36,140.3,Combination therapy
+P0070,15,40,141.7,Combination therapy
+P0070,16,48,135.6,Combination therapy
+P0070,17,52,133.3,Combination therapy
+P0071,0,0,145.8,Combination therapy
+P0071,1,1,144.0,Combination therapy
+P0071,2,2,142.1,Combination therapy
+P0071,3,3,141.7,Combination therapy
+P0071,4,4,140.4,Combination therapy
+P0071,5,6,142.6,Combination therapy
+P0071,6,8,140.6,Combination therapy
+P0071,7,10,138.9,Combination therapy
+P0071,8,12,147.5,Combination therapy
+P0071,9,16,144.9,Combination therapy
+P0071,10,20,145.1,Combination therapy
+P0071,11,24,136.3,Combination therapy
+P0071,12,28,140.2,Combination therapy
+P0071,13,32,143.9,Combination therapy
+P0071,14,36,136.2,Combination therapy
+P0071,15,40,138.5,Combination therapy
+P0071,16,48,136.0,Combination therapy
+P0071,17,52,144.7,Combination therapy
+P0072,0,0,139.5,Combination therapy
+P0072,1,1,135.7,Combination therapy
+P0072,2,2,139.7,Combination therapy
+P0072,3,3,138.3,Combination therapy
+P0072,4,4,137.1,Combination therapy
+P0072,5,6,145.7,Combination therapy
+P0072,6,8,145.7,Combination therapy
+P0072,7,10,140.4,Combination therapy
+P0072,8,12,142.7,Combination therapy
+P0072,9,16,136.3,Combination therapy
+P0072,10,20,135.1,Combination therapy
+P0072,11,24,140.3,Combination therapy
+P0072,12,28,137.0,Combination therapy
+P0072,13,32,142.5,Combination therapy
+P0072,14,36,134.4,Combination therapy
+P0072,15,40,131.0,Combination therapy
+P0072,16,48,145.7,Combination therapy
+P0072,17,52,144.8,Combination therapy
+P0073,0,0,139.6,Combination therapy
+P0073,1,1,137.7,Combination therapy
+P0073,2,2,125.2,Combination therapy
+P0073,3,3,131.3,Combination therapy
+P0073,4,4,136.3,Combination therapy
+P0073,5,6,134.5,Combination therapy
+P0073,6,8,129.4,Combination therapy
+P0073,7,10,127.8,Combination therapy
+P0073,8,12,132.2,Combination therapy
+P0073,9,16,131.3,Combination therapy
+P0073,10,20,128.5,Combination therapy
+P0073,11,24,131.0,Combination therapy
+P0073,12,28,128.7,Combination therapy
+P0073,13,32,131.9,Combination therapy
+P0073,14,36,130.7,Combination therapy
+P0073,15,40,136.2,Combination therapy
+P0073,16,48,130.5,Combination therapy
+P0073,17,52,127.6,Combination therapy
+P0074,0,0,138.1,Combination therapy
+P0074,1,1,134.3,Combination therapy
+P0074,2,2,134.1,Combination therapy
+P0074,3,3,130.0,Combination therapy
+P0074,4,4,140.5,Combination therapy
+P0074,5,6,128.2,Combination therapy
+P0074,6,8,140.9,Combination therapy
+P0074,7,10,140.1,Combination therapy
+P0074,8,12,134.7,Combination therapy
+P0074,9,16,138.5,Combination therapy
+P0074,10,20,131.9,Combination therapy
+P0074,11,24,141.8,Combination therapy
+P0074,12,28,139.1,Combination therapy
+P0074,13,32,137.3,Combination therapy
+P0074,14,36,134.3,Combination therapy
+P0074,15,40,133.8,Combination therapy
+P0074,16,48,135.3,Combination therapy
+P0074,17,52,140.0,Combination therapy
+P0075,0,0,133.2,Combination therapy
+P0075,1,1,132.0,Combination therapy
+P0075,2,2,129.9,Combination therapy
+P0075,3,3,133.2,Combination therapy
+P0075,4,4,128.6,Combination therapy
+P0075,5,6,129.0,Combination therapy
+P0075,6,8,129.8,Combination therapy
+P0075,7,10,124.1,Combination therapy
+P0075,8,12,130.5,Combination therapy
+P0075,9,16,132.3,Combination therapy
+P0075,10,20,129.7,Combination therapy
+P0075,11,24,126.5,Combination therapy
+P0075,12,28,126.4,Combination therapy
+P0075,13,32,130.9,Combination therapy
+P0075,14,36,130.3,Combination therapy
+P0075,15,40,129.6,Combination therapy
+P0075,16,48,124.4,Combination therapy
+P0075,17,52,131.6,Combination therapy
+P0076,0,0,139.3,Combination therapy
+P0076,1,1,139.7,Combination therapy
+P0076,2,2,140.8,Combination therapy
+P0076,3,3,132.1,Combination therapy
+P0076,4,4,135.9,Combination therapy
+P0076,5,6,142.0,Combination therapy
+P0076,6,8,137.9,Combination therapy
+P0076,7,10,135.2,Combination therapy
+P0076,8,12,137.2,Combination therapy
+P0076,9,16,133.9,Combination therapy
+P0076,10,20,140.5,Combination therapy
+P0076,11,24,138.2,Combination therapy
+P0076,12,28,140.9,Combination therapy
+P0076,13,32,135.5,Combination therapy
+P0076,14,36,134.3,Combination therapy
+P0076,15,40,134.5,Combination therapy
+P0076,16,48,137.9,Combination therapy
+P0076,17,52,135.2,Combination therapy
+P0077,0,0,144.5,Combination therapy
+P0077,1,1,140.7,Combination therapy
+P0077,2,2,138.0,Combination therapy
+P0077,3,3,140.6,Combination therapy
+P0077,4,4,142.7,Combination therapy
+P0077,5,6,151.1,Combination therapy
+P0077,6,8,146.8,Combination therapy
+P0077,7,10,152.2,Combination therapy
+P0077,8,12,144.0,Combination therapy
+P0077,9,16,150.2,Combination therapy
+P0077,10,20,146.8,Combination therapy
+P0077,11,24,145.9,Combination therapy
+P0077,12,28,140.8,Combination therapy
+P0077,13,32,148.3,Combination therapy
+P0077,14,36,148.9,Combination therapy
+P0077,15,40,143.9,Combination therapy
+P0077,16,48,145.5,Combination therapy
+P0077,17,52,151.3,Combination therapy
+P0078,0,0,129.5,Combination therapy
+P0078,1,1,132.2,Combination therapy
+P0078,2,2,128.0,Combination therapy
+P0078,3,3,128.4,Combination therapy
+P0078,4,4,125.7,Combination therapy
+P0078,5,6,126.2,Combination therapy
+P0078,6,8,128.0,Combination therapy
+P0078,7,10,128.3,Combination therapy
+P0078,8,12,128.2,Combination therapy
+P0078,9,16,129.0,Combination therapy
+P0078,10,20,132.3,Combination therapy
+P0078,11,24,125.1,Combination therapy
+P0078,12,28,129.4,Combination therapy
+P0078,13,32,124.4,Combination therapy
+P0078,14,36,129.7,Combination therapy
+P0078,15,40,133.4,Combination therapy
+P0078,16,48,123.4,Combination therapy
+P0078,17,52,130.3,Combination therapy
+P0079,0,0,154.3,Combination therapy
+P0079,1,1,157.2,Combination therapy
+P0079,2,2,155.2,Combination therapy
+P0079,3,3,151.3,Combination therapy
+P0079,4,4,153.0,Combination therapy
+P0079,5,6,154.7,Combination therapy
+P0079,6,8,153.8,Combination therapy
+P0079,7,10,153.7,Combination therapy
+P0079,8,12,153.7,Combination therapy
+P0079,9,16,155.6,Combination therapy
+P0079,10,20,146.2,Combination therapy
+P0079,11,24,151.9,Combination therapy
+P0079,12,28,153.1,Combination therapy
+P0079,13,32,146.6,Combination therapy
+P0079,14,36,150.6,Combination therapy
+P0079,15,40,155.3,Combination therapy
+P0079,16,48,152.2,Combination therapy
+P0079,17,52,153.8,Combination therapy
+P0080,0,0,126.7,Combination therapy
+P0080,1,1,128.7,Combination therapy
+P0080,2,2,124.8,Combination therapy
+P0080,3,3,133.5,Combination therapy
+P0080,4,4,130.5,Combination therapy
+P0080,5,6,126.9,Combination therapy
+P0080,6,8,119.9,Combination therapy
+P0080,7,10,125.1,Combination therapy
+P0080,8,12,124.6,Combination therapy
+P0080,9,16,123.3,Combination therapy
+P0080,10,20,124.6,Combination therapy
+P0080,11,24,126.9,Combination therapy
+P0080,12,28,123.6,Combination therapy
+P0080,13,32,118.3,Combination therapy
+P0080,14,36,126.8,Combination therapy
+P0080,15,40,126.0,Combination therapy
+P0080,16,48,125.4,Combination therapy
+P0080,17,52,121.9,Combination therapy
+P0081,0,0,125.1,Combination therapy
+P0081,1,1,117.7,Combination therapy
+P0081,2,2,123.4,Combination therapy
+P0081,3,3,118.0,Combination therapy
+P0081,4,4,123.1,Combination therapy
+P0081,5,6,122.9,Combination therapy
+P0081,6,8,128.8,Combination therapy
+P0081,7,10,129.4,Combination therapy
+P0081,8,12,129.4,Combination therapy
+P0081,9,16,122.7,Combination therapy
+P0081,10,20,112.3,Combination therapy
+P0081,11,24,117.6,Combination therapy
+P0081,12,28,127.9,Combination therapy
+P0081,13,32,122.4,Combination therapy
+P0081,14,36,123.7,Combination therapy
+P0081,15,40,120.6,Combination therapy
+P0081,16,48,122.0,Combination therapy
+P0081,17,52,127.3,Combination therapy
+P0082,0,0,132.2,Combination therapy
+P0082,1,1,127.8,Combination therapy
+P0082,2,2,127.5,Combination therapy
+P0082,3,3,135.3,Combination therapy
+P0082,4,4,130.4,Combination therapy
+P0082,5,6,125.8,Combination therapy
+P0082,6,8,128.9,Combination therapy
+P0082,7,10,131.7,Combination therapy
+P0082,8,12,131.9,Combination therapy
+P0082,9,16,132.2,Combination therapy
+P0082,10,20,131.4,Combination therapy
+P0082,11,24,127.2,Combination therapy
+P0082,12,28,126.0,Combination therapy
+P0082,13,32,130.4,Combination therapy
+P0082,14,36,133.3,Combination therapy
+P0082,15,40,130.6,Combination therapy
+P0082,16,48,128.0,Combination therapy
+P0082,17,52,128.3,Combination therapy
+P0083,0,0,123.7,Combination therapy
+P0083,1,1,122.1,Combination therapy
+P0083,2,2,123.9,Combination therapy
+P0083,3,3,121.4,Combination therapy
+P0083,4,4,121.4,Combination therapy
+P0083,5,6,119.7,Combination therapy
+P0083,6,8,116.7,Combination therapy
+P0083,7,10,119.9,Combination therapy
+P0083,8,12,123.2,Combination therapy
+P0083,9,16,122.8,Combination therapy
+P0083,10,20,123.5,Combination therapy
+P0083,11,24,121.8,Combination therapy
+P0083,12,28,121.5,Combination therapy
+P0083,13,32,119.0,Combination therapy
+P0083,14,36,118.4,Combination therapy
+P0083,15,40,125.8,Combination therapy
+P0083,16,48,117.1,Combination therapy
+P0083,17,52,115.6,Combination therapy
+P0084,0,0,139.4,Combination therapy
+P0084,1,1,134.3,Combination therapy
+P0084,2,2,136.2,Combination therapy
+P0084,3,3,136.5,Combination therapy
+P0084,4,4,137.5,Combination therapy
+P0084,5,6,135.7,Combination therapy
+P0084,6,8,145.4,Combination therapy
+P0084,7,10,145.9,Combination therapy
+P0084,8,12,141.3,Combination therapy
+P0084,9,16,135.1,Combination therapy
+P0084,10,20,133.3,Combination therapy
+P0084,11,24,140.3,Combination therapy
+P0084,12,28,145.9,Combination therapy
+P0084,13,32,144.7,Combination therapy
+P0084,14,36,137.7,Combination therapy
+P0084,15,40,134.1,Combination therapy
+P0084,16,48,139.6,Combination therapy
+P0084,17,52,143.7,Combination therapy
+P0085,0,0,131.5,Combination therapy
+P0085,1,1,130.3,Combination therapy
+P0085,2,2,123.4,Combination therapy
+P0085,3,3,132.1,Combination therapy
+P0085,4,4,131.1,Combination therapy
+P0085,5,6,131.0,Combination therapy
+P0085,6,8,127.4,Combination therapy
+P0085,7,10,129.5,Combination therapy
+P0085,8,12,131.8,Combination therapy
+P0085,9,16,127.8,Combination therapy
+P0085,10,20,130.5,Combination therapy
+P0085,11,24,127.3,Combination therapy
+P0085,12,28,127.5,Combination therapy
+P0085,13,32,127.8,Combination therapy
+P0085,14,36,125.0,Combination therapy
+P0085,15,40,135.4,Combination therapy
+P0085,16,48,127.1,Combination therapy
+P0085,17,52,126.1,Combination therapy
+P0086,0,0,134.9,Combination therapy
+P0086,1,1,134.1,Combination therapy
+P0086,2,2,131.7,Combination therapy
+P0086,3,3,122.9,Combination therapy
+P0086,4,4,127.7,Combination therapy
+P0086,5,6,126.9,Combination therapy
+P0086,6,8,124.5,Combination therapy
+P0086,7,10,131.8,Combination therapy
+P0086,8,12,131.0,Combination therapy
+P0086,9,16,129.8,Combination therapy
+P0086,10,20,131.3,Combination therapy
+P0086,11,24,127.0,Combination therapy
+P0086,12,28,117.6,Combination therapy
+P0086,13,32,126.7,Combination therapy
+P0086,14,36,128.0,Combination therapy
+P0086,15,40,130.0,Combination therapy
+P0086,16,48,126.3,Combination therapy
+P0086,17,52,131.9,Combination therapy
+P0087,0,0,135.3,Combination therapy
+P0087,1,1,134.0,Combination therapy
+P0087,2,2,136.8,Combination therapy
+P0087,3,3,134.4,Combination therapy
+P0087,4,4,135.1,Combination therapy
+P0087,5,6,131.9,Combination therapy
+P0087,6,8,135.5,Combination therapy
+P0087,7,10,131.5,Combination therapy
+P0087,8,12,129.0,Combination therapy
+P0087,9,16,140.9,Combination therapy
+P0087,10,20,132.0,Combination therapy
+P0087,11,24,136.2,Combination therapy
+P0087,12,28,135.8,Combination therapy
+P0087,13,32,129.4,Combination therapy
+P0087,14,36,129.7,Combination therapy
+P0087,15,40,133.1,Combination therapy
+P0087,16,48,132.6,Combination therapy
+P0087,17,52,134.3,Combination therapy
+P0088,0,0,150.8,Combination therapy
+P0088,1,1,149.3,Combination therapy
+P0088,2,2,146.0,Combination therapy
+P0088,3,3,149.2,Combination therapy
+P0088,4,4,138.7,Combination therapy
+P0088,5,6,150.0,Combination therapy
+P0088,6,8,149.5,Combination therapy
+P0088,7,10,145.9,Combination therapy
+P0088,8,12,151.1,Combination therapy
+P0088,9,16,146.6,Combination therapy
+P0088,10,20,132.9,Combination therapy
+P0088,11,24,147.9,Combination therapy
+P0088,12,28,147.8,Combination therapy
+P0088,13,32,147.2,Combination therapy
+P0088,14,36,143.3,Combination therapy
+P0088,15,40,141.0,Combination therapy
+P0088,16,48,145.2,Combination therapy
+P0088,17,52,148.3,Combination therapy

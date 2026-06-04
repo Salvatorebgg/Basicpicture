@@ -5,12 +5,13 @@ function initDownloads() {
 }
 
 async function downloadChartImage(format) {
-  const previewEl = el('chartPreviewContainer');
-  let plotEl = qs('#chartPreviewContainer .chart-plot');
-  if (!plotEl) plotEl = qs('#chartPreviewContainer .js-plotly-plot');
-  if (!plotEl) plotEl = previewEl?.querySelector('[class*="plotly"]');
-  if (!plotEl) plotEl = previewEl?.querySelector('div[data-plotly]');
+  const normalizedFormat = String(format || '').toLowerCase();
+  if (!['png', 'svg', 'tiff', 'pdf'].includes(normalizedFormat)) {
+    toast(`暂不支持 ${String(format).toUpperCase()} 格式`, 'warning');
+    return;
+  }
 
+  const plotEl = getCurrentPlotElement();
   if (!plotEl) {
     toast('请先生成图表', 'warning');
     return;
@@ -22,30 +23,269 @@ async function downloadChartImage(format) {
   }
 
   const filename = `${safeFilename(STATE.activeChartType || 'chart')}_${new Date().toISOString().replace(/[:.]/g, '-')}`;
-  const options = {
-    format,
-    width: 2400,
-    height: 1600,
-    scale: format === 'png' ? 3 : 1,
-  };
 
   try {
-    if (typeof Plotly.Plots?.resize === 'function') {
-      await Plotly.Plots.resize(plotEl);
+    if (normalizedFormat === 'svg') {
+      const dataUrl = await exportPlotlyDataUrl(plotEl, 'svg', 1);
+      downloadDataUrl(dataUrl, `${filename}.svg`);
+      toast('SVG 已按当前预览下载', 'success');
+      return;
     }
-    const dataUrl = await Plotly.toImage(plotEl, options);
-    downloadDataUrl(dataUrl, `${filename}.${format}`);
-    toast(`${format.toUpperCase()} 已下载`, 'success');
+
+    if (normalizedFormat === 'png') {
+      const dataUrl = await exportPlotlyDataUrl(plotEl, 'png', 2.5);
+      downloadDataUrl(dataUrl, `${filename}.png`);
+      toast('PNG 已按当前预览下载', 'success');
+      return;
+    }
+
+    const raster = await rasterizeCurrentPlot(plotEl, 2.5);
+    if (normalizedFormat === 'tiff') {
+      const tiffBytes = encodeCanvasAsTiff(raster.canvas);
+      downloadBlob(new Blob([tiffBytes], { type: 'image/tiff' }), `${filename}.tiff`);
+      toast('TIFF 已按当前预览下载', 'success');
+      return;
+    }
+
+    if (normalizedFormat === 'pdf') {
+      const pdfBytes = encodeCanvasAsPdf(raster.canvas, raster.cssWidth, raster.cssHeight);
+      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `${filename}.pdf`);
+      toast('PDF 已按当前预览下载', 'success');
+    }
   } catch (err) {
     console.error('Chart export failed:', err);
     try {
-      await Plotly.downloadImage(plotEl, { ...options, filename });
-      toast(`${format.toUpperCase()} 已下载`, 'success');
+      const fallbackSize = getDisplayedPlotSize(plotEl);
+      await Plotly.downloadImage(plotEl, {
+        format: normalizedFormat === 'svg' ? 'svg' : 'png',
+        width: fallbackSize.width,
+        height: fallbackSize.height,
+        scale: 2.5,
+        filename,
+      });
+      toast(`${normalizedFormat.toUpperCase()} 已按当前预览尺寸下载`, 'success');
     } catch (fallbackErr) {
       console.error('Plotly downloadImage fallback failed:', fallbackErr);
-      toast(`导出 ${format.toUpperCase()} 失败: ${fallbackErr.message || err.message}`, 'error');
+      toast(`导出 ${normalizedFormat.toUpperCase()} 失败: ${fallbackErr.message || err.message}`, 'error');
     }
   }
+}
+
+async function exportPlotlyDataUrl(plotEl, format, scale) {
+  const exportSize = await syncPlotForWysiwygExport(plotEl);
+  return Plotly.toImage(plotEl, {
+    format,
+    width: exportSize.width,
+    height: exportSize.height,
+    scale,
+  });
+}
+
+function getCurrentPlotElement() {
+  const previewEl = el('chartPreviewContainer');
+  let plotEl = qs('#chartPreviewContainer .chart-plot');
+  if (!plotEl) plotEl = qs('#chartPreviewContainer .js-plotly-plot');
+  if (!plotEl) plotEl = previewEl?.querySelector('[class*="plotly"]');
+  if (!plotEl) plotEl = previewEl?.querySelector('div[data-plotly]');
+  return plotEl || null;
+}
+
+function getDisplayedPlotSize(plotEl) {
+  const full = plotEl?._fullLayout || {};
+  const width = Math.floor(full.width || plotEl?.clientWidth || STATE.currentPlotlyLayout?.width || 1200);
+  const height = Math.floor(full.height || plotEl?.clientHeight || STATE.currentPlotlyLayout?.height || 720);
+  return {
+    width: Math.max(320, width),
+    height: Math.max(320, height),
+  };
+}
+
+async function syncPlotForWysiwygExport(plotEl) {
+  if (!plotEl || !window.Plotly) return getDisplayedPlotSize(plotEl);
+
+  if (typeof Plotly.Plots?.resize === 'function') {
+    const resizePromise = Plotly.Plots.resize(plotEl);
+    if (resizePromise && typeof resizePromise.then === 'function') {
+      await resizePromise;
+    }
+  }
+
+  const size = getDisplayedPlotSize(plotEl);
+  const relayoutPromise = Plotly.relayout(plotEl, {
+    width: size.width,
+    height: size.height,
+    autosize: false,
+  });
+  if (relayoutPromise && typeof relayoutPromise.then === 'function') {
+    await relayoutPromise;
+  }
+  if (STATE.currentPlotlyLayout) {
+    STATE.currentPlotlyLayout = {
+      ...STATE.currentPlotlyLayout,
+      width: size.width,
+      height: size.height,
+      autosize: false,
+    };
+  }
+  return size;
+}
+
+async function rasterizeCurrentPlot(plotEl, scale = 2.5) {
+  const size = await syncPlotForWysiwygExport(plotEl);
+  const dataUrl = await Plotly.toImage(plotEl, {
+    format: 'png',
+    width: size.width,
+    height: size.height,
+    scale,
+  });
+  const img = await loadImageFromDataUrl(dataUrl);
+  const canvas = document.createElement('canvas');
+  canvas.width = img.naturalWidth || img.width;
+  canvas.height = img.naturalHeight || img.height;
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(img, 0, 0);
+  return { canvas, cssWidth: size.width, cssHeight: size.height };
+}
+
+function loadImageFromDataUrl(dataUrl) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error('无法读取当前预览图像'));
+    img.src = dataUrl;
+  });
+}
+
+function encodeCanvasAsTiff(canvas) {
+  const width = canvas.width;
+  const height = canvas.height;
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  const rgba = ctx.getImageData(0, 0, width, height).data;
+  const pixelBytes = width * height * 3;
+  const entryCount = 12;
+  const ifdOffset = 8;
+  const ifdSize = 2 + entryCount * 12 + 4;
+  const bitsOffset = ifdOffset + ifdSize;
+  const xResOffset = bitsOffset + 6;
+  const yResOffset = xResOffset + 8;
+  const pixelOffset = yResOffset + 8;
+  const totalBytes = pixelOffset + pixelBytes;
+  const buffer = new ArrayBuffer(totalBytes);
+  const view = new DataView(buffer);
+  const bytes = new Uint8Array(buffer);
+
+  bytes[0] = 0x49; bytes[1] = 0x49;
+  view.setUint16(2, 42, true);
+  view.setUint32(4, ifdOffset, true);
+  view.setUint16(ifdOffset, entryCount, true);
+
+  let entry = ifdOffset + 2;
+  const writeEntry = (tag, type, count, value) => {
+    view.setUint16(entry, tag, true);
+    view.setUint16(entry + 2, type, true);
+    view.setUint32(entry + 4, count, true);
+    if (type === 3 && count === 1) {
+      view.setUint16(entry + 8, value, true);
+      view.setUint16(entry + 10, 0, true);
+    } else {
+      view.setUint32(entry + 8, value, true);
+    }
+    entry += 12;
+  };
+
+  writeEntry(256, 4, 1, width);
+  writeEntry(257, 4, 1, height);
+  writeEntry(258, 3, 3, bitsOffset);
+  writeEntry(259, 3, 1, 1);
+  writeEntry(262, 3, 1, 2);
+  writeEntry(273, 4, 1, pixelOffset);
+  writeEntry(277, 3, 1, 3);
+  writeEntry(278, 4, 1, height);
+  writeEntry(279, 4, 1, pixelBytes);
+  writeEntry(282, 5, 1, xResOffset);
+  writeEntry(283, 5, 1, yResOffset);
+  writeEntry(296, 3, 1, 2);
+  view.setUint32(ifdOffset + 2 + entryCount * 12, 0, true);
+
+  view.setUint16(bitsOffset, 8, true);
+  view.setUint16(bitsOffset + 2, 8, true);
+  view.setUint16(bitsOffset + 4, 8, true);
+  view.setUint32(xResOffset, 300, true);
+  view.setUint32(xResOffset + 4, 1, true);
+  view.setUint32(yResOffset, 300, true);
+  view.setUint32(yResOffset + 4, 1, true);
+
+  let p = pixelOffset;
+  for (let i = 0; i < rgba.length; i += 4) {
+    const a = rgba[i + 3] / 255;
+    bytes[p++] = Math.round(rgba[i] * a + 255 * (1 - a));
+    bytes[p++] = Math.round(rgba[i + 1] * a + 255 * (1 - a));
+    bytes[p++] = Math.round(rgba[i + 2] * a + 255 * (1 - a));
+  }
+  return bytes;
+}
+
+function encodeCanvasAsPdf(canvas, cssWidth, cssHeight) {
+  const jpegDataUrl = canvas.toDataURL('image/jpeg', 0.96);
+  const jpegBytes = dataUrlToBytes(jpegDataUrl);
+  const pageWidth = Math.max(320, Math.round(cssWidth || canvas.width));
+  const pageHeight = Math.max(320, Math.round(cssHeight || canvas.height));
+  const imageWidth = canvas.width;
+  const imageHeight = canvas.height;
+  const encoder = new TextEncoder();
+  const chunks = [];
+  const offsets = [0];
+  let length = 0;
+
+  const push = (chunk) => {
+    const bytes = typeof chunk === 'string' ? encoder.encode(chunk) : chunk;
+    chunks.push(bytes);
+    length += bytes.length;
+  };
+  const startObject = (id) => {
+    offsets[id] = length;
+    push(`${id} 0 obj\n`);
+  };
+
+  push('%PDF-1.4\n');
+  startObject(1);
+  push('<< /Type /Catalog /Pages 2 0 R >>\nendobj\n');
+  startObject(2);
+  push('<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n');
+  startObject(3);
+  push(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pageWidth} ${pageHeight}] /Resources << /XObject << /Im0 4 0 R >> >> /Contents 5 0 R >>\nendobj\n`);
+  startObject(4);
+  push(`<< /Type /XObject /Subtype /Image /Width ${imageWidth} /Height ${imageHeight} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpegBytes.length} >>\nstream\n`);
+  push(jpegBytes);
+  push('\nendstream\nendobj\n');
+  const content = `q\n${pageWidth} 0 0 ${pageHeight} 0 0 cm\n/Im0 Do\nQ\n`;
+  startObject(5);
+  push(`<< /Length ${encoder.encode(content).length} >>\nstream\n${content}endstream\nendobj\n`);
+
+  const xrefOffset = length;
+  push('xref\n0 6\n0000000000 65535 f \n');
+  for (let i = 1; i <= 5; i++) {
+    push(`${String(offsets[i]).padStart(10, '0')} 00000 n \n`);
+  }
+  push(`trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF`);
+
+  const out = new Uint8Array(length);
+  let offset = 0;
+  chunks.forEach(chunk => {
+    out.set(chunk, offset);
+    offset += chunk.length;
+  });
+  return out;
+}
+
+function dataUrlToBytes(dataUrl) {
+  const base64 = String(dataUrl).split(',')[1] || '';
+  const binary = atob(base64);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return bytes;
 }
 
 function downloadChartCSV() {
@@ -214,127 +454,4 @@ function columnDataToCSV(data, columns) {
     csv += columns.map(c => csvEscape((data[c] || [])[i] ?? '')).join(',') + '\n';
   }
   return csv;
-}
-
-// ── Server-side publication export ─────────────────────
-const SERVER_PUBLICATION_CHARTS = new Set([
-  'scatter', 'grouped_scatter', 'box', 'violin', 'box_scatter',
-  'violin_box_scatter', 'bar', 'stacked_bar', 'error_bar',
-  'heatmap', 'correlation_heatmap',
-  'line', 'multi_line', 'area', 'histogram', 'density',
-  'forest', 'survival', 'roc', 'bubble', 'dumbbell',
-  'china_map', 'world_map',
-]);
-
-function supportsServerPublicationExport(chartType) {
-  return SERVER_PUBLICATION_CHARTS.has(String(chartType || ''));
-}
-
-function normalizePublicationStyle(style) {
-  const value = String(style || '').toLowerCase();
-  if (value.includes('nature')) return 'nature';
-  return 'cns';
-}
-
-async function downloadPublicationChart() {
-  if (!STATE.activeChartType) {
-    toast('请先生成图表', 'warning');
-    return;
-  }
-
-  const canUseServer = supportsServerPublicationExport(STATE.activeChartType);
-  const format = await showFormatDialog({ supportsPdf: canUseServer });
-  if (!format) return;
-
-  if (!canUseServer) {
-    await downloadChartImage(format);
-    return;
-  }
-
-  const params = collectChartParams();
-  const theme = getActiveTheme();
-  const userPalette = STATE.userColors && STATE.userColors.length > 0 ? STATE.userColors : null;
-  const activePalette = userPalette || (typeof getActivePalette === 'function' ? getActivePalette() : null) || theme.colorway || [];
-
-  const payload = {
-    chart_type: STATE.activeChartType,
-    format: format,
-    style: normalizePublicationStyle(STATE.chartTheme),
-    title: params.title || '',
-    x_var: params.x_var || '',
-    y_var: params.y_var || '',
-    color_var: params.color_var || '',
-    value_vars: params.value_vars || [],
-    time_var: params.time_var || '',
-    event_var: params.event_var || '',
-    outcome_var: params.outcome_var || '',
-    predictor_var: params.predictor_var || '',
-    ci_lower_var: params.ci_lower_var || '',
-    ci_upper_var: params.ci_upper_var || '',
-    province_var: params.province_var || '',
-    country_var: params.country_var || '',
-    map_value_var: params.y_var || params.map_value_var || '',
-    upload_id: STATE.uploadId || null,
-    use_demo: !STATE.uploadId,
-    dataset_name: STATE.datasetName || '',
-    colors: activePalette,
-    marker_size: STATE.markerSize || 8,
-    line_width: STATE.lineWidth || 3,
-  };
-
-  try {
-    toast('正在生成出版级图表...', 'info');
-    const response = await fetch('/api/export/chart/publication', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.detail || 'Export failed');
-    }
-
-    const blob = await response.blob();
-    const filename = `${safeFilename(STATE.activeChartType)}_publication_${new Date().toISOString().replace(/[:.]/g, '-')}.${format}`;
-    downloadBlob(blob, filename);
-    toast(`出版级 ${format.toUpperCase()} 已下载`, 'success');
-  } catch (err) {
-    console.error('Publication chart export failed:', err);
-    if (format === 'png' || format === 'svg') {
-      toast('后端出版导出失败，已切换为高分辨率 Plotly 导出', 'warning');
-      await downloadChartImage(format);
-      return;
-    }
-    toast(`导出失败: ${err.message}`, 'error');
-  }
-}
-
-function showFormatDialog(options = {}) {
-  const supportsPdf = options.supportsPdf !== false;
-  return new Promise((resolve) => {
-    const dialog = document.createElement('div');
-    dialog.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:10000;';
-    dialog.innerHTML = `
-      <div style="background:white;padding:24px;border-radius:12px;max-width:400px;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
-        <h3 style="margin:0 0 16px 0;font-size:18px;">选择导出格式</h3>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <button class="primary-btn" data-format="png" style="width:100%;">PNG (高分辨率位图)</button>
-          <button class="primary-btn" data-format="svg" style="width:100%;">SVG (矢量图)</button>
-          ${supportsPdf ? '<button class="primary-btn" data-format="pdf" style="width:100%;">PDF (出版标准)</button>' : ''}
-          <button class="ghost-btn" data-format="cancel" style="width:100%;">取消</button>
-        </div>
-      </div>
-    `;
-
-    dialog.addEventListener('click', (e) => {
-      const btn = e.target.closest('button');
-      if (!btn) return;
-      const format = btn.dataset.format;
-      document.body.removeChild(dialog);
-      resolve(format === 'cancel' ? null : format);
-    });
-
-    document.body.appendChild(dialog);
-  });
 }

@@ -1,0 +1,75 @@
+﻿patient_id,best_change_pct,response,therapy
+T001,-25.1,Stable disease,IO combo
+T002,-34.6,Partial response,Chemotherapy
+T003,-17.3,Stable disease,IO combo
+T004,-16.6,Stable disease,Chemotherapy
+T005,-4.2,Stable disease,Targeted
+T006,-28.7,Stable disease,Targeted
+T007,-33.2,Partial response,Targeted
+T008,-35.1,Partial response,Targeted
+T009,-47.2,Partial response,IO combo
+T010,-34.5,Partial response,Targeted
+T011,-11.6,Stable disease,Targeted
+T012,-40.0,Partial response,Targeted
+T013,-50.2,Partial response,Targeted
+T014,-7.1,Stable disease,IO combo
+T015,-15.3,Stable disease,Chemotherapy
+T016,-3.6,Stable disease,Targeted
+T017,-27.3,Stable disease,Targeted
+T018,-25.7,Stable disease,Chemotherapy
+T019,-67.8,Partial response,IO combo
+T020,-53.1,Partial response,IO combo
+T021,-32.9,Partial response,Chemotherapy
+T022,-5.3,Stable disease,Chemotherapy
+T023,-24.6,Stable disease,Targeted
+T024,-50.6,Partial response,IO combo
+T025,-78.0,Partial response,Targeted
+T026,-0.9,Stable disease,Chemotherapy
+T027,-0.9,Stable disease,Targeted
+T028,11.2,Stable disease,Chemotherapy
+T029,-49.2,Partial response,IO combo
+T030,2.6,Stable disease,Targeted
+T031,-12.4,Stable disease,IO combo
+T032,-8.5,Stable disease,Targeted
+T033,-26.6,Stable disease,Chemotherapy
+T034,-29.2,Stable disease,IO combo
+T035,22.0,Progressive disease,Targeted
+T036,14.3,Stable disease,IO combo
+T037,-27.2,Stable disease,IO combo
+T038,-21.4,Stable disease,IO combo
+T039,-74.7,Partial response,Targeted
+T040,16.9,Stable disease,Chemotherapy
+T041,-8.1,Stable disease,IO combo
+T042,-17.7,Stable disease,IO combo
+T043,-40.5,Partial response,IO combo
+T044,-20.4,Stable disease,Targeted
+T045,9.2,Stable disease,IO combo
+T046,-3.3,Stable disease,Chemotherapy
+T047,41.2,Progressive disease,Targeted
+T048,-2.5,Stable disease,Targeted
+T049,-48.1,Partial response,IO combo
+T050,-31.9,Partial response,Targeted
+T051,-29.0,Stable disease,Chemotherapy
+T052,-1.4,Stable disease,Targeted
+T053,15.7,Stable disease,Chemotherapy
+T054,19.2,Stable disease,Targeted
+T055,-20.0,Stable disease,Chemotherapy
+T056,-10.8,Stable disease,Targeted
+T057,18.7,Stable disease,Chemotherapy
+T058,11.2,Stable disease,IO combo
+T059,-51.5,Partial response,Targeted
+T060,-7.1,Stable disease,Targeted
+T061,-50.6,Partial response,Targeted
+T062,-40.4,Partial response,IO combo
+T063,-53.4,Partial response,Targeted
+T064,-40.9,Partial response,IO combo
+T065,-56.8,Partial response,Targeted
+T066,-54.4,Partial response,IO combo
+T067,-43.7,Partial response,Targeted
+T068,-14.7,Stable disease,Targeted
+T069,-25.2,Stable disease,IO combo
+T070,-61.5,Partial response,Targeted
+T071,39.8,Progressive disease,IO combo
+T072,-33.7,Partial response,Targeted
+T073,-43.9,Partial response,Chemotherapy
+T074,2.0,Stable disease,Chemotherapy

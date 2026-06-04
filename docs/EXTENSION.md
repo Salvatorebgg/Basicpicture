@@ -233,6 +233,7 @@ python -m compileall app
 node --check app\static\js\plotConfigs.js
 node --check app\static\js\variableSelect.js
 node --check app\static\js\charts.js
+node tests\chart_config_smoke.js
 node --check app\static\js\tableGenerator.js
 ```
 

@@ -64,7 +64,7 @@ for name, maker_fn in EXAMPLE_MAKERS.items():
 
 app = FastAPI(
     title="Clinical Chart & Table Platform",
-    version="1.2.0",
+    version="1.2.3",
     description="Interactive clinical basic statistics graphs and three-line table one-click generation platform.",
 )
 
@@ -80,13 +80,20 @@ app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 
 @app.get("/", response_class=HTMLResponse)
-def index() -> str:
-    return (STATIC_DIR / "index.html").read_text(encoding="utf-8")
+def index() -> HTMLResponse:
+    return HTMLResponse(
+        (STATIC_DIR / "index.html").read_text(encoding="utf-8"),
+        headers={
+            "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+            "Pragma": "no-cache",
+            "Expires": "0",
+        },
+    )
 
 
 @app.get("/api/health")
 def health() -> dict:
-    return {"status": "ok", "version": "1.2.0"}
+    return {"status": "ok", "version": "1.2.3"}
 
 
 # ── Upload ─────────────────────────────────────────────
@@ -100,7 +107,7 @@ async def upload_file(file: UploadFile = File(...)) -> dict:
         var_types = classify_variables(df)
         summary = summarize_dataset(df, var_types)
         sheets = get_sheet_names(meta["path"], meta["filename"])
-        preview = df.head(10).fillna("").to_dict(orient="records")
+        preview = df.head(200).fillna("").to_dict(orient="records")
         return {
             "upload_id": meta["upload_id"],
             "filename": meta["filename"],
@@ -151,7 +158,7 @@ async def read_sheet(
         "columns": list(df.columns),
         "dtypes": {c: str(df[c].dtype) for c in df.columns},
         "variable_types": var_types,
-        "preview": df.head(10).fillna("").to_dict(orient="records"),
+        "preview": df.head(200).fillna("").to_dict(orient="records"),
         "missing_percent": summary["missing_percent"],
         "summary": summary,
     }
@@ -181,7 +188,7 @@ def get_example(name: str) -> dict:
         "columns": list(df.columns),
         "dtypes": {c: str(df[c].dtype) for c in df.columns},
         "variable_types": var_types,
-        "preview": df.head(10).fillna("").to_dict(orient="records"),
+        "preview": df.head(200).fillna("").to_dict(orient="records"),
         "missing_percent": summary["missing_percent"],
         "summary": summary,
     }
@@ -406,6 +413,29 @@ async def export_publication_chart(req: dict = Body(...)) -> Response:
                 raise HTTPException(status_code=400, detail="country_var and value variable required")
             png_bytes, svg_bytes, pdf_bytes = generate_world_map(
                 df, country_var, map_value_var, title, style
+            )
+        elif chart_type in ["donut", "pie"]:
+            if not x_var or not y_var:
+                raise HTTPException(status_code=400, detail="x_var and y_var required")
+            png_bytes, svg_bytes, pdf_bytes = generate_bar_plot(
+                df, x_var, y_var, color_var, title, style
+            )
+        elif chart_type in ["ridgeline", "raincloud", "beanplot", "beeswarm"]:
+            if not y_var:
+                raise HTTPException(status_code=400, detail="y_var required")
+            png_bytes, svg_bytes, pdf_bytes = generate_box_plot(
+                df, y_var, x_var, color_var, title, style
+            )
+        elif chart_type in ["radar", "sankey", "treemap", "cleveland_dot",
+                            "parallel_coords", "funnel", "polar_bar",
+                            "volcano", "bubble", "pca", "dca", "dumbbell",
+                            "bland_altman", "calibration_curve", "swimmer",
+                            "population_pyramid", "qq_plot", "slope", "paired_line",
+                            "waterfall", "missingness_heatmap", "venn", "upset"]:
+            # Fallback: these chart types use the frontend Plotly renderer for export
+            raise HTTPException(
+                status_code=400,
+                detail=f"Chart type '{chart_type}' is best exported via the frontend Plotly renderer. Use the browser download button for PNG/SVG."
             )
         else:
             raise HTTPException(status_code=400, detail=f"Chart type '{chart_type}' not supported for publication export")

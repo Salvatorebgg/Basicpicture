@@ -1,0 +1,23 @@
+﻿country,incidence,prevalence,mortality,health_system
+United Kingdom,67.8,31.6,3.87,Tax-funded
+France,63.5,28.8,3.87,Insurance
+Germany,71.5,32.5,4.07,Insurance
+Italy,61.2,29.0,3.64,Tax-funded
+Spain,64.9,29.5,4.07,Mixed
+Portugal,58.1,27.6,3.49,Insurance
+Netherlands,62.7,28.3,3.88,Mixed
+Belgium,66.4,30.0,3.81,Tax-funded
+Switzerland,52.8,24.7,3.26,Tax-funded
+Austria,56.5,25.3,3.33,Insurance
+Sweden,48.2,23.8,3.01,Tax-funded
+Norway,44.9,21.5,3.03,Tax-funded
+Denmark,50.3,24.1,2.91,Insurance
+Finland,47.1,23.3,3.07,Tax-funded
+Poland,69.6,32.1,4.15,Mixed
+Czechia,65.7,30.8,3.83,Tax-funded
+Greece,72.4,32.6,4.03,Tax-funded
+Ireland,55.6,25.8,3.44,Insurance
+Romania,78.2,34.9,4.45,Mixed
+Hungary,74.9,32.0,4.41,Tax-funded
+Ukraine,80.6,34.5,4.65,Tax-funded
+Turkey,73.3,31.8,4.53,Mixed

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>临床基础绘图</title>
-  <link rel="stylesheet" href="/static/styles.css?v=5.7.7" />
+    <link rel="stylesheet" href="/static/styles.css?v=5.5.0" />
     <script src="/static/vendor/plotly.min.js?v=local-3.0.1-cns3"></script>
   </head>
   <body>
@@ -113,32 +113,11 @@
                 <h3 id="chartPreviewTitle">图形预览</h3>
                 <div class="analysis-tools">
                   <span id="chartPreviewBadge" class="badge">Plotly</span>
-                  <div id="chartExportBar" class="figure-actions chart-download-wrap" style="display:none;">
-                    <button id="chartDownloadBtn" class="download-menu-btn" type="button" aria-haspopup="menu" aria-expanded="false">
-                      <span class="download-menu-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" focusable="false">
-                          <path d="M12 3v10m0 0 4-4m-4 4-4-4M5 15v4h14v-4" />
-                        </svg>
-                      </span>
-                      <span class="download-menu-copy">
-                        <strong>下载图像</strong>
-                      </span>
-                      <span class="download-menu-caret" aria-hidden="true">▾</span>
-                    </button>
-                    <div id="chartDownloadMenu" class="download-menu" role="menu" hidden>
-                      <button class="download-option export-btn" type="button" data-fmt="png" role="menuitem">
-                        <span>PNG</span><small>高清位图</small>
-                      </button>
-                      <button class="download-option export-btn" type="button" data-fmt="svg" role="menuitem">
-                        <span>SVG</span><small>矢量图</small>
-                      </button>
-                      <button class="download-option export-btn" type="button" data-fmt="tiff" role="menuitem">
-                        <span>TIFF</span><small>期刊位图</small>
-                      </button>
-                      <button class="download-option export-btn" type="button" data-fmt="pdf" role="menuitem">
-                        <span>PDF</span><small>当前预览版式</small>
-                      </button>
-                    </div>
+                  <div id="chartExportBar" class="figure-actions" style="display:none;">
+                    <a href="#" class="export-btn" data-fmt="png">PNG</a>
+                    <a href="#" class="export-btn" data-fmt="svg">SVG</a>
+                    <a href="#" class="export-btn" data-fmt="csv">CSV</a>
+                    <a href="#" class="export-btn" data-fmt="publication">出版级</a>
                   </div>
                 </div>
               </div>
@@ -251,14 +230,14 @@
 
     <div id="toastContainer" class="toast-container"></div>
 
-    <script src="/static/js/utils.js?v=5.7.7"></script>
-    <script src="/static/js/chartThemes.js?v=5.6.7"></script>
-  <script src="/static/js/plotConfigs.js?v=5.7.7"></script>
-    <script src="/static/js/upload.js?v=5.6.7"></script>
-    <script src="/static/js/variableSelect.js?v=5.7.1"></script>
-  <script src="/static/js/charts.js?v=5.7.7"></script>
-    <script src="/static/js/tableGenerator.js?v=5.6.7"></script>
-    <script src="/static/js/download.js?v=5.6.7"></script>
-  <script src="/static/js/app.js?v=5.7.7"></script>
+    <script src="/static/js/utils.js?v=5.5.0"></script>
+    <script src="/static/js/chartThemes.js?v=5.5.0"></script>
+    <script src="/static/js/plotConfigs.js?v=5.5.0"></script>
+    <script src="/static/js/upload.js?v=5.5.0"></script>
+    <script src="/static/js/variableSelect.js?v=5.5.0"></script>
+    <script src="/static/js/charts.js?v=5.5.0"></script>
+    <script src="/static/js/tableGenerator.js?v=5.5.0"></script>
+    <script src="/static/js/download.js?v=5.5.0"></script>
+    <script src="/static/js/app.js?v=5.5.0"></script>
   </body>
 </html>

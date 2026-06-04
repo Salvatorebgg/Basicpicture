@@ -38,6 +38,8 @@ function resetChartPreview(config) {
   container.innerHTML = `<div class="empty-state">${config ? `已选择「${config.name}」，载入数据后点击生成` : '请在左侧选择图表类型'}</div>`;
   const exportBar = el('chartExportBar');
   if (exportBar) exportBar.style.display = 'none';
+  const generateBtn = el('generateChartBtn');
+  if (generateBtn && typeof setLoading === 'function') setLoading(generateBtn, false);
 }
 
 /* ── Chart Generation ──────────────────────────────────── */
@@ -49,7 +51,7 @@ async function generateChart() {
   if (!btn) return;
   setLoading(btn, true);
 
-  if (chartType === 'china_map' && !STATE.chinaGeoJSON) {
+  if (['china_map', 'china_bubble_map'].includes(chartType) && !STATE.chinaGeoJSON) {
     if (typeof loadChinaGeoJSON === 'function') {
       try { await loadChinaGeoJSON(); } catch (e) {}
     }
@@ -57,7 +59,7 @@ async function generateChart() {
       try { loadChinaCentroids(); } catch (e) {}
     }
   }
-  if (chartType === 'world_map' && !STATE.worldGeoJSON && typeof loadWorldGeoJSON === 'function') {
+  if (['world_map', 'world_bubble_map', 'europe_map'].includes(chartType) && !STATE.worldGeoJSON && typeof loadWorldGeoJSON === 'function') {
     try { await loadWorldGeoJSON(); } catch (e) {}
   }
 
@@ -133,6 +135,8 @@ async function generateChart() {
     layout.bargap = STATE.barGap;
   }
 
+  if (typeof activateWorkspaceTab === 'function') activateWorkspaceTab('chart');
+
   const container = el('chartPreviewContainer');
   if (!container) { setLoading(btn, false); return; }
 
@@ -154,29 +158,40 @@ async function generateChart() {
   STATE.currentChartSourceData = data;
   saveCurrentChartParams(params);
 
-  Plotly.newPlot(plotMount, traces, layout, {
-    responsive: true,
-    displaylogo: false,
-    displayModeBar: false,
-    modeBarButtonsToRemove: ['lasso2d', 'select2d', 'sendDataToCloud'],
-    toImageButtonOptions: {
-      format: 'png', height: 1440, width: 2160, scale: 2,
-      filename: (chartType || 'chart') + '_' + Date.now(),
-    },
-  }).then(() => {
+  try {
+    await Plotly.newPlot(plotMount, traces, layout, {
+      responsive: true,
+      displaylogo: false,
+      displayModeBar: false,
+      modeBarButtonsToRemove: ['lasso2d', 'select2d', 'sendDataToCloud'],
+      toImageButtonOptions: {
+        format: 'png', height: 1440, width: 2160, scale: 2,
+        filename: (chartType || 'chart') + '_' + Date.now(),
+      },
+    });
+    syncCurrentPlotlyLayoutFromDom(plotMount);
     installChartResizeObserver(plotMount, chartType);
-    if (window.Plotly && typeof Plotly.Plots?.resize === 'function') Plotly.Plots.resize(plotMount);
-  }).catch(e => {
+    if (chartType !== 'treemap' && window.Plotly && typeof Plotly.Plots?.resize === 'function') {
+      const resizePromise = Plotly.Plots.resize(plotMount);
+      if (resizePromise && typeof resizePromise.then === 'function') {
+        await resizePromise;
+      }
+      syncCurrentPlotlyLayoutFromDom(plotMount);
+    }
+  } catch (e) {
     console.error('Plotly render error:', e);
-    toast('图表渲染失败', 'error');
-  });
+    toast('\u56fe\u8868\u6e32\u67d3\u5931\u8d25', 'error');
+    setLoading(btn, false);
+    return;
+  }
 
   const exportBar = el('chartExportBar');
   if (exportBar) exportBar.style.display = 'flex';
   if (typeof updateFlowLine === 'function') updateFlowLine(4);
   if (typeof setStatus === 'function') setStatus('图表已生成');
   toast(config.name + ' 已生成', 'success');
-  setLoading(btn, false);
+  if (typeof setButtonComplete === 'function') setButtonComplete(btn, '\u5904\u7406\u5b8c\u6210');
+  else setLoading(btn, false);
 }
 
 // ── Polish traces for publication ────────────────────
@@ -192,89 +207,224 @@ function remapArrayColors(colorArray, palette) {
   });
 }
 
+function buildCustomColorScale(colors) {
+  const clean = (colors || []).filter(Boolean);
+  if (clean.length < 2) return null;
+  if (clean.length === 2) return [[0, clean[0]], [1, clean[1]]];
+  return clean.map((c, i) => [i / (clean.length - 1), c]);
+}
+
+function isNumericColorArray(values) {
+  return Array.isArray(values) && values.length > 0 && values.every(v => Number.isFinite(Number(v)));
+}
+
 function polishTracesForPublication(traces, theme) {
   const userPalette = STATE.userColors && STATE.userColors.length > 0 ? STATE.userColors : null;
   const customPalette = typeof getActivePalette === 'function' ? getActivePalette() : null;
-  const palette = userPalette || customPalette || theme.colorway || ['#2E6F9E', '#D95F59', '#2A9D8F', '#E9A93A'];
+  const basePalette = userPalette || customPalette || theme.colorway || ['#2E6F9E', '#D95F59', '#2A9D8F', '#E9A93A'];
+  // Use expandPalette to guarantee enough colors for all categories
+  const palette = typeof expandPalette === 'function' ? expandPalette(basePalette, 24) : basePalette;
+  const customColorScale = buildCustomColorScale(userPalette);
   const ink = theme.ink || '#111827';
   const markerLine = theme.markerLine || '#ffffff';
   const userMarkerSize = STATE.markerSize || 8;
   const userLineWidth = STATE.lineWidth || 3;
   const userMarkerShape = STATE.markerShape || 'circle';
   const userMarkerOpacity = STATE.markerOpacity != null ? STATE.markerOpacity : (theme.opacity ?? 0.88);
+  const fontFamily = theme.fontFamily || "'Arial', 'Noto Sans SC', sans-serif";
 
   return (traces || []).map((trace, i) => {
     const t = { ...trace };
-    const color = palette[i % palette.length];
+    const colorIndex = Number.isFinite(Number(t.meta?.colorIndex)) ? Number(t.meta.colorIndex) : i;
+    const color = t.meta?.fixedColor || palette[colorIndex % palette.length];
     const mode = String(t.mode || '');
     const hasArrayColor = Array.isArray(t.marker?.color);
+    const usesContinuousMarkerScale = hasArrayColor && isNumericColorArray(t.marker.color) && Boolean(t.marker?.colorscale || t.marker?.colorbar || t.marker?.showscale);
+    const visualRole = t.meta?.visualRole || t._visualRole;
+    const errorColorIndex = Number.isFinite(Number(t.meta?.errorColorIndex)) ? Number(t.meta.errorColorIndex) : null;
+    const errorColor = errorColorIndex != null ? palette[errorColorIndex % palette.length] : color;
 
+    // ── Scatter / Scattergeo ──
     if (t.type === 'scatter' || t.type === 'scattergeo') {
       const isLine = mode.includes('lines');
       const isMarker = mode.includes('markers') || !mode;
       const hasText = mode.includes('text');
+      if (visualRole === 'backgroundTrajectory') {
+        t.line = {
+          ...(t.line || {}),
+          color,
+          width: t.line?.width ?? 0.85,
+          shape: 'linear',
+          smoothing: 0,
+        };
+        t.opacity = t.opacity ?? 0.32;
+        t.hoverinfo = t.hoverinfo || 'skip';
+        return t;
+      }
       t.line = {
         ...(t.line || {}),
         color,
-        width: isLine ? userLineWidth : 1.8,
-        shape: t.line?.shape || (isLine ? 'spline' : undefined),
-        smoothing: t.line?.smoothing ?? (isLine ? 0.4 : undefined),
+        width: visualRole === 'lollipopStemLine' ? Math.max(1.8, Math.min(userLineWidth, 2.8)) : (isLine ? userLineWidth : 1.8),
+        shape: visualRole === 'lollipopStemLine' ? 'linear' : (t.line?.shape || (isLine ? 'spline' : undefined)),
+        smoothing: visualRole === 'lollipopStemLine' ? 0 : (t.line?.smoothing ?? (isLine ? 0.4 : undefined)),
       };
+      if (t.error_y) {
+        t.error_y = {
+          ...(t.error_y || {}),
+          color: errorColor,
+          thickness: t.error_y.thickness ?? 1.6,
+          width: t.error_y.width ?? 5,
+        };
+      }
+      if (t.fill && t.fill !== 'none' && t.fill !== 'toself') {
+        t.fillcolor = withAlpha(color, t.fillcolor ? 0.18 : 0.20);
+      }
+      if (t.fill === 'toself') {
+        t.fillcolor = t.fillcolor || withAlpha(color, 0.28);
+      }
       if (isMarker) {
-        const markerColor = hasArrayColor ? remapArrayColors(t.marker.color, palette) : color;
+        const markerColor = hasArrayColor && !usesContinuousMarkerScale ? remapArrayColors(t.marker.color, palette) : (hasArrayColor ? t.marker.color : color);
+        const markerSize = Array.isArray(t.marker?.size)
+          ? t.marker.size
+          : (visualRole === 'lollipopHead' ? Math.max(15, userMarkerSize + 7) : userMarkerSize);
         t.marker = {
           ...(t.marker || {}),
           color: markerColor,
-          size: t.type === 'scattergeo' ? 9 : userMarkerSize,
-          symbol: t.marker?.symbol || userMarkerShape,
+          size: markerSize,
+          symbol: userMarkerShape && userMarkerShape !== 'circle' ? userMarkerShape : (t.marker?.symbol || userMarkerShape),
           opacity: userMarkerOpacity,
-          line: { color: markerLine, width: 1 },
+          line: { color: markerLine, width: visualRole === 'lollipopHead' ? 1.6 : 1.2 },
         };
+        if (usesContinuousMarkerScale && customColorScale) {
+          t.marker.colorscale = customColorScale;
+        }
       }
       if (hasText) {
-        t.textfont = { ...(t.textfont || {}), family: theme.fontFamily, size: 10, color: ink };
+        t.textfont = { ...(t.textfont || {}), family: fontFamily, size: visualRole === 'lollipopHead' ? 12 : 11, color: ink };
       }
     }
 
+    // ── Scatterpolar (radar) ──
+    if (t.type === 'scatterpolar') {
+      t.line = { ...(t.line || {}), color, width: userLineWidth };
+      t.marker = { ...(t.marker || {}), color, size: userMarkerSize, symbol: userMarkerShape, line: { color: '#ffffff', width: 1.2 } };
+    }
+
+    // ── Bar ──
     if (t.type === 'bar') {
+      if (visualRole === 'lollipopStem') {
+        if (Array.isArray(t.marker?.color)) {
+          const uniqueMap = {};
+          let stemIdx = 0;
+          const stemColors = t.marker.color.map(c => {
+            if (!uniqueMap[c]) {
+              uniqueMap[c] = withAlpha(palette[stemIdx % palette.length], 0.22);
+              stemIdx++;
+            }
+            return uniqueMap[c];
+          });
+          t.marker = {
+            ...(t.marker || {}),
+            color: stemColors,
+            line: { color: stemColors.map((_, idx) => withAlpha(palette[idx % palette.length], 0.38)), width: 1 },
+          };
+        }
+        t.marker = {
+          ...(t.marker || {}),
+          opacity: t.marker?.opacity ?? 1,
+          line: t.marker?.line || { color: '#ffffff', width: 0.6 },
+        };
+        t.textposition = 'none';
+        t.hoverinfo = 'skip';
+        t.cliponaxis = false;
+        return t;
+      }
+      if (visualRole === 'riskCalibrationBars') {
+        const alpha = Math.max(0.16, Math.min(userMarkerOpacity, 0.34));
+        t.marker = {
+          ...(t.marker || {}),
+          color: withAlpha(color, alpha),
+          line: { color: withAlpha(color, alpha + 0.18), width: 1 },
+        };
+        t.showlegend = false;
+        t.cliponaxis = false;
+        return t;
+      }
       const barColor = hasArrayColor ? remapArrayColors(t.marker.color, palette) : color;
       t.marker = {
         ...(t.marker || {}),
         color: barColor,
         opacity: userMarkerOpacity,
-        line: { color: '#ffffff', width: 0.8 },
+        line: { color: '#ffffff', width: 1.2 },
       };
       t.textposition = t.textposition || 'outside';
-      t.textfont = { ...(t.textfont || {}), family: theme.fontFamily, size: 10, color: ink };
+      t.textfont = { ...(t.textfont || {}), family: fontFamily, size: 11, color: ink };
       t.cliponaxis = false;
     }
 
+    // ── Barpolar ──
+    if (t.type === 'barpolar') {
+      const barpolarColor = Array.isArray(t.marker?.color) ? remapArrayColors(t.marker.color, palette) : color;
+      t.marker = { ...(t.marker || {}), color: barpolarColor, opacity: userMarkerOpacity, line: { color: '#ffffff', width: 1.5 } };
+    }
+
+    // ── Histogram ──
     if (t.type === 'histogram') {
-      t.marker = { ...(t.marker || {}), color, opacity: 0.78, line: { color: '#ffffff', width: 0.6 } };
+      t.marker = { ...(t.marker || {}), color, opacity: 0.82, line: { color: '#ffffff', width: 0.8 } };
       t.nbinsx = t.nbinsx || 28;
     }
 
+    // ── Box ──
     if (t.type === 'box') {
-      t.line = { ...(t.line || {}), color, width: 1.6 };
-      t.fillcolor = withAlpha(color, 0.2);
-      t.marker = { ...(t.marker || {}), color, size: 4, opacity: 0.55, line: { color: '#ffffff', width: 0.4 } };
+      t.line = { ...(t.line || {}), color, width: Math.max(1.2, Math.min(userLineWidth, 5)) };
+      t.fillcolor = withAlpha(color, 0.25);
+      t.marker = { ...(t.marker || {}), color, size: 4.5, opacity: 0.55, line: { color: '#ffffff', width: 0.5 } };
       t.boxmean = t.boxmean ?? 'sd';
       t.boxpoints = t.boxpoints ?? false;
+      t.whiskerwidth = 0.7;
     }
 
+    // ── Violin ──
     if (t.type === 'violin') {
-      t.line = { ...(t.line || {}), color, width: 1.5 };
-      t.fillcolor = withAlpha(color, 0.25);
+      t.line = { ...(t.line || {}), color, width: Math.max(1.2, Math.min(userLineWidth, 5)) };
+      t.fillcolor = withAlpha(color, 0.30);
       t.marker = { ...(t.marker || {}), color, opacity: 0.45, size: 3.5, line: { color: '#ffffff', width: 0.3 } };
-      t.meanline = { visible: true, color: ink, width: 1, ...(t.meanline || {}) };
+      t.meanline = { visible: true, color: ink, width: 1.2, ...(t.meanline || {}) };
       t.spanmode = t.spanmode || 'soft';
     }
 
+    // ── Pie / Donut ──
+    if (t.type === 'pie') {
+      const sliceCount = Math.max((t.labels || []).length, (t.values || []).length, 1);
+      t.marker = { ...(t.marker || {}), colors: Array.from({ length: sliceCount }, (_, idx) => palette[idx % palette.length]), line: { color: '#ffffff', width: 2.5 } };
+      t.textfont = { ...(t.textfont || {}), family: fontFamily, size: 12 };
+    }
+
+    // ── Funnel ──
+    if (t.type === 'funnel') {
+      t.textfont = { ...(t.textfont || {}), family: fontFamily, size: 13 };
+      const funnelCount = Math.max((t.y || []).length, (t.x || []).length, 1);
+      t.marker = { ...(t.marker || {}), color: Array.from({ length: funnelCount }, (_, idx) => palette[idx % palette.length]), line: { color: '#ffffff', width: 2 } };
+    }
+
+    // ── Treemap ──
+    if (t.type === 'treemap') {
+      const treemapCount = Math.max((t.labels || []).length, (t.values || []).length, 1);
+      t.marker = {
+        ...(t.marker || {}),
+        colors: Array.from({ length: treemapCount }, (_, idx) => palette[idx % palette.length]),
+        line: { color: '#ffffff', width: 1.5, ...(t.marker?.line || {}) },
+      };
+      t.textfont = { ...(t.textfont || {}), family: fontFamily };
+    }
+
+    // ── Heatmap ──
     if (t.type === 'heatmap') {
       const isBinary = t.zmax === 1 && t.zmin === 0 && Array.isArray(t.colorscale) && t.colorscale.length === 4;
-      if (!isBinary) {
+      if (customColorScale) {
+        t.colorscale = customColorScale;
+      } else if (!isBinary) {
         const isDivergent = t.zmin !== undefined && t.zmin < 0;
-        // Only override with theme scale if trace did not provide a rich custom scale
         const alreadyRich = Array.isArray(t.colorscale) && t.colorscale.length >= 8;
         if (!alreadyRich) {
           const themeScale = isDivergent
@@ -286,15 +436,42 @@ function polishTracesForPublication(traces, theme) {
       t.hoverongaps = false;
       t.colorbar = {
         thickness: 18, len: 0.82, outlinewidth: 0,
-        tickfont: { family: theme.fontFamily, size: 10, color: ink },
+        tickfont: { family: fontFamily, size: 10, color: ink },
         ...(t.colorbar || {}),
       };
     }
 
+    // ── Choropleth ──
     if (t.type === 'choropleth') {
-      t.colorscale = t.colorscale || theme.sequentialScale;
+      t.colorscale = customColorScale || t.colorscale || theme.sequentialScale;
       t.marker = { line: { color: '#ffffff', width: 0.4 }, ...(t.marker || {}) };
-      t.colorbar = { thickness: 12, outlinewidth: 0, tickfont: { family: theme.fontFamily, size: 10, color: ink }, ...(t.colorbar || {}) };
+      t.colorbar = { thickness: 12, outlinewidth: 0, tickfont: { family: fontFamily, size: 10, color: ink }, ...(t.colorbar || {}) };
+    }
+
+    // ── Sankey ──
+    if (t.type === 'sankey') {
+      if (t.node) {
+        const nodeCount = Math.max((t.node.label || []).length, 1);
+        t.node = { ...t.node, color: Array.from({ length: nodeCount }, (_, idx) => palette[idx % palette.length]), line: { color: '#ffffff', width: 1.5 } };
+      }
+      if (t.link && Array.isArray(t.link.source)) {
+        t.link = {
+          ...t.link,
+          color: t.link.source.map((s, idx) => withAlpha(palette[Number(s) % palette.length] || palette[idx % palette.length], 0.34)),
+        };
+      }
+    }
+
+    // ── Parallel coordinates ──
+    if (t.type === 'parcoords') {
+      t.line = { ...(t.line || {}), colorscale: customColorScale || t.line?.colorscale };
+      if (Array.isArray(t.dimensions)) {
+        t.dimensions = t.dimensions.map(dim => ({
+          ...dim,
+          labelfont: { family: fontFamily, size: 11, color: ink, ...(dim.labelfont || {}) },
+          tickfont: { family: fontFamily, size: 9, color: ink, ...(dim.tickfont || {}) },
+        }));
+      }
     }
 
     return t;
@@ -306,9 +483,15 @@ function polishLayoutForPublication(layout, chartType, theme) {
   const ink = theme.ink || '#111827';
   const family = theme.fontFamily || "'Arial', 'Noto Sans SC', sans-serif";
   const axisColor = theme.axisLineColor || '#26313D';
+  const userPalette = STATE.userColors && STATE.userColors.length > 0 ? STATE.userColors : null;
+  const customPalette = typeof getActivePalette === 'function' ? getActivePalette() : null;
+  const basePalette = userPalette || customPalette || theme.colorway || ['#2E6F9E', '#D95F59', '#2A9D8F', '#E9A93A'];
+  const palette = typeof expandPalette === 'function' ? expandPalette(basePalette, 24) : basePalette;
   const isSetPlot = ['venn', 'upset'].includes(chartType);
-  const isSpatial = ['china_map', 'world_map'].includes(chartType);
+  const isSpatial = ['china_map', 'china_bubble_map', 'world_map', 'world_bubble_map', 'usa_map', 'europe_map', 'uk_map'].includes(chartType);
   const isHeatmap = ['heatmap', 'correlation_heatmap', 'missingness_heatmap'].includes(chartType);
+  const isPieLike = ['donut', 'pie', 'funnel', 'treemap', 'sankey', 'polar_bar'].includes(chartType);
+  const isPolar = ['radar', 'polar_bar'].includes(chartType);
 
   l.paper_bgcolor = theme.bgColor || '#ffffff';
   l.plot_bgcolor = theme.plotBgColor || '#ffffff';
@@ -316,7 +499,7 @@ function polishLayoutForPublication(layout, chartType, theme) {
   l.hoverlabel = {
     bgcolor: '#ffffff',
     bordercolor: theme.axisLineColor || '#D7DEE8',
-    font: { family, color: ink, size: 11 },
+    font: { family, color: ink, size: 12 },
     ...(l.hoverlabel || {}),
   };
   l.legend = {
@@ -332,7 +515,7 @@ function polishLayoutForPublication(layout, chartType, theme) {
   };
   l.title = normalizePublicationTitle(l.title, theme, chartType);
 
-  if (!isSetPlot && !isSpatial) {
+  if (!isSetPlot && !isSpatial && !isPieLike) {
     if (!l.xaxis) l.xaxis = {};
     if (!l.yaxis) l.yaxis = {};
   }
@@ -347,7 +530,7 @@ function polishLayoutForPublication(layout, chartType, theme) {
       linewidth: 0,
       mirror: false,
       ticks: 'outside',
-      ticklen: 4,
+      ticklen: 5,
       tickwidth: 1,
       tickcolor: axisColor,
       zeroline: false,
@@ -358,7 +541,7 @@ function polishLayoutForPublication(layout, chartType, theme) {
       tickfont: { family, size: (theme.tickFontSize || 11), color: ink },
       title: {
         font: { family, size: (theme.axisFontSize || 13), color: ink },
-        standoff: 10,
+        standoff: 12,
         ...(typeof prev.title === 'string' ? { text: prev.title } : (prev.title || {})),
       },
       ...(prev || {}),
@@ -366,6 +549,26 @@ function polishLayoutForPublication(layout, chartType, theme) {
       linewidth: 0,
     };
   });
+
+  // Polar layout theming
+  if (l.polar) {
+    l.polar = {
+      ...l.polar,
+      bgcolor: 'rgba(0,0,0,0)',
+      radialaxis: {
+        ...(l.polar.radialaxis || {}),
+        gridcolor: theme.gridColor || 'rgba(31,41,55,0.10)',
+        linecolor: axisColor,
+        tickfont: { family, size: 9, color: ink },
+      },
+      angularaxis: {
+        ...(l.polar.angularaxis || {}),
+        gridcolor: theme.gridColor || 'rgba(31,41,55,0.08)',
+        linecolor: axisColor,
+        tickfont: { family, size: 11, color: ink },
+      },
+    };
+  }
 
   if (l.geo) {
     l.geo = {
@@ -386,19 +589,36 @@ function polishLayoutForPublication(layout, chartType, theme) {
   }
   if (chartType === 'upset') l.margin = { l: 80, r: 70, t: 85, b: 70, ...(l.margin || {}) };
   if (chartType === 'venn') l.margin = { l: 20, r: 20, t: 80, b: 30, ...(l.margin || {}) };
+  if (chartType === 'sankey') l.margin = { l: 20, r: 20, t: 80, b: 30, ...(l.margin || {}) };
+  if (chartType === 'treemap') l.margin = { l: 10, r: 10, t: 78, b: 10, ...(l.margin || {}) };
+  if (chartType === 'ridgeline') l.margin = { l: 72, r: 48, t: 78, b: 60, ...(l.margin || {}) };
   if (isSpatial) {
     l.margin = { l: 10, r: 10, t: 60, b: 10, ...(l.margin || {}) };
     l.legend = { ...(l.legend || {}), y: -0.05 };
     l.geo = { ...(l.geo || {}), domain: { x: [0.01, 0.99], y: [0.01, 0.96] } };
   }
 
-  // Draw complete coordinate axes as clean L-shaped lines with arrow tips
-  if (!isSetPlot && !isSpatial && !isHeatmap) {
+  if (chartType === 'venn' && Array.isArray(l.shapes)) {
+    let circleIdx = 0;
+    l.shapes = l.shapes.map((shape) => {
+      if (shape.type !== 'circle') return shape;
+      const c = palette[circleIdx % palette.length];
+      circleIdx += 1;
+      return {
+        ...shape,
+        fillcolor: withAlpha(c, 0.20),
+        line: { ...(shape.line || {}), color: c, width: shape.line?.width || 2.2 },
+      };
+    });
+  }
+
+  // Draw coordinate axes as clean L-shaped lines with arrow tips
+  // Skip for special chart types that don't use standard axes
+  if (!isSetPlot && !isSpatial && !isHeatmap && !isPieLike && !isPolar) {
     const existingAnnots = Array.isArray(l.annotations) ? l.annotations : [];
     const existingShapes = Array.isArray(l.shapes) ? l.shapes : [];
     l.shapes = [
       ...existingShapes,
-      // X-axis line: from origin to right edge
       {
         type: 'line',
         xref: 'x domain', yref: 'y domain',
@@ -406,7 +626,6 @@ function polishLayoutForPublication(layout, chartType, theme) {
         line: { color: axisColor, width: 1.5 },
         layer: 'above',
       },
-      // Y-axis line: from origin to top edge
       {
         type: 'line',
         xref: 'x domain', yref: 'y domain',
@@ -486,21 +705,47 @@ function getChartFrameSize(plotMount, chartType) {
   const previewStyle = preview ? getComputedStyle(preview) : null;
   const padX = previewStyle ? parseFloat(previewStyle.paddingLeft || 0) + parseFloat(previewStyle.paddingRight || 0) : 0;
   const padY = previewStyle ? parseFloat(previewStyle.paddingTop || 0) + parseFloat(previewStyle.paddingBottom || 0) : 0;
-  const width = Math.max(400, Math.floor((preview?.clientWidth || 900) - padX));
-  const spatial = ['china_map', 'world_map'].includes(chartType);
+  const width = Math.max(560, Math.floor((preview?.clientWidth || 900) - padX));
+  const spatial = ['china_map', 'china_bubble_map', 'world_map', 'world_bubble_map', 'usa_map', 'europe_map', 'uk_map'].includes(chartType);
   const setPlot = ['venn', 'upset'].includes(chartType);
+  const isPieLike = ['donut', 'pie', 'funnel', 'treemap', 'sankey', 'radar', 'polar_bar'].includes(chartType);
   const isHeatmap = ['heatmap', 'correlation_heatmap', 'missingness_heatmap'].includes(chartType);
-  const minHeight = spatial ? 620 : (setPlot ? 600 : (isHeatmap ? 720 : 580));
-  const height = Math.max(minHeight, Math.floor((preview?.clientHeight || minHeight) - padY));
+  const minHeight = spatial ? 520 : (setPlot ? 520 : (isPieLike ? 520 : (isHeatmap ? 560 : 480)));
+  const availableHeight = Math.floor((preview?.clientHeight || 0) - padY);
+  const viewportHeight = Math.floor(window.innerHeight * 0.56);
+  const height = Math.max(minHeight, availableHeight, viewportHeight);
   return { width, height };
 }
 
 function fitChartPlotToFrame(plotMount, chartType) {
   const size = getChartFrameSize(plotMount, chartType);
-  plotMount.style.width = '100%';
-  plotMount.style.height = `${size.height}px`;
-  plotMount.style.minHeight = `${size.height}px`;
-  return size;
+  const scale = 1.0;
+  const preview = plotMount.parentElement;
+  const previewStyle = preview ? getComputedStyle(preview) : null;
+  const padX = previewStyle ? parseFloat(previewStyle.paddingLeft || 0) + parseFloat(previewStyle.paddingRight || 0) : 0;
+  const padY = previewStyle ? parseFloat(previewStyle.paddingTop || 0) + parseFloat(previewStyle.paddingBottom || 0) : 0;
+  const maxW = Math.max(320, Math.floor((preview?.clientWidth || 900) - padX));
+  const maxH = Math.max(320, Math.floor((preview?.clientHeight || 600) - padY));
+  const w = Math.min(maxW, Math.max(320, Math.floor(size.width * scale)));
+  const h = Math.min(maxH, Math.max(320, Math.floor(size.height * scale)));
+  plotMount.style.width = `${w}px`;
+  plotMount.style.height = `${h}px`;
+  plotMount.style.minHeight = `${h}px`;
+  return { width: w, height: h };
+}
+
+function syncCurrentPlotlyLayoutFromDom(plotMount) {
+  if (!plotMount || !plotMount._fullLayout || !STATE.currentPlotlyLayout) return;
+  const width = Math.floor(plotMount._fullLayout.width || plotMount.clientWidth || STATE.currentPlotlyLayout.width || 0);
+  const height = Math.floor(plotMount._fullLayout.height || plotMount.clientHeight || STATE.currentPlotlyLayout.height || 0);
+  if (width > 0 && height > 0) {
+    STATE.currentPlotlyLayout = {
+      ...STATE.currentPlotlyLayout,
+      width,
+      height,
+      autosize: false,
+    };
+  }
 }
 
 function installChartResizeObserver(plotMount, chartType) {
@@ -511,7 +756,15 @@ function installChartResizeObserver(plotMount, chartType) {
     resizeFrame = requestAnimationFrame(() => {
       const size = fitChartPlotToFrame(plotMount, chartType);
       if (window.Plotly && plotMount.isConnected) {
-        Plotly.relayout(plotMount, { width: size.width, height: size.height, autosize: false });
+        const relayoutPromise = Plotly.relayout(plotMount, { width: size.width, height: size.height, autosize: false });
+        if (relayoutPromise && typeof relayoutPromise.then === 'function') {
+          relayoutPromise.then(() => syncCurrentPlotlyLayoutFromDom(plotMount));
+        } else {
+          syncCurrentPlotlyLayoutFromDom(plotMount);
+        }
+        if (STATE.currentPlotlyLayout) {
+          STATE.currentPlotlyLayout = { ...STATE.currentPlotlyLayout, width: size.width, height: size.height, autosize: false };
+        }
       }
     });
   });
@@ -597,4 +850,48 @@ function parseCSVLine(line) {
   }
   result.push(current.trim());
   return result;
+}
+
+// Restored preview sizing: keep the rendered figure centered with publication
+// whitespace instead of stretching every Plotly canvas to the full preview box.
+function getChartFrameSize(plotMount, chartType) {
+  const preview = el('chartPreviewContainer') || plotMount.parentElement;
+  const previewStyle = preview ? getComputedStyle(preview) : null;
+  const padX = previewStyle ? parseFloat(previewStyle.paddingLeft || 0) + parseFloat(previewStyle.paddingRight || 0) : 0;
+  const padY = previewStyle ? parseFloat(previewStyle.paddingTop || 0) + parseFloat(previewStyle.paddingBottom || 0) : 0;
+  const maxW = Math.max(520, Math.floor((preview?.clientWidth || 960) - padX));
+  const maxH = Math.max(440, Math.floor((preview?.clientHeight || 680) - padY));
+  const spatial = ['china_map', 'china_bubble_map', 'world_map', 'world_bubble_map', 'usa_map', 'europe_map', 'uk_map'].includes(chartType);
+  const setPlot = ['venn', 'upset'].includes(chartType);
+  const pieLike = ['donut', 'pie', 'funnel', 'treemap', 'sankey', 'radar', 'polar_bar'].includes(chartType);
+  const heatmap = ['heatmap', 'correlation_heatmap', 'missingness_heatmap'].includes(chartType);
+  const aspect = chartType === 'sankey' ? 1.90
+    : (heatmap ? 1.85
+      : (spatial ? 1.55
+        : (pieLike ? 1.18
+          : (setPlot ? 1.45 : 1.62))));
+  const usableW = Math.max(360, Math.floor(maxW * 0.90));
+  const usableH = Math.max(360, Math.floor(maxH * 0.88));
+  let width = Math.floor(usableH * aspect);
+  let height = usableH;
+  if (width > usableW) {
+    width = usableW;
+    height = Math.floor(width / aspect);
+  }
+  const minH = spatial ? 500 : (heatmap ? 500 : (pieLike ? 440 : 480));
+  if (height < Math.min(minH, usableH)) {
+    height = Math.min(minH, usableH);
+    width = Math.min(usableW, Math.floor(height * aspect));
+  }
+  return { width, height };
+}
+
+function fitChartPlotToFrame(plotMount, chartType) {
+  const size = getChartFrameSize(plotMount, chartType);
+  plotMount.style.setProperty('width', `${size.width}px`, 'important');
+  plotMount.style.setProperty('height', `${size.height}px`, 'important');
+  plotMount.style.setProperty('min-height', `${size.height}px`, 'important');
+  plotMount.style.setProperty('max-width', '100%', 'important');
+  plotMount.style.setProperty('max-height', '100%', 'important');
+  return size;
 }

@@ -1,0 +1,13 @@
+region,incidence,prevalence,mortality,care_network
+Scotland,61.6,28.4,3.31,NHS Scotland
+Northern Ireland,63.8,30.3,3.16,HSC Northern Ireland
+Wales,65.1,31.6,3.33,NHS Wales
+North East,73.2,34.9,3.92,NHS England North
+North West,72.6,34.6,3.73,NHS England North
+Yorkshire and The Humber,70.9,33.7,3.66,NHS England North
+East Midlands,69.1,32.8,3.55,NHS England Midlands
+West Midlands,70.2,32.5,3.58,NHS England Midlands
+East of England,62.4,29.5,3.24,NHS England East
+London,58.9,27.1,3.18,NHS England London
+South East,56.8,28.1,2.99,NHS England South East
+South West,54.5,28.0,2.94,NHS England South West

@@ -11,6 +11,7 @@
 - **完整数据生成图表**：新增 `/api/dataset/data`，图表渲染从后端读取完整列式数据，不再使用前 10 行预览数据。
 - **变量默认映射**：常用图表会自动填入推荐变量，例如散点图默认 `age / bmi / group`。
 - **纵向图表选择列表**：图表选择区改为单列纵向清单，选择后右侧工作台只展示当前图所需变量。
+- **Researchwork 风格靠拢**：界面改为浅蓝纸面背景、白色玻璃感卡片、蓝色主按钮、更大的字号和更舒展的图形预览区，整体空间感向 `researchwork` 工作台靠拢。
 - **紧凑摘要布局**：上传/示例数据摘要卡片改为紧凑网格，避免右侧信息过散。
 - **CNS 出版级图形主题**：默认启用 CNS 出版主题，统一优化色板、字体、线宽、坐标轴箭头、标签、图例、热图、地图、韦恩图和 UpSet 图。
 - **本地边界地图**：中国省界与世界国界分别使用 `china_provinces.geojson` 和 `world_countries.geojson`，不依赖外部 CDN。
@@ -22,8 +23,8 @@
 
 - **多格式数据上传**：CSV / TSV / TXT / XLSX / XLS / XLSM
 - **智能变量识别**：连续变量、分类变量、二分类变量、日期变量、ID 变量、地区变量、分组变量、结局候选变量
-- **30+ 图表类型**：基础统计图、临床高级图、展示感图、空间分布图
-- **20 个示例数据集**：覆盖散点、柱状、折线、森林图、火山图、生存、ROC、DCA、地图等场景
+- **62 种图表类型**：基础统计图、临床高级图、展示感图、空间分布图
+- **36 个示例数据集**：覆盖散点、柱状、折线、配对变化、疗效瀑布、Bland-Altman、校准曲线、Swimmer、生存、ROC、DCA、列线图、风险校准和多区域地图等场景
 - **三线表一键生成**：基线资料表、描述统计表、缺失值统计表，支持自动 P 值计算
 - **多主题图表**：CNS 出版、临床、期刊、Nature、暖色、深色低调主题
 - **多格式导出**：PNG / SVG / PDF / CSV / Excel / HTML / ZIP
@@ -97,11 +98,18 @@ flowchart LR
 | 图表类型 | 示例数据 |
 |---|---|
 | 散点图、分组散点图 | `scatter_example` |
-| 柱状图、堆叠柱状图、误差线图 | `bar_example` |
+| 柱状图、堆叠柱状图、横向条形图、分组柱状图、百分比堆叠柱图、棒棒糖图、误差线图 | `bar_example` |
 | 折线图、多组折线图、面积图 | `line_example` |
 | 直方图、密度图、箱线图、箱线图+散点 | `boxplot_example` |
 | 小提琴图、小提琴+箱线+散点 | `violin_example` |
 | 哑铃图 | `dumbbell_example` |
+| 斜率变化图、配对前后连线图 | `paired_change_example` |
+| 肿瘤疗效瀑布图 | `waterfall_example` |
+| Bland-Altman 一致性图 | `method_comparison_example` |
+| 校准曲线 | `calibration_example` |
+| Swimmer 治疗过程图 | `swimmer_example` |
+| 人群金字塔图 | `population_pyramid_example` |
+| 正态 QQ 图 | `boxplot_example` |
 | 森林图 | `forest_example` |
 | 火山图 | `volcano_example` |
 | 气泡图 | `bubble_example` |
@@ -109,6 +117,9 @@ flowchart LR
 | 相关性热图、缺失值热图、PCA | `baseline_table_example`（含真实缺失模式） |
 | Kaplan-Meier 生存曲线 | `survival_example` |
 | ROC 曲线 | `roc_example` |
+| 多模型 ROC 曲线 | `roc_example` |
+| 风险校准图 | `risk_calibration_example` |
+| 列线图 / 风险评分图 | `nomogram_example` |
 | DCA 决策曲线 | `dca_example` |
 | 云雨图、蜂群图 | `raincloud_example` |
 | 豆荚图 | `beanplot_example` |
@@ -116,6 +127,11 @@ flowchart LR
 | UpSet 交集图 | `upset_example` |
 | 中国疾病分布地图 | `china_map_example` |
 | 世界疾病分布地图 | `world_map_example` |
+| 中国省域气泡地图 | `china_map_example` |
+| 美国州级分布地图 | `usa_map_example` |
+| 欧洲疾病分布地图 | `europe_map_example` |
+| 英国区域气泡地图 | `uk_map_example` |
+| 全球气泡分布地图 | `world_map_example` |
 
 ## 项目结构
 
@@ -224,6 +240,7 @@ curl -X POST http://127.0.0.1:8866/api/dataset/data \
 python tests\smoke.py
 python -m compileall app
 node --check app\static\js\variableSelect.js
+node tests\chart_config_smoke.js
 node --check app\static\js\charts.js
 node --check app\static\js\upload.js
 node --check app\static\js\tableGenerator.js
