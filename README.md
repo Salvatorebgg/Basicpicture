@@ -2,7 +2,7 @@
 
 **Clinical Basic Statistics Graphs & Three-Line Table One-Click Generation Platform**
 
-面向临床科研数据的交互式图形与标准三线表生成平台。当前版本采用“先选图表，再下载示例/上传数据，再绘制”的 chart-first 工作流，并将总体逻辑向 `statistical_description` 项目靠拢：每类图表绑定对应示例数据、默认变量映射和完整数据绘图接口，避免先上传再重复选图造成流程混乱。
+面向临床科研数据的交互式图形与标准三线表生成平台。当前版本采用"先选图表，再下载示例/上传数据，再绘制"的 chart-first 工作流，并将总体逻辑向 `statistical_description` 项目靠拢：每类图表绑定对应示例数据、默认变量映射和完整数据绘图接口，避免先上传再重复选图造成流程混乱。
 
 ## 当前版本重点
 
@@ -10,11 +10,11 @@
 - **示例数据与图表一一对应**：每个图表配置都声明 `exampleDataset`，前端选择图表后会绑定对应示例和默认变量。
 - **完整数据生成图表**：新增 `/api/dataset/data`，图表渲染从后端读取完整列式数据，不再使用前 10 行预览数据。
 - **变量默认映射**：常用图表会自动填入推荐变量，例如散点图默认 `age / bmi / group`。
-- **纵向图表选择列表**：图表选择区改为单列纵向清单，选择后右侧工作台只展示当前图所需变量。
+- **纵向图表选择列表**：图表选择区分为基础统计图、临床高级图、展示感图和空间分布图四个分类，单列纵向排列，选择后右侧工作台只展示当前图所需变量。
 - **Researchwork 风格靠拢**：界面改为浅蓝纸面背景、白色玻璃感卡片、蓝色主按钮、更大的字号和更舒展的图形预览区，整体空间感向 `researchwork` 工作台靠拢。
 - **紧凑摘要布局**：上传/示例数据摘要卡片改为紧凑网格，避免右侧信息过散。
 - **CNS 出版级图形主题**：默认启用 CNS 出版主题，统一优化色板、字体、线宽、坐标轴箭头、标签、图例、热图、地图、韦恩图和 UpSet 图。
-- **本地边界地图**：中国省界与世界国界分别使用 `china_provinces.geojson` 和 `world_countries.geojson`，不依赖外部 CDN。
+- **本地边界地图**：中国省界与世界国界分别使用本地 GeoJSON 文件，不依赖外部 CDN。
 - **稳定本地图表导出**：Plotly.js 已本地化到 `app/static/vendor/plotly.min.js`，图表区 PNG / SVG / CSV / 出版级按钮可直接导出当前结果；支持的图表还可通过 matplotlib/seaborn/geopandas 生成 PNG / SVG / PDF 出版级文件。
 - **三线表变量多选生效**：前端多选变量会传入后端表格生成接口。
 - **更稳健的数据读取**：CSV/TSV/TXT 自动识别编码和分隔符，并统一处理常见缺失值标记。
@@ -23,10 +23,10 @@
 
 - **多格式数据上传**：CSV / TSV / TXT / XLSX / XLS / XLSM
 - **智能变量识别**：连续变量、分类变量、二分类变量、日期变量、ID 变量、地区变量、分组变量、结局候选变量
-- **62 种图表类型**：基础统计图、临床高级图、展示感图、空间分布图
-- **36 个示例数据集**：覆盖散点、柱状、折线、配对变化、疗效瀑布、Bland-Altman、校准曲线、Swimmer、生存、ROC、DCA、列线图、风险校准和多区域地图等场景
+- **82+ 种图表类型**：基础统计图（31种）、临床高级图（19种）、展示感图（20种）、空间分布图（12种）
+- **36 个示例数据集**：覆盖散点、柱状、折线、配对变化、疗效瀑布、Bland-Altman、校准曲线、Swimmer、生存、ROC、DCA、列线图、风险校准、热图、雷达图、桑基图、矩形树图、漏斗图、旭日图、华夫饼图、马赛克图、弦图、径向层级树图和多区域地图等场景
 - **三线表一键生成**：基线资料表、描述统计表、缺失值统计表，支持自动 P 值计算
-- **多主题图表**：CNS 出版、临床、期刊、Nature、暖色、深色低调主题
+- **12 种出版级主题**：CNS 出版、CHARLS 临床、经典期刊、Nature 风格、Lancet、NEJM、Science、暖色、冷色、柔和、深色低调、单色
 - **多格式导出**：PNG / SVG / PDF / CSV / Excel / HTML / ZIP
 
 ## 快速开始
@@ -71,12 +71,12 @@ python -m uvicorn app.main:app --host 127.0.0.1 --port 8871
 
 ## 推荐使用流程
 
-1. 在左侧“图表类型”中先选择想绘制的图。
-2. 点击“加载示例”快速查看本图效果，或下载对应示例 CSV 后按模板整理数据。
+1. 在左侧"图表类型"中先选择想绘制的图。
+2. 点击"加载示例"快速查看本图效果，或下载对应示例 CSV 后按模板整理数据。
 3. 上传自己的 CSV/Excel，平台会重新识别变量类型并保留在当前图表工作台。
-4. 确认变量映射、标题和主题，点击“生成图表”。
+4. 确认变量映射、标题和主题，点击"生成图表"。
 5. 在图形预览顶部导出 PNG / SVG / CSV / 出版级文件。
-6. 切换到“三线表”页生成基线、描述或缺失统计三线表。
+6. 切换到"三线表"页生成基线、描述或缺失统计三线表。
 
 ## 核心数据流
 
@@ -93,45 +93,110 @@ flowchart LR
   E --> I["三线表生成"]
 ```
 
-## 图表与示例数据映射
+## 图表分类与示例数据映射
+
+### 基础统计图 (31种)
 
 | 图表类型 | 示例数据 |
 |---|---|
 | 散点图、分组散点图 | `scatter_example` |
-| 柱状图、堆叠柱状图、横向条形图、分组柱状图、百分比堆叠柱图、棒棒糖图、误差线图 | `bar_example` |
+| 柱状图、堆叠柱状图、横向条形图、分组柱状图、百分比堆叠图、棒棒糖图、误差线图 | `bar_example` |
 | 折线图、多组折线图、面积图 | `line_example` |
 | 直方图、密度图、箱线图、箱线图+散点 | `boxplot_example` |
 | 小提琴图、小提琴+箱线+散点 | `violin_example` |
 | 哑铃图 | `dumbbell_example` |
-| 斜率变化图、配对前后连线图 | `paired_change_example` |
+| 斜率变化图、配对变化图 | `paired_change_example` |
 | 肿瘤疗效瀑布图 | `waterfall_example` |
 | Bland-Altman 一致性图 | `method_comparison_example` |
 | 校准曲线 | `calibration_example` |
 | Swimmer 治疗过程图 | `swimmer_example` |
 | 人群金字塔图 | `population_pyramid_example` |
 | 正态 QQ 图 | `boxplot_example` |
+| 经验累积分布图 (ECDF) | `boxplot_example` |
+| 均值 95%CI 图 | `boxplot_example` |
+| 条带散点图 | `violin_example` |
+| Pareto 排列图 | `bar_example` |
+| 阶梯趋势图 | `line_example` |
+
+### 临床高级图 (19种)
+
+| 图表类型 | 示例数据 |
+|---|---|
 | 森林图 | `forest_example` |
 | 火山图 | `volcano_example` |
 | 气泡图 | `bubble_example` |
 | 热图 | `heatmap_example` |
-| 相关性热图、缺失值热图、PCA | `baseline_table_example`（含真实缺失模式） |
+| 相关性热图 | `correlation_heatmap_example` |
+| 缺失值热图 | `baseline_table_example`（含真实缺失模式） |
+| PCA 散点图 | `correlation_heatmap_example` |
 | Kaplan-Meier 生存曲线 | `survival_example` |
 | ROC 曲线 | `roc_example` |
 | 多模型 ROC 曲线 | `roc_example` |
 | 风险校准图 | `risk_calibration_example` |
 | 列线图 / 风险评分图 | `nomogram_example` |
 | DCA 决策曲线 | `dca_example` |
+| Precision-Recall 曲线 | `roc_example` |
+| 提升曲线 (Lift Chart) | `roc_example` |
+| 时间依赖 AUC 曲线 | `survival_example` |
+| 决策影响曲线 | `dca_example` |
+| 风险十分位图 | `risk_calibration_example` |
+
+### 展示感图 (20种)
+
+| 图表类型 | 示例数据 |
+|---|---|
 | 云雨图、蜂群图 | `raincloud_example` |
 | 豆荚图 | `beanplot_example` |
+| 山脊图 | `raincloud_example` |
+| 甜甜圈图、饼图 | `bar_example` |
+| 雷达图 | `radar_example` |
+| 桑基图 | `sankey_example` |
+| 矩形树图 | `treemap_example` |
+| 克利夫兰点图 | `dumbbell_example` |
+| 平行坐标图 | `boxplot_example` |
+| 漏斗图 | `funnel_example` |
+| 极坐标柱状图 | `bar_example` |
 | 韦恩图 | `venn_example` |
 | UpSet 交集图 | `upset_example` |
+| 旭日图 | `treemap_example` |
+| 华夫饼构成图 | `bar_example` |
+| 马赛克构成热图 | `bar_example` |
+| 弦图流向图 | `sankey_example` |
+| 径向层级树图 | `treemap_example` |
+
+### 空间分布图 (12种)
+
+| 图表类型 | 示例数据 |
+|---|---|
 | 中国疾病分布地图 | `china_map_example` |
 | 世界疾病分布地图 | `world_map_example` |
 | 中国省域气泡地图 | `china_map_example` |
+| 中国省域 Top 排名地图 | `china_map_example` |
+| 世界疾病标注地图 | `world_map_example` |
 | 美国州级分布地图 | `usa_map_example` |
+| 美国州级气泡地图 | `usa_map_example` |
 | 欧洲疾病分布地图 | `europe_map_example` |
+| 欧洲国家气泡地图 | `europe_map_example` |
 | 英国区域气泡地图 | `uk_map_example` |
+| 英国区域瓦片地图 | `uk_map_example` |
 | 全球气泡分布地图 | `world_map_example` |
+
+## 出版级图表主题 (12种)
+
+| 主题标识 | 主题名称 |
+|---|---|
+| `cnsTheme` | CNS 出版 |
+| `clinicalTheme` | CHARLS 临床 |
+| `journalTheme` | 经典期刊 |
+| `natureStyleTheme` | Nature 风格 |
+| `lancetTheme` | Lancet |
+| `nejmTheme` | NEJM |
+| `scienceTheme` | Science |
+| `warmTheme` | 暖色 |
+| `coolTheme` | 冷色 |
+| `pastelTheme` | 柔和 |
+| `darkMutedTheme` | 深色低调 |
+| `monoTheme` | 单色 |
 
 ## 项目结构
 
@@ -151,36 +216,47 @@ Basicpicture/
 │   │   ├── stats_service.py     # 描述统计和组间比较
 │   │   ├── table_service.py     # 三线表数据生成
 │   │   ├── chart_service.py     # 后端图表变量/数据辅助接口
-│   │   ├── sample_service.py    # 示例数据生成函数
+│   │   ├── sample_service.py    # 示例数据生成函数（36个示例数据集）
 │   │   ├── export_service.py    # 表格和配置导出
 │   │   └── publication_chart_service.py # matplotlib/seaborn 出版级图表导出
 │   └── static/
-│       ├── index.html
+│       ├── index.html           # SPA 主页面
+│       ├── styles.css           # 主样式
+│       ├── china_centroids.json # 中国省份质心坐标
 │       ├── china_provinces.geojson
 │       ├── world_countries.geojson
+│       ├── vendor/
+│       │   └── plotly.min.js    # 本地 Plotly.js
 │       ├── css/
-│       │   ├── theme.css
-│       │   ├── layout.css
-│       │   ├── components.css
-│       │   └── tables.css
+│       │   ├── theme.css        # 主题样式
+│       │   ├── layout.css       # 布局样式
+│       │   ├── components.css   # 组件样式
+│       │   └── tables.css       # 三线表样式
 │       └── js/
-│           ├── utils.js
-│           ├── upload.js
-│           ├── dataPreview.js
+│           ├── app.js           # 应用入口和状态管理
+│           ├── utils.js         # 工具函数
+│           ├── upload.js        # 文件上传
+│           ├── dataPreview.js   # 数据预览
 │           ├── variableSelect.js # 图表变量槽位和默认映射
-│           ├── plotConfigs.js    # 图表目录和 Plotly trace/layout
-│           ├── charts.js         # 图表选择、示例切换、完整数据加载、渲染
-│           ├── tableGenerator.js
-│           └── download.js
+│           ├── plotConfigs.js   # 图表目录（82+种）和 Plotly trace/layout
+│           ├── chartThemes.js   # 12种出版级图表主题
+│           ├── charts.js        # 图表选择、示例切换、完整数据加载、渲染
+│           ├── tableGenerator.js # 三线表生成
+│           └── download.js      # 导出下载
 ├── data/
-│   ├── examples/
-│   └── uploads/
-├── outputs/
+│   ├── examples/                # 36个示例 CSV 数据集
+│   └── uploads/                 # 用户上传文件
+├── outputs/                     # 导出文件输出目录
 ├── docs/
-│   ├── INTEGRATION.md
-│   └── EXTENSION.md
+│   ├── INTEGRATION.md           # 二次集成说明
+│   └── EXTENSION.md             # 扩展开发说明
 └── tests/
-    └── smoke.py
+    ├── smoke.py                 # Python 后端冒烟测试
+    ├── chart_config_smoke.js    # 图表配置验证
+    ├── export_wysiwyg_smoke.js  # 导出功能验证
+    ├── spatial_chart_smoke.js   # 空间图表验证
+    ├── advanced_chart_smoke.js  # 高级图表验证
+    └── appearance_mapping_smoke.js # 外观映射验证
 ```
 
 ## API 概览
@@ -237,13 +313,33 @@ curl -X POST http://127.0.0.1:8866/api/dataset/data \
 ## 开发与验证
 
 ```bash
+# Python 后端冒烟测试
 python tests\smoke.py
+
+# Python 语法检查
 python -m compileall app
+
+# JavaScript 语法检查
+node --check app\static\js\plotConfigs.js
 node --check app\static\js\variableSelect.js
-node tests\chart_config_smoke.js
 node --check app\static\js\charts.js
 node --check app\static\js\upload.js
 node --check app\static\js\tableGenerator.js
+
+# 图表配置完整性验证
+node tests\chart_config_smoke.js
+
+# 导出功能验证
+node tests\export_wysiwyg_smoke.js
+
+# 空间图表验证
+node tests\spatial_chart_smoke.js
+
+# 高级图表验证
+node tests\advanced_chart_smoke.js
+
+# 外观映射验证
+node tests\appearance_mapping_smoke.js
 ```
 
 ## 集成与扩展

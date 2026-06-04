@@ -1,6 +1,6 @@
 [project]
 name = "clinical-chart-platform"
-version = "1.1.0"
+version = "1.2.3"
 description = "Clinical chart and three-line table platform with matched example datasets and full-data chart rendering"
 readme = "README.md"
 requires-python = ">=3.10"
