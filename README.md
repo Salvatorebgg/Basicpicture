@@ -1,8 +1,8 @@
-# 临床基础统计图形与三线表一键生成平台
+# 临床基础图形绘制
 
 **Clinical Basic Statistics Graphs & Three-Line Table One-Click Generation Platform**
 
-面向临床科研数据的交互式图形与标准三线表生成平台。当前版本采用"先选图表，再下载示例/上传数据，再绘制"的 chart-first 工作流，并将总体逻辑向 `statistical_description` 项目靠拢：每类图表绑定对应示例数据、默认变量映射和完整数据绘图接口，避免先上传再重复选图造成流程混乱。
+面向临床科研数据的交互式图形绘制平台。当前版本采用"先选图表，再下载示例/上传数据，再绘制"的 chart-first 工作流，并将总体逻辑向 `statistical_description` 项目靠拢：每类图表绑定对应示例数据、默认变量映射和完整数据绘图接口，避免先上传再重复选图造成流程混乱。
 
 ## 当前版本重点
 
