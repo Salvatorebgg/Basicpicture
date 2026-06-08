@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initChartTypeGrid();
   initCenterTabs();
   initFileInputs();
-  initTableTypeTabs();
   initChartThemeSelect();
   initExportButtons();
   loadExampleList();
@@ -20,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const genBtn = el('generateChartBtn');
   if (genBtn) genBtn.addEventListener('click', generateChart);
 
-  const tableGenBtn = el('generateTableBtn');
-  if (tableGenBtn) tableGenBtn.addEventListener('click', generateTable);
+  const interpretBtn = el('generateInterpretBtn');
+  if (interpretBtn) interpretBtn.addEventListener('click', generateInterpretation);
 
   renderMiniChartGrid('basic');
   bootEmptyState();
@@ -74,6 +73,7 @@ function selectChart(chartId) {
   STATE.currentPlotlyData = null;
   STATE.currentPlotlyLayout = null;
   STATE.currentChartSourceData = null;
+  STATE.currentInterpretData = null;
 
   const config = getChartConfig(chartId);
   if (!STATE.uploadId && !STATE.datasetName && config && config.exampleDataset) {
@@ -100,6 +100,15 @@ function selectChart(chartId) {
   updatePreviewTable();
   updateDownloadList();
   renderAppearanceControls();
+
+  // Force-clear the old interpretation when switching charts
+  const interpretContainer = el('interpretResultContainer');
+  if (interpretContainer && typeof getInterpretEmptyHtml === 'function') {
+    interpretContainer.innerHTML = getInterpretEmptyHtml(
+      '等待生成解读报告',
+      '图表已切换，请生成新图表后重新生成解读。'
+    );
+  }
 }
 
 function resetChartPreview(config) {
@@ -111,8 +120,11 @@ function resetChartPreview(config) {
   container.innerHTML = `<div class="empty-state">${config ? `已选择「${config.name}」，载入数据后点击生成` : '请在左侧选择图表类型'}</div>`;
   const exportBar = el('chartExportBar');
   if (exportBar) exportBar.style.display = 'none';
-  const generateBtn = el('generateChartBtn');
-  if (generateBtn && typeof setLoading === 'function') setLoading(generateBtn, false);
+  if (typeof invalidateChartOutputs === 'function') {
+    invalidateChartOutputs('图表类型已切换，请生成新图表后重新生成结果解读。');
+  } else if (typeof resetGenerateChartButton === 'function') {
+    resetGenerateChartButton();
+  }
 }
 
 // ── Center Panel Tabs ──────────────────────────────────
@@ -129,7 +141,7 @@ function activateWorkspaceTab(tabName) {
   qsa('.tab-panel').forEach(p => p.classList.remove('active'));
   const target = el(`tab-${tabName}`);
   if (target) target.classList.add('active');
-  if (tabName === 'table') buildTableVarControls();
+  if (tabName === 'interpret') { /* interpretation tab activated */ }
 }
 
 // ── File Inputs ────────────────────────────────────────
@@ -188,17 +200,6 @@ async function doLoadExample() {
   } finally {
     if (loadBtn) setLoading(loadBtn, false);
   }
-}
-
-// ── Table Type Tabs ────────────────────────────────────
-function initTableTypeTabs() {
-  qsa('#tableTypeTabs .cat-tab').forEach(tab => {
-    tab.addEventListener('click', function() {
-      qsa('#tableTypeTabs .cat-tab').forEach(t => t.classList.remove('active'));
-      this.classList.add('active');
-      STATE.activeTableType = this.dataset.tt;
-    });
-  });
 }
 
 // ── Chart Theme Select ─────────────────────────────────
@@ -937,6 +938,7 @@ function selectChart(chartId) {
   STATE.currentPlotlyData = null;
   STATE.currentPlotlyLayout = null;
   STATE.currentChartSourceData = null;
+  STATE.currentInterpretData = null;
 
   const config = getChartConfig(chartId);
   if (!STATE.uploadId && !STATE.datasetName && config && config.exampleDataset) STATE.datasetName = config.exampleDataset;
@@ -960,6 +962,15 @@ function selectChart(chartId) {
   updatePreviewTable();
   updateDownloadList();
   renderAppearanceControls();
+
+  // Force-clear the old interpretation when switching charts
+  const interpretContainer = el('interpretResultContainer');
+  if (interpretContainer && typeof getInterpretEmptyHtml === 'function') {
+    interpretContainer.innerHTML = getInterpretEmptyHtml(
+      '\u7b49\u5f85\u751f\u6210\u89e3\u8bfb\u62a5\u544a',
+      '\u56fe\u8868\u5df2\u5207\u6362\uff0c\u8bf7\u751f\u6210\u65b0\u56fe\u8868\u540e\u91cd\u65b0\u751f\u6210\u89e3\u8bfb\u3002'
+    );
+  }
 }
 
 function resetChartPreview(config) {
@@ -971,6 +982,11 @@ function resetChartPreview(config) {
   container.innerHTML = `<div class="empty-state">${config ? `\u5df2\u9009\u62e9\u300c${escapeHtml(config.name)}\u300d\uff0c\u8f7d\u5165\u6570\u636e\u540e\u70b9\u51fb\u751f\u6210` : '\u8bf7\u5728\u5de6\u4fa7\u9009\u62e9\u56fe\u8868\u7c7b\u578b'}</div>`;
   const exportBar = el('chartExportBar');
   if (exportBar) exportBar.style.display = 'none';
+  if (typeof invalidateChartOutputs === 'function') {
+    invalidateChartOutputs('\u56fe\u8868\u7c7b\u578b\u5df2\u5207\u6362\uff0c\u8bf7\u751f\u6210\u65b0\u56fe\u8868\u540e\u91cd\u65b0\u751f\u6210\u7ed3\u679c\u89e3\u8bfb\u3002');
+  } else if (typeof resetGenerateChartButton === 'function') {
+    resetGenerateChartButton();
+  }
 }
 
 async function doLoadExample() {

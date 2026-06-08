@@ -11,8 +11,5 @@ function updateAllSelectors() {
     if (typeof buildChartVarControls === 'function') {
       buildChartVarControls();
     }
-    if (typeof buildTableVarControls === 'function') {
-      buildTableVarControls();
-    }
   }, 100);
 }

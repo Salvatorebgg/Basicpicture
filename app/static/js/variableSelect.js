@@ -133,6 +133,9 @@ function buildChartVarControls() {
 
   qsa('.chart-var-select', container).forEach(sel => {
     sel.addEventListener('change', () => {
+      if (typeof invalidateChartOutputs === 'function') {
+        invalidateChartOutputs('变量映射已更新，请重新生成图表和结果解读。');
+      }
       if (typeof renderAppearanceControls === 'function') renderAppearanceControls();
     });
   });

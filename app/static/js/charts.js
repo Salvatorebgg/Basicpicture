@@ -38,8 +38,11 @@ function resetChartPreview(config) {
   container.innerHTML = `<div class="empty-state">${config ? `已选择「${config.name}」，载入数据后点击生成` : '请在左侧选择图表类型'}</div>`;
   const exportBar = el('chartExportBar');
   if (exportBar) exportBar.style.display = 'none';
-  const generateBtn = el('generateChartBtn');
-  if (generateBtn && typeof setLoading === 'function') setLoading(generateBtn, false);
+  if (typeof invalidateChartOutputs === 'function') {
+    invalidateChartOutputs('图表类型已切换，请生成新图表后重新生成结果解读。');
+  } else if (typeof resetGenerateChartButton === 'function') {
+    resetGenerateChartButton();
+  }
 }
 
 /* ── Chart Generation ──────────────────────────────────── */
@@ -192,6 +195,11 @@ async function generateChart() {
   toast(config.name + ' 已生成', 'success');
   if (typeof setButtonComplete === 'function') setButtonComplete(btn, '\u5904\u7406\u5b8c\u6210');
   else setLoading(btn, false);
+
+  // New chart generated \u2014 invalidate any stale interpretation
+  if (typeof invalidateChartOutputs === 'function') {
+    invalidateChartOutputs('\u56fe\u8868\u5df2\u66f4\u65b0\uff0c\u8bf7\u91cd\u65b0\u751f\u6210\u7ed3\u679c\u89e3\u8bfb\u3002');
+  }
 }
 
 // ── Polish traces for publication ────────────────────

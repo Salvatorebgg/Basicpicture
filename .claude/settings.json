@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"from app.services.interpret_service import generate_interpretation; print\\('interpret_service OK'\\)\")"
+    ]
+  }
+}

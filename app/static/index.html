@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>临床基础绘图</title>
   <link rel="stylesheet" href="/static/styles.css?v=5.7.7" />
+  <link rel="stylesheet" href="/static/css/tables.css?v=5.8.1" />
     <script src="/static/vendor/plotly.min.js?v=local-3.0.1-cns3"></script>
   </head>
   <body>
@@ -82,7 +83,6 @@
             <div class="workspace-hero">
               <div>
                 <h2>临床统计绘图</h2>
-                <p>选择图型，导入数据，调整参数，生成图表与三线表。</p>
               </div>
               <div class="workspace-status" id="datasetMeta">未载入数据</div>
             </div>
@@ -90,7 +90,7 @@
             <nav class="tabs workspace-tabs" aria-label="workspace tabs">
               <button class="tab active" data-tab="overview">数据概览</button>
               <button class="tab" data-tab="chart">可视化</button>
-              <button class="tab" data-tab="table">三线表</button>
+              <button class="tab" data-tab="interpret">结果解读</button>
             </nav>
 
             <section class="tab-panel active" id="tab-overview">
@@ -146,43 +146,46 @@
               </div>
             </section>
 
-            <section class="tab-panel" id="tab-table">
-              <div class="analysis-head">
-                <h3>三线表生成</h3>
-                <div id="tableToolbar" class="figure-actions" style="display:none;">
-                  <a href="#" class="table-export-btn" data-texp="excel">Excel</a>
-                  <a href="#" class="table-export-btn" data-texp="csv">CSV</a>
-                  <a href="#" class="table-export-btn" data-texp="html">HTML</a>
-                  <a href="#" class="table-export-btn" data-texp="clipboard">复制</a>
-                </div>
-              </div>
-
-              <div class="table-type-tabs" id="tableTypeTabs">
-                <button class="cat-tab active" data-tt="baseline">基线资料表</button>
-                <button class="cat-tab" data-tt="descriptive">描述统计</button>
-                <button class="cat-tab" data-tt="missing">缺失统计</button>
-              </div>
-
-              <div class="table-param-grid">
+            <section class="tab-panel" id="tab-interpret">
+              <div class="analysis-head interpret-head">
                 <div>
-                  <h4>分组变量</h4>
-                  <select id="tableGroupVar"></select>
+                  <span class="interpret-eyebrow">Interpretation</span>
+                  <h3>结果解读</h3>
                 </div>
-                <div>
-                  <h4>小数位数</h4>
-                  <input id="tableDecimals" type="number" value="2" min="0" max="6" />
-                </div>
-                <div class="table-vars-block">
-                  <h4>纳入变量（可选，留空为全部）</h4>
-                  <select id="tableVars" multiple size="5"></select>
-                </div>
-                <div class="button-row full">
-                  <button id="generateTableBtn" class="generate-btn">生成三线表</button>
-                </div>
+                <span class="interpret-badge">质量评估 · 临床意义 · 发表建议</span>
               </div>
 
-              <div id="tableResultContainer" class="compact-table-wrap table-result-wrap">
-                <div class="empty-state small">尚未生成三线表</div>
+              <div class="interpret-command">
+                <div class="interpret-command-copy">
+                  <span class="interpret-command-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M4 5h16M4 12h8M4 19h16" />
+                      <path d="M16 10l2 2 3-4" />
+                    </svg>
+                  </span>
+                  <div>
+                    <strong>生成解读报告</strong>
+                    <span>整合数据质量、读图重点、统计限制和临床解释</span>
+                  </div>
+                </div>
+                <button id="generateInterpretBtn" class="interpret-generate-btn" type="button">
+                  <span class="interpret-btn-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M12 3v4M12 17v4M5.64 5.64l2.83 2.83M15.53 15.53l2.83 2.83M3 12h4M17 12h4M5.64 18.36l2.83-2.83M15.53 8.47l2.83-2.83" />
+                    </svg>
+                  </span>
+                  <span class="interpret-btn-label">生成解读</span>
+                </button>
+              </div>
+
+              <div id="interpretResultContainer" class="interpret-result-wrap">
+                <div class="interpret-empty">
+                  <div class="interpret-empty-graphic" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <strong>等待生成解读报告</strong>
+                  <p>当前报告将聚焦图形质量、统计含义、临床解释与发表前检查。</p>
+                </div>
               </div>
             </section>
           </article>
@@ -250,14 +253,14 @@
 
     <div id="toastContainer" class="toast-container"></div>
 
-    <script src="/static/js/utils.js?v=5.7.7"></script>
+    <script src="/static/js/utils.js?v=5.8.2"></script>
     <script src="/static/js/chartThemes.js?v=5.6.7"></script>
   <script src="/static/js/plotConfigs.js?v=5.7.7"></script>
-    <script src="/static/js/upload.js?v=5.6.7"></script>
-    <script src="/static/js/variableSelect.js?v=5.7.1"></script>
-  <script src="/static/js/charts.js?v=5.7.7"></script>
-    <script src="/static/js/tableGenerator.js?v=5.6.7"></script>
+    <script src="/static/js/upload.js?v=5.8.2"></script>
+    <script src="/static/js/variableSelect.js?v=5.8.2"></script>
+  <script src="/static/js/charts.js?v=5.8.2"></script>
+    <script src="/static/js/interpret.js?v=5.8.2"></script>
     <script src="/static/js/download.js?v=5.6.7"></script>
-  <script src="/static/js/app.js?v=5.7.7"></script>
+  <script src="/static/js/app.js?v=5.8.2"></script>
   </body>
 </html>

@@ -26,6 +26,7 @@ from app.services.table_service import (
     build_descriptive_table,
     build_missing_table,
 )
+from app.services.interpret_service import generate_interpretation
 from app.services.chart_service import get_chart_variables, prepare_chart_data
 from app.services.sample_service import EXAMPLE_MAKERS
 from app.services.export_service import (
@@ -311,6 +312,23 @@ def missing_table(req: TableRequest) -> dict:
     return build_missing_table(df)
 
 
+# ── Interpretation ─────────────────────────────────────
+
+
+@app.post("/api/interpret")
+def interpret_chart(req: dict = Body(...)) -> dict:
+    """Generate quality assessment and interpretation for a chart.
+
+    Accepts chart_type, chart_params, and data source info.
+    Returns structured interpretation with quality assessment.
+    """
+    df = _get_df_simple(req)
+    chart_type = req.get("chart_type", "")
+    chart_params = req.get("chart_params") or {}
+    result = generate_interpretation(df, chart_type, chart_params)
+    return _sanitize_for_json(result)
+
+
 # ── Export ─────────────────────────────────────────────
 
 
@@ -554,3 +572,20 @@ def _json_value(value):
 
 def _df_to_column_data(df: pd.DataFrame) -> dict[str, list]:
     return {str(col): [_json_value(v) for v in df[col].tolist()] for col in df.columns}
+
+
+def _sanitize_for_json(obj):
+    """Recursively convert numpy/pandas types to native Python for JSON serialization."""
+    if isinstance(obj, dict):
+        return {str(k): _sanitize_for_json(v) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [_sanitize_for_json(v) for v in obj]
+    if isinstance(obj, np.generic):
+        return obj.item()
+    if isinstance(obj, (np.bool_, bool)):
+        return bool(obj)
+    if isinstance(obj, (np.integer,)):
+        return int(obj)
+    if isinstance(obj, (np.floating,)):
+        return float(obj)
+    return obj

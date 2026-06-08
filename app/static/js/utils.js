@@ -14,11 +14,10 @@ const STATE = {
   summary: {},
   activeChartType: null,
   activeChartCategory: 'basic',
-  activeTableType: 'baseline',
   datasetName: null,
   currentPlotlyData: null,
   currentPlotlyLayout: null,
-  currentTableData: null,
+  currentInterpretData: null,
   currentChartSourceData: null,
   currentChartParams: null,
   currentChartResizeObserver: null,
@@ -124,6 +123,60 @@ function setButtonComplete(btn, text) {
   btn.style.opacity = '1';
 }
 
+function resetActionButton(btn, defaultText) {
+  if (!btn) return;
+  btn._defaultText = defaultText || (btn._defaultText || (btn.textContent || '').trim());
+  btn.dataset.loading = 'false';
+  btn.textContent = btn._defaultText;
+  btn.disabled = false;
+  btn.style.opacity = '1';
+}
+
+function resetGenerateChartButton() {
+  resetActionButton(el('generateChartBtn'), '\u751f\u6210\u56fe\u8868');
+}
+
+function getInterpretEmptyHtml(title, message) {
+  return `
+    <div class="interpret-empty">
+      <div class="interpret-empty-graphic" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <strong>${escapeBasicHtml(title || '\u7b49\u5f85\u751f\u6210\u89e3\u8bfb\u62a5\u544a')}</strong>
+      <p>${escapeBasicHtml(message || '\u5f53\u524d\u56fe\u8868\u6216\u53c2\u6570\u5df2\u66f4\u65b0\uff0c\u8bf7\u91cd\u65b0\u751f\u6210\u89e3\u8bfb\u62a5\u544a\u3002')}</p>
+    </div>
+  `;
+}
+
+function resetInterpretationState(title, message) {
+  STATE.currentInterpretData = null;
+  const container = el('interpretResultContainer');
+  if (container) container.innerHTML = getInterpretEmptyHtml(title, message);
+  const btn = el('generateInterpretBtn');
+  if (btn) {
+    btn.disabled = false;
+    btn.dataset.loading = 'false';
+    const label = btn.querySelector('.interpret-btn-label');
+    if (label) label.textContent = '\u751f\u6210\u89e3\u8bfb';
+  }
+}
+
+function invalidateChartOutputs(reason) {
+  resetGenerateChartButton();
+  resetInterpretationState(
+    '\u7b49\u5f85\u751f\u6210\u89e3\u8bfb\u62a5\u544a',
+    reason || '\u56fe\u8868\u3001\u6570\u636e\u6216\u53c2\u6570\u5df2\u53d8\u66f4\uff0c\u8bf7\u5148\u751f\u6210\u56fe\u8868\uff0c\u518d\u751f\u6210\u89e3\u8bfb\u3002'
+  );
+}
+
+function escapeBasicHtml(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;');
+}
+
 function resetDatasetState() {
   STATE.uploadId = null;
   STATE.fileName = null;
@@ -190,4 +243,8 @@ function loadChartWorkspace(chartId) {
 function saveCurrentChartParams(params) {
   STATE.currentChartParams = { ...(params || {}) };
   saveActiveChartWorkspace();
+  resetInterpretationState(
+    '\u89e3\u8bfb\u5df2\u8fc7\u671f',
+    '\u56fe\u8868\u53c2\u6570\u6216\u53ef\u89c6\u5316\u7ed3\u679c\u5df2\u66f4\u65b0\uff0c\u8bf7\u91cd\u65b0\u751f\u6210\u7ed3\u679c\u89e3\u8bfb\u3002'
+  );
 }

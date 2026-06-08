@@ -82,6 +82,9 @@ function updateStateFromData(data) {
   STATE.previewRows = data.preview || [];
   STATE.summary = data.summary || {};
   saveActiveChartWorkspace();
+  if (typeof invalidateChartOutputs === 'function') {
+    invalidateChartOutputs('数据已更新，请生成新图表后重新生成结果解读。');
+  }
 }
 
 function renderSheetSelector(sheets) {
